@@ -9,9 +9,17 @@ import EditVille from './components/ville/EditVille.vue';
 import Category from  './components/Category/Category.vue';
 import EditCategory from  './components/Category/CategoryEdit.vue';
 
+import Annonce from  './components/annonce/annonce.vue';
+
+import Comment from  './components/comment/comment.vue';
+
+import Dashbord from  './components/dashbord/Dashbord.vue';
+
+import Notfound from  './components/Notfound.vue';
+
 
 const routes=[
-             
+              {path:'/admin/dashbord',component:Dashbord},
               {path:'/admin/admin',component:Admin},
               {path: '/admin/user',component:User},
               {path:"/admin/user/edit/:id",component:UserEdit},
@@ -20,6 +28,14 @@ const routes=[
 
               {path:'/admin/categorie',component:Category},
               {path:"/admin/categorie/edit/:id",component:EditCategory},
+               //start annonce
+              {path:'/admin/annonce',component:Annonce},
+               
+              //end annonce
+
+              {path:'/admin/comment',component:Comment},
+
+              {path:"*",component:Notfound},
 
               
               

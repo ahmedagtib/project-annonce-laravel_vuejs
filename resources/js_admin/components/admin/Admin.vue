@@ -18,6 +18,7 @@
 		 </div>
 	</div>
 	<!-- Modal -->
+        <form @submit.prevent="createadmin">
            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="  exampleModalLabel" aria-hidden="true">
                <div class="modal-dialog" role="document">
                  <div class="modal-content">
@@ -28,7 +29,7 @@
                      </button>
                    </div>
                    <div class="modal-body">
-                       <form @submit.prevent="createadmin">
+                       
                           <div class="form-group">
                             <label>name</label>
                             <input v-model="form.name" type="text" name="name"
@@ -48,15 +49,16 @@
                               class="form-control" :class="{ 'is-invalid': form.errors.has('password') }">
                             <has-error :form="form" field="password"></has-error>
                           </div>
-                       </form>
+                      
                    </div>
                    <div class="modal-footer">
                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                     <button type="button" class="btn btn-primary">Add new</button>
+                     <input type="button" class="btn btn-primary" value="add new"/>
                    </div>
                  </div>
                </div>
            </div>
+         </form>  
 </div>
 </template>
 <script type="text/javascript">

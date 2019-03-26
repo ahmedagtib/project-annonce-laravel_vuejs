@@ -26,12 +26,12 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
            <li class="nav-item">
-            <a href="#" class="nav-link">
+            <router-link to="/admin/dashbord" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                  Dashbord
               </p>
-            </a>
+            </router-link>
           </li>  
           <li class="nav-item">
             <router-link to="/admin/admin" class="nav-link">
@@ -50,12 +50,12 @@
             </router-link>
           </li> 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <router-link to="/admin/annonce" class="nav-link">
               <i class="nav-icon fas fa-ad"></i>
               <p>
                 Ads
               </p>
-            </a>
+            </router-link>
           </li> 
           <li class="nav-item">
             <router-link  to="/admin/categorie" class="nav-link">
@@ -74,12 +74,12 @@
             </router-link>
           </li> 
            <li class="nav-item">
-            <a href="#" class="nav-link">
+            <router-link to="/admin/comment" class="nav-link">
               <i class="nav-icon fas fa-comments"></i>
               <p>
                 comment
               </p>
-            </a>
+            </router-link>
           </li> 
           <li class="nav-item">
             <a href="#" class="nav-link">
