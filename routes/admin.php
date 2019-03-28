@@ -23,8 +23,14 @@ Route::group(['middleware'=>'admin:admin'],function(){
          Route::post('user/all','UserController@store');
          Route::delete('user/delete/{id}','UserController@destroy');
          Route::put('user/update/{id}','UserController@update');
-         //annonce
+         //admin
+         Route::get('admin/all','AdminController@index');
+         Route::post('admin/all','AdminController@store');
+         Route::delete('admin/delete/{id}','AdminController@destroy');
+         Route::put('admin/update/{id}','AdminController@update');
+         //start annonce
          
+         //end annonce
         Route::get('/{any}','DashbordController@index')->where('any','.*');
 });
 }); 

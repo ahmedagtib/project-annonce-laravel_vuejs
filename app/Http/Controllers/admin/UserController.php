@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use Validator;
 class UserController extends Controller
 {
     public function index()
@@ -14,17 +15,53 @@ class UserController extends Controller
 
     public function store(Request $request){
         
-        $this->validate($request,[
+       
+         $vildate=Validator::make($request->all(),[
             'name'=>'required|string|max:191',
-            'email'=>'required|email|string|max:191|unique:users',
-            'password'=>'required|string|min:6',
+            'email'=>'required|email|string|max:191|unique:admins',
+            'password'=>'required|string|min:6',     
         ]);
+
+         if ($vildate->fails()){
+             return response()->json($vildate->errors());
+         }
         
          $user=new User();
          $user->name=$request->name;
          $user->email=$request->email;
          $user->password=bcrypt($request->password);
          $user->save();
+    }
+    public function update(Request $request, $id)
+    {
+       
+         $user=User::find($id);
+
+        
+         if(empty($user)){
+            return response()->json(['status'=>'error','message'=>'this suer is not found'],404);
+         }
+           $vildate=Validator::make($request->all(),[
+            'name'=>'required|string|max:191',
+            'email'=>'required|email|string|max:191|unique:users',
+            'password'=>'required|string|min:6',     
+          ]);
+
+         if ($vildate->fails()){
+             return response()->json($vildate->errors());
+         }
+
+
+         $user->name=$request->name;
+         $user->email=$request->email;
+         $user->password=bcrypt($request->password);
+
+         
+         if($user->update()){
+           return response()->json(['stuts'=>'success','data'=>$user]);
+         }
+       
+         
     }
      public function destroy($id)
     {

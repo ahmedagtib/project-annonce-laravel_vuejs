@@ -1,6 +1,7 @@
 import VueRoute from 'vue-router';
 window.Vue = require('vue');
 import Admin from './components/admin/Admin.vue';
+import AdminEdit from './components/admin/AdminEdit.vue';
 import User from  './components/user/User.vue';
 import UserEdit from  './components/user/UserEdit.vue';
 import Ville from  './components/ville/Ville.vue';
@@ -21,6 +22,7 @@ import Notfound from  './components/Notfound.vue';
 const routes=[
               {path:'/admin/dashbord',component:Dashbord},
               {path:'/admin/admin',component:Admin},
+               {path:"/admin/admin/edit/:id",component:AdminEdit},
               {path: '/admin/user',component:User},
               {path:"/admin/user/edit/:id",component:UserEdit},
               {path:'/admin/ville',component:Ville},
