@@ -26,7 +26,7 @@
                       <td>{{ville.created_at}}</td>
                       <td>
                         <router-link :to="'/admin/ville/edit/'+ville.id" class="btn btn-warning"><i class="fa fa-edit"></i></router-link>
-                        <a  @click="onDelete(ville.id,ville.name)" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                        <a @click="onDelete(ville.id,ville.name)" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                       </td>
                     </tr>
                 </thead>

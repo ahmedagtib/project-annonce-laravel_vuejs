@@ -24,6 +24,8 @@ Route::group(['middleware'=>'admin:admin'],function(){
          Route::delete('user/delete/{id}','UserController@destroy');
          Route::put('user/update/{id}','UserController@update');
          //annonce
+         Route::get('Annonce/all', 'AnonnceController@index');
+         Route::post('Annonce/add', 'AnonnceController@saveAnnonce');
          
         Route::get('/{any}','DashbordController@index')->where('any','.*');
 });
