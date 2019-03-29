@@ -11,7 +11,7 @@
 		<div class="row">
 			<div class="col-md-4" v-for="(annonce, index) in annonces" :key="index">
 				<div class="card text-left">
-				  <img class="card-img-top" :src="annonce.imageAnnonce.name" alt="">
+				  <img class="card-img-top" v-if="annonce.imageAnnonce" :src="imageDirectory(annonce.imageAnnonce.name)" alt="">
 				  <div class="card-body">
 					<h4 class="card-title">{{ annonce.annonce.title }}</h4>
 				  </div>
@@ -33,6 +33,9 @@
 
 		},
 		methods: {
+			imageDirectory(imageName) {
+				return '/image/annonce/' + imageName
+			},
 			getAllAnnonces() {
 
 				axios.get('Annonce/all').then(({ data }) => this.annonces = data)

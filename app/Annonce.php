@@ -27,4 +27,13 @@ class Annonce extends Model
     public function images(){
         return $this->hasMany('App\ImageAnnonce');
     }
+
+    public function generateSlug() {
+        $slug = str_replace(' ', '-', $this->title);
+        $nuberOfSlugs = Annonce::where('slug', 'like', $slug . '%')->count();
+        if($nuberOfSlugs > 0) {
+            return $slug . '-' . $nuberOfSlugs;
+        }
+        return $slug;
+    }
 }

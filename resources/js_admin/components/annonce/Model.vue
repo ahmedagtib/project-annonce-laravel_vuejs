@@ -25,30 +25,28 @@
                     </select>
                 </div>
                 <div class="col-md-12 form-group">
-                    <label class="label-control" for="">Slug</label>
-                    <input v-model="form.slug" type="text" name="slug" class="form-control">
-                </div>
-                <div class="col-md-12 form-group">
                     <label class="label-control" for="">Title</label>
                     <input v-model="form.title" type="text" name="title" class="form-control">
                 </div>
                 <div class="col-md-12 form-group">
                     <label class="label-control" for="">Desciption</label>
-                    <textarea v-model="form.desciption" name="desciption" class="form-control"></textarea>
+                    <textarea v-model="form.description" name="desciption" class="form-control"></textarea>
                 </div>
                 <div class="col-md-12 form-group">
                     <label class="label-control" for="">détaille</label>
                     <input v-model="form.detaille" type="text" name="detaille" class="form-control">
                 </div>
-                <div class="row col-md-12 form-group">
+                <div class="col-md-12 form-group">
                     <label for="">Type</label>
-                    <div class="col-md-1 form-group">
-                        <input v-model="form.type" value="free" type="radio" name="type" id="type_free">
-                        <label for="type_free">Free</label>
-                    </div>
-                    <div class="col-md-1 form-group">
-                        <input type="radio" v-model="form.type" value="pay" name="type" id="type_pay">
-                        <label for="type_pay">Pay</label>
+                    <div class="row">
+                        <div class="col-md-1 form-group">
+                            <input v-model="form.type" value="free" type="radio" name="type" id="type_free">
+                            <label for="type_free">Free</label>
+                        </div>
+                        <div class="col-md-1 form-group">
+                            <input type="radio" v-model="form.type" value="pay" name="type" id="type_pay">
+                            <label for="type_pay">Pay</label>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-12 form-group">
@@ -61,17 +59,19 @@
                 </div>
                 <div class="col-md-12 form-group">
                     <label>Prix</label>
-                    <input type="text" name="prix" class="form-control">
+                    <input v-model="form.prix" type="text" name="prix" class="form-control">
                 </div>
             
                 <div class="col-md-12 from-group">
-                    <label>AJOUTEZ JUSQU'À 6 PHOTOS (6 IMAGES RESTANTES)</label>
+                    <label>AJOUTEZ JUSQU'À 6 PHOTOS ({{ imageRest }} IMAGES RESTANTES)</label>
                     <div class="row">
-                        <div v-for="(image, index) in form.images" :key="index" class="col-md-3 position-relative newbtn">
-                            <button @click="remove(image, index)" type="button" class="btn position-absolute"><i class="fa fa-times" aria-hidden="true"></i></button>
-                            <img :src="image" alt="">
-                        </div>
-                        <div class="col-3 mb-4" v-if="!imageEnd">
+                        <draggable v-model="form.images" class="row col-md-12 gallery-item">
+                            <div v-for="(image, index) in form.images" :key="index" class="col-md-3 position-relative newbtn">
+                                <button @click="remove(image, index)" type="button" class="btn position-absolute"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                <img class="image-responsive" :src="image.img" alt="">
+                            </div>
+                        </draggable>
+                        <div class="col-md-12 mb-4" v-if="!imageEnd">
                             <label for="images" class='newbtn'>
                                 <img src="http://placehold.it/120x120" >
                                 <input @change="pushFile" id="images" class="pic" type="file" >
@@ -99,24 +99,29 @@
 </template>
 
 <script>
+    import draggable from 'vuedraggable'
     export default {
+        components: {
+            draggable
+        },
         data() {
             return {
                 villes:{},
                 categorys:{},
                 form: new Form({
+                    user_id:0,
                     ville_id:-1,
                     categorie_id:-1,
-                    slug:'',
                     title:'',
-                    desciption:'',
+                    description:'',
                     detaille:'',
                     type:'',
                     stuts:'',
                     prix:'',
                     images: []
                 }),
-                imageEnd: false
+                imageEnd: false,
+                imageRest: 6
             }
         },
         methods: {
@@ -130,12 +135,19 @@
                this.$router.push('/admin/annonce')
             },
             addAnnonce () {
+                // this.$Progress.start() vue-progress-bar
+                this.form.images[0].isMain = 1;
                 this.form.post('Annonce/add',{ 
                 // Transform form data to FormData
                 transformRequest: [function (data, headers) {
                     return objectToFormData(data)
                 }],
-                }).then(({ data }) => console.log('DATA : ', data))
+                }).then(({ data }) => {
+                    console.log('DATA : ', data)
+                    // this.$Progress.finish()
+                }).catch(() => {
+                    // this.$Progress.fail()
+                })
                 console.log(this.form.images)
             },
             pushFile (e) {
@@ -145,15 +157,15 @@
                         let reader = new FileReader()
                         reader.onloadend = () => {
 
-                            this.form.images.push(reader.result)
-
+                            this.form.images.push({ img:reader.result, isMain: 0 })
+                            this.imageRest--
                         }
                         console.log('It\'s working...', e.target.value)
                         reader.readAsDataURL(file)
                     } else {
 
-                        console.log('It\'s not working...',this.form.images)
                         this.imageEnd = true
+                        console.log('It\'s not working...',this.form.images)
 
                     }
                 }
@@ -165,7 +177,7 @@
             },
             remove (img, i) {
                 this.form.images.splice(i, 1)
-               // console.log('fdsqf',this.form.images)
+                this.imageRest++
             }
         },
         updated() {
@@ -183,11 +195,14 @@
 /** Start Custom Input File */
 
     .pic{
-    display: none;
+        display: none;
     }
         
     .newbtn{
         cursor: pointer;
+        max-height: 130px;
+        max-width: 130px;
+        overflow: hidden;
     }
 
     .newbtn button[type='button'] {
