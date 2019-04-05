@@ -2,7 +2,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import router from './routes.js';
-import  axios from 'axios';
+import axios from 'axios';
 import { Form, HasError, AlertError,AlertSuccess } from 'vform'
 
 window.Form=Form;

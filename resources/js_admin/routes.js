@@ -18,6 +18,7 @@ import Dashbord from  './components/dashbord/Dashbord.vue';
 
 import Notfound from  './components/Notfound.vue';
 import addAnnonce from './components/annonce/Model.vue'
+import EditAnnonce from './components/annonce/Edite.vue'
 
 const routes=[
               {path:'/admin/dashbord',component:Dashbord},
@@ -33,6 +34,7 @@ const routes=[
                //start annonce
               {path:'/admin/annonce',component:Annonce},
               {path:'/admin/addAnnonce',component:addAnnonce},
+              {path:'/admin/annonce/edit/:id',component:EditAnnonce},
                
               //end annonce
 

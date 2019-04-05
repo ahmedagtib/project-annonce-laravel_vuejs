@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Annonce extends Model
 {
@@ -24,7 +25,7 @@ class Annonce extends Model
         return $this->belongsTo('App\Ville');
     }
 
-    public function images(){
+    public function images() {
         return $this->hasMany('App\ImageAnnonce');
     }
 
@@ -36,4 +37,5 @@ class Annonce extends Model
         }
         return $slug;
     }
+
 }
