@@ -208,8 +208,8 @@
                 }
             },
             updateAnnonce () {
-
-                console.log(this.form.images[0])
+                if(this.form.images[0] !== undefined)
+                    this.form.images[0].isMain = 1;
                 this.form.post('/admin/Annonce/update').then(({ data }) => console.log(data)).catch(({ response }) => console.log(response))
             }
         },

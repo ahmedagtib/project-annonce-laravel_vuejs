@@ -1965,6 +1965,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js");
+/* harmony import */ var laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2048,7 +2050,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    pagination: laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_0___default.a
+  },
   data: function data() {
     return {
       form: new Form({
@@ -2068,14 +2077,24 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/admin/admin/all').then(function (response) {
         _this.admins = response.data.data;
+        console.log('this', _this.admins.data);
+      });
+    },
+    getResult: function getResult() {
+      var _this2 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('/admin/admin/all?page=' + page).then(function (response) {
+        _this2.admins = response.data.data;
+        console.log('this', _this2.admins.data);
       });
     },
     onDelete: function onDelete(id, admin) {
-      var _this2 = this;
+      var _this3 = this;
 
       if (confirm('do you want delete' + admin)) {
         axios.delete('/admin/admin/delete/' + id).then(function (response) {
-          _this2.getadmin();
+          _this3.getadmin();
         }).catch(function (err) {});
       }
     }
@@ -2388,7 +2407,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     updateAnnonce: function updateAnnonce() {
-      console.log(this.form.images[0]);
+      if (this.form.images[0] !== undefined) this.form.images[0].isMain = 1;
       this.form.post('/admin/Annonce/update').then(function (_ref4) {
         var data = _ref4.data;
         return console.log(data);
@@ -2564,7 +2583,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     addAnnonce: function addAnnonce() {
       // this.$Progress.start() vue-progress-bar
-      this.form.images[0].isMain = 1;
+      if (this.form.images[0] !== undefined) this.form.images[0].isMain = 1;
       this.form.post('Annonce/add', {
         // Transform form data to FormData
         transformRequest: [function (data, headers) {
@@ -2787,6 +2806,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js");
+/* harmony import */ var laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2870,7 +2891,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    pagination: laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_0___default.a
+  },
   data: function data() {
     return {
       form: new Form({
@@ -2892,12 +2920,21 @@ __webpack_require__.r(__webpack_exports__);
         _this.users = response.data.data;
       });
     },
-    onDelete: function onDelete(id, user) {
+    getResult: function getResult() {
       var _this2 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('/admin/user/all?page=' + page).then(function (response) {
+        _this2.users = response.data.data;
+        console.log('this', _this2.users.data);
+      });
+    },
+    onDelete: function onDelete(id, user) {
+      var _this3 = this;
 
       if (confirm('do you want delete' + user)) {
         axios.delete('/admin/user/delete/' + id).then(function (response) {
-          _this2.getusers();
+          _this3.getusers();
         }).catch(function (err) {});
       }
     }
@@ -7617,7 +7654,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n    \r\n/** Start Custom Input File */\n.pic{\r\n        display: none;\n}\n.newbtn{\r\n        cursor: pointer;\r\n        max-height: 130px;\r\n        max-width: 130px;\r\n        overflow: hidden;\n}\n.newbtn button[type='button'] {\r\n        right:20px;\r\n        top:0\n}\n.newbtn img {\r\n        max-width: 100%;\n}\r\n\r\n\r\n/** End Custom Input File */\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n    \r\n/** Start Custom Input File */\n.pic{\r\n        display: none;\n}\n.newbtn{\r\n        cursor: pointer;\r\n        max-height: 130px;\r\n        max-width: 130px;\r\n        overflow: hidden;\n}\n.newbtn button[type='button'] {\r\n        right:20px;\r\n        top:0\n}\n.newbtn img {\r\n        max-width: 100%;\n}\r\n\r\n\r\n/** End Custom Input File */\r\n", ""]);
 
 // exports
 
@@ -44585,59 +44622,69 @@ var render = function() {
           _c("div", { staticClass: "card card-light" }, [
             _vm._m(0),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body pd-0" }, [
-              _c("table", { staticClass: "table" }, [
-                _c(
-                  "thead",
-                  [
-                    _vm._m(1),
-                    _vm._v(" "),
-                    _vm._l(_vm.admins, function(admin) {
-                      return _c("tr", [
-                        _c("td", { attrs: { scope: "row" } }, [
-                          _vm._v(_vm._s(admin.id))
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(admin.name))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(admin.email))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(admin.created_at))]),
-                        _vm._v(" "),
-                        _c(
-                          "td",
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "btn btn-warning",
-                                attrs: { to: "/admin/admin/edit/" + admin.id }
-                              },
-                              [_c("i", { staticClass: "fa fa-edit" })]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "a",
-                              {
-                                staticClass: "btn btn-danger",
-                                on: {
-                                  click: function($event) {
-                                    return _vm.onDelete(admin.id, admin.name)
+            _c(
+              "div",
+              { staticClass: "card-body pd-0" },
+              [
+                _c("table", { staticClass: "table" }, [
+                  _c(
+                    "thead",
+                    [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _vm._l(_vm.admins.data, function(admin, index) {
+                        return _c("tr", { key: index }, [
+                          _c("td", { attrs: { scope: "row" } }, [
+                            _vm._v(_vm._s(admin.id))
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(admin.name))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(admin.email))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(admin.created_at))]),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass: "btn btn-warning",
+                                  attrs: { to: "/admin/admin/edit/" + admin.id }
+                                },
+                                [_c("i", { staticClass: "fa fa-edit" })]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "btn btn-danger",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.onDelete(admin.id, admin.name)
+                                    }
                                   }
-                                }
-                              },
-                              [_c("i", { staticClass: "fa fa-trash" })]
-                            )
-                          ],
-                          1
-                        )
-                      ])
-                    })
-                  ],
-                  2
-                )
-              ])
-            ])
+                                },
+                                [_c("i", { staticClass: "fa fa-trash" })]
+                              )
+                            ],
+                            1
+                          )
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                ]),
+                _vm._v(" "),
+                _c("pagination", {
+                  attrs: { data: _vm.admins },
+                  on: { "pagination-change-page": _vm.getResult }
+                })
+              ],
+              1
+            )
           ])
         ])
       ])
@@ -46341,59 +46388,69 @@ var render = function() {
           _c("div", { staticClass: "card card-light" }, [
             _vm._m(0),
             _vm._v(" "),
-            _c("div", { staticClass: "card-body pd-0" }, [
-              _c("table", { staticClass: "table" }, [
-                _c(
-                  "thead",
-                  [
-                    _vm._m(1),
-                    _vm._v(" "),
-                    _vm._l(_vm.users, function(user) {
-                      return _c("tr", [
-                        _c("td", { attrs: { scope: "row" } }, [
-                          _vm._v(_vm._s(user.id))
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(user.name))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(user.email))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(user.created_at))]),
-                        _vm._v(" "),
-                        _c(
-                          "td",
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "btn btn-warning",
-                                attrs: { to: "/admin/user/edit/" + user.id }
-                              },
-                              [_c("i", { staticClass: "fa fa-edit" })]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "a",
-                              {
-                                staticClass: "btn btn-danger",
-                                on: {
-                                  click: function($event) {
-                                    return _vm.onDelete(user.id, user.name)
+            _c(
+              "div",
+              { staticClass: "card-body pd-0" },
+              [
+                _c("table", { staticClass: "table" }, [
+                  _c(
+                    "thead",
+                    [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _vm._l(_vm.users, function(user) {
+                        return _c("tr", [
+                          _c("td", { attrs: { scope: "row" } }, [
+                            _vm._v(_vm._s(user.id))
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(user.name))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(user.email))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(user.created_at))]),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass: "btn btn-warning",
+                                  attrs: { to: "/admin/user/edit/" + user.id }
+                                },
+                                [_c("i", { staticClass: "fa fa-edit" })]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "btn btn-danger",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.onDelete(user.id, user.name)
+                                    }
                                   }
-                                }
-                              },
-                              [_c("i", { staticClass: "fa fa-trash" })]
-                            )
-                          ],
-                          1
-                        )
-                      ])
-                    })
-                  ],
-                  2
-                )
-              ])
-            ])
+                                },
+                                [_c("i", { staticClass: "fa fa-trash" })]
+                              )
+                            ],
+                            1
+                          )
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                ]),
+                _vm._v(" "),
+                _c("pagination", {
+                  attrs: { data: _vm.admins },
+                  on: { "pagination-change-page": _vm.getResult }
+                })
+              ],
+              1
+            )
           ])
         ])
       ])

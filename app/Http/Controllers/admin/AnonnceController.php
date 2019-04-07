@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\StoreAnnonce;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Annonce;
@@ -20,9 +21,13 @@ class AnonnceController extends Controller
 
     }
 
-    public function saveAnnonce(Request $r) {
+    public function saveAnnonce(StoreAnnonce $r) {
 
-       // return Request()->all();
+        if(!$r->validated()) {
+            
+            return response()->json(['message' => 'error', 'text', $r->errors()->add('error of one filed')]);
+
+        }
 
         $Annonce = new Annonce();
 
@@ -34,8 +39,6 @@ class AnonnceController extends Controller
 
         $Annonce->title = $r->title;
 
-        $Annonce->slug = $Annonce->generateSlug();
-
         $Annonce->description = $r->description;
 
         $Annonce->detaille = $r->detaille;
@@ -45,10 +48,6 @@ class AnonnceController extends Controller
         $Annonce->stuts = $r->stuts;
 
         $Annonce->prix = $r->prix;
-
-        $Annonce->save();
-
-        //  $Annonce->id;
 
         foreach ($r->images as $key => $image) {
             //Upload image to the server
@@ -63,9 +62,15 @@ class AnonnceController extends Controller
             $AnnoncesImages->save();
         }
 
-        //return $r->images;  isMain
+        if($Annonce->save()) {
+            
+            return ['message' => 'success'];
+            
+        } else {
 
-        return ['message' => 'success'];
+            return ['message' => 'error'];
+
+        }
 
     }
 
@@ -77,7 +82,13 @@ class AnonnceController extends Controller
 
     }
 
-    public function update(Request $r) {
+    public function update(StoreAnnonce $r) {
+
+        if(!$r->validated()) {
+            
+            return response()->json(['message' => 'error', 'text', $r->errors()->add('error of one filed')]);
+
+        }
 
         $Annonce = Annonce::find($r->id);
 
@@ -115,8 +126,6 @@ class AnonnceController extends Controller
         $Annonce->stuts = $r->stuts;
 
         $Annonce->prix = $r->prix;
-
-        $Annonce->update();
         
         return $Annonce->update() ? ['message' => 'sucess'] : ['message' => 'error'];
 

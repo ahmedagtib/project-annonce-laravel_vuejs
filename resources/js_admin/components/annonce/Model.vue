@@ -135,7 +135,8 @@
             },
             addAnnonce () {
                 // this.$Progress.start() vue-progress-bar
-                this.form.images[0].isMain = 1;
+                if(this.form.images[0] !== undefined)
+                    this.form.images[0].isMain = 1;
                 this.form.post('Annonce/add',{ 
                 // Transform form data to FormData
                 transformRequest: [function (data, headers) {
