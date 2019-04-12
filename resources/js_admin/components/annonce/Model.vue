@@ -95,7 +95,6 @@
         </form>
 	</div>
 	<!-- End Model -->
-
 </template>
 
 <script>
@@ -136,7 +135,8 @@
             },
             addAnnonce () {
                 // this.$Progress.start() vue-progress-bar
-                this.form.images[0].isMain = 1;
+                if(this.form.images[0] !== undefined)
+                    this.form.images[0].isMain = 1;
                 this.form.post('Annonce/add',{ 
                 // Transform form data to FormData
                 transformRequest: [function (data, headers) {
@@ -151,7 +151,9 @@
                 console.log(this.form.images)
             },
             pushFile (e) {
-                if(e.target.files.length > 0) {
+                console.log('Image Rest Before', this.imageRest)
+
+                if (e.target.files.length > 0) {
                     if(this.form.images.length < 6) {
                         let file = e.target.files[0]
                         let reader = new FileReader()
@@ -162,13 +164,19 @@
                         }
                         console.log('It\'s working...', e.target.value)
                         reader.readAsDataURL(file)
-                    } else {
-
-                        this.imageEnd = true
-                        console.log('It\'s not working...',this.form.images)
-
                     }
                 }
+
+                if (this.imageRest == 1) {
+
+                    console.log('Before ',this.imageEnd)
+                    this.imageEnd = true
+                    console.log('After ',this.imageEnd)
+
+
+                }
+
+                console.log('Image Rest After', this.imageRest)
 
                 e.target.value = ''
                 console.log('It\'s not working...',e.target.value)
@@ -178,6 +186,9 @@
             remove (img, i) {
                 this.form.images.splice(i, 1)
                 this.imageRest++
+                if(this.imageEnd) {
+                    this.imageEnd = false
+                }
             }
         },
         updated() {

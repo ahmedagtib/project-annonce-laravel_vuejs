@@ -15,7 +15,7 @@ mix.js('resources/js_admin/app.js', 'public/js_admin')
    .sass('resources/sass_admin/app.scss', 'public/css_admin');
 
 mix.js('resources/js_user/app.js', 'public/js_user')
-   .sass('resources/sass_user/app.scss', 'public/css_user'); 
+   .sass('resources/sass_user/app.scss', 'public/css_user');
 
 
 

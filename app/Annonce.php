@@ -3,9 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Annonce extends Model
 {
+    use HasSlug;
+
     protected $fillable = [
         'title','description','prix','categorie_id','ville_id'
     ];
@@ -24,16 +29,18 @@ class Annonce extends Model
         return $this->belongsTo('App\Ville');
     }
 
-    public function images(){
+    public function images() {
         return $this->hasMany('App\ImageAnnonce');
     }
 
-    public function generateSlug() {
-        $slug = str_replace(' ', '-', $this->title);
-        $nuberOfSlugs = Annonce::where('slug', 'like', $slug . '%')->count();
-        if($nuberOfSlugs > 0) {
-            return $slug . '-' . $nuberOfSlugs;
-        }
-        return $slug;
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions() : SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
     }
+
 }

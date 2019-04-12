@@ -10,7 +10,9 @@ class ImageAnnonce extends Model
         'name','annonce_id','isMain'
     ];
 
+    protected $touches = ['Annonce'];
+
     public function annonce(){
-        $this->belongsTo('App\Annonce');
+        return $this->belongsTo('App\Annonce','annonce_id');
     }
 }

@@ -26,7 +26,10 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.8.1",
         "admin-lte": "^3.0.0-alpha.2",
+<<<<<<< HEAD
         "animate.css": "^3.7.0",
+=======
+>>>>>>> 1cec3ff94fe5e59073b53ab04e76e7e2934cfd18
         "laravel-vue-pagination": "^2.3.0",
         "vform": "^1.0.0",
         "vue-carousel": "^0.18.0",

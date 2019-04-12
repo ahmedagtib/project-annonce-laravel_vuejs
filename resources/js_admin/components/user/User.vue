@@ -32,6 +32,9 @@
                     </tr>
                 </thead>
              </table>
+             
+              <pagination :data="admins" @pagination-change-page="getResult">
+              </pagination>
 		 	 		</div>
 		 	 	</div>
 		 	 </div>
@@ -82,7 +85,11 @@
 </div>
 </template>
 <script type="text/javascript">
+	import pagination from 'laravel-vue-pagination'
 	export default{
+    components: {
+      pagination
+    },
 		 data(){
 		 	return {
                       form:new Form({
@@ -100,6 +107,12 @@
       getusers:function(){
          axios.get('/admin/user/all').then((response)=>{
            this.users=response.data.data;
+         })
+      },
+      getResult:function(page = 1){
+         axios.get('/admin/user/all?page=' + page).then((response)=>{
+           this.users=response.data.data;
+           console.log('this',this.users.data)
          })
       },
       onDelete:function(id,user){

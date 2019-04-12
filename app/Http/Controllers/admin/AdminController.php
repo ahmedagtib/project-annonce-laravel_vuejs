@@ -10,7 +10,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return response()->json(['stuts'=>'success','data'=>Admin::all()]);
+        return response()->json(['stuts'=>'success','data'=>Admin::latest()->paginate(5)]);
     }
 
     public function store(Request $request){

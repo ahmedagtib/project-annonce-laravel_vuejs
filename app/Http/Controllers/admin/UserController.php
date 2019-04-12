@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        return response()->json(['stuts','data'=>User::all()]);
+        return response()->json(['stuts','data'=>User::latest()->paginate(5)]);
     }
 
     public function store(Request $request){

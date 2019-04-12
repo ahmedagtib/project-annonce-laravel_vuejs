@@ -20,7 +20,7 @@
                         <th scope="col">created at</th>
                         <th scope="col">action</th>
                     </tr>
-                    <tr v-for="admin in admins">
+                    <tr v-for="(admin, index) in admins.data" :key="index">
                       <td scope="row">{{admin.id}}</td>
                       <td>{{admin.name}}</td>
                       <td>{{admin.email}}</td>
@@ -32,7 +32,10 @@
                     </tr>
                 </thead>
              </table>
+              <pagination :data="admins" @pagination-change-page="getResult">
+              </pagination>
           </div>
+                
         </div>
        </div>
      </div>
@@ -82,17 +85,22 @@
 </div>
 </template>
 <script type="text/javascript">
+	import pagination from 'laravel-vue-pagination'
+  
   export default{
-     data(){
+    components: {
+      pagination
+    },
+    data(){
       return {
-                      form:new Form({
-                        name:'',
-                        email:'',
-                        password:''
-                      }),
-                      admins:{}
-             }
-            },
+        form:new Form({
+          name:'',
+          email:'',
+          password:''
+        }),
+        admins:{}
+      }
+    },
     methods:{
       createadmin:function(){
           this.form.post('/admin/admin/all')
@@ -100,6 +108,13 @@
       getadmin:function(){
          axios.get('/admin/admin/all').then((response)=>{
            this.admins=response.data.data;
+           console.log('this',this.admins.data)
+         })
+      },
+      getResult:function(page = 1){
+         axios.get('/admin/admin/all?page=' + page).then((response)=>{
+           this.admins=response.data.data;
+           console.log('this',this.admins.data)
          })
       },
       onDelete:function(id,admin){
