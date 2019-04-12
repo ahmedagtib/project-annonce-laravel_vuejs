@@ -97,7 +97,12 @@ class AnonnceController extends Controller
                     
                 $name = time() . $key . '.' . explode('/',explode(';',$image['img'])[0])[1];
                 image::make($image['img'])->save(public_path('image/annonce/') . $name);
-                $Annonce->images()->save(new ImageAnnonce(['name' => $name]));
+                $Annonce->images()->save(new ImageAnnonce(['name' => $name, 'isMain' => $image->isMain]));
+            } else {
+                $cuurentImg = $Annonce->images()->find($image['id']);
+                $cuurentImg->isMain = $image['isMain'];
+                $cuurentImg->update();
+
             }
         }
 
@@ -127,7 +132,7 @@ class AnonnceController extends Controller
 
         $Annonce->prix = $r->prix;
         
-        return $Annonce->update() ? ['message' => 'sucess'] : ['message' => 'error'];
+        return $Annonce->update() ? ['message' => 'sucess', 'data' => Request()->all()] : ['message' => 'error'];
 
     }
 

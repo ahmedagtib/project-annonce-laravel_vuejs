@@ -210,7 +210,7 @@
             updateAnnonce () {
                 if(this.form.images[0] !== undefined)
                     this.form.images[0].isMain = 1;
-                this.form.post('/admin/Annonce/update').then(({ data }) => console.log(data)).catch(({ response }) => console.log(response))
+                this.form.post('/admin/Annonce/update').then(({ data }) => console.log(this.form.images[0].isMain,this.form.images[0].name)).catch(({ response }) => console.log(this.form.images[0].isMain))
             }
         },
         mounted() {
