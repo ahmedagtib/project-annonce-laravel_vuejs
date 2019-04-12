@@ -20,7 +20,7 @@
                 <div class="col-md-12 form-group">
                     <label class="label-control" for="">Coisire la Category</label>
                     <select v-model="form.categorie_id" name="categorie_id" class="form-control">
-                        <option disabled selected value="-1">Category</option>
+                        <option disabled selected value="-1">villes</option>
                         <option v-for="category in categorys" :key="category.id" :value="category.id">{{ category.name }}</option>
                     </select>
                 </div>

@@ -1,20 +1,43 @@
 require('./bootstrap');
 window.Vue = require('vue');
-
 import router from './routes.js';
+import Vuex from 'vuex';
+import upper from './components/header/upper.vue';
+import navbar from './components/header/navbar.vue';
+import cfooter from './components/footer/cfooter.vue';
 import  axios from 'axios';
+import StoreData from './store';
 import { Form, HasError, AlertError,AlertSuccess } from 'vform'
-import upper from './components/upper.vue';
+Vue.component('pagination', require('laravel-vue-pagination'));
+
 
 window.Form=Form;
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
 Vue.component(AlertSuccess.name,AlertSuccess)
 
+Vue.use(Vuex);
+
+const store = new Vuex.Store(StoreData);
+router.beforeEach((to,from,next)=>{
+    const requiresAuth=to.matched.some(record=>record.meta.requiresAuth);
+    const currentUser=store.state.currentUser;
+    if(requiresAuth && !currentUser){
+        next('/login');
+    }else if(to.path == '/login' && currentUser){
+        next('/');
+    }else{
+        next();
+    }
+})
+
 const app = new Vue({
     el: '#app',
     components:{
-       upper:upper
+       upper,
+       navbar,
+       cfooter
     },
-    router
+    router,
+    store
 });

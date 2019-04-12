@@ -1,4 +1,7 @@
 <?php
+
+
+
 Route::group(['prefix'=>'admin','namespace'=>'admin'],function(){
 
 Config::set('auth.defines','admin.admin');
@@ -36,8 +39,8 @@ Route::group(['middleware'=>'admin:admin'],function(){
          
          //end annonce
         Route::get('/{any}','DashbordController@index')->where('any','.*');
+
 });
 }); 
-
-
+      Route::get('/{any}','welcomepage@index')->where('any','.*');
 

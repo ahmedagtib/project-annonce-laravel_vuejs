@@ -15,6 +15,9 @@
     <body>
         <div id="app">
              <upper></upper>
+             <navbar></navbar>
+             <router-view></router-view>
+             <cfooter></cfooter>
         </div>
         <script type="text/javascript" src="{{asset('js_user/app.js')}}"></script>
     </body>

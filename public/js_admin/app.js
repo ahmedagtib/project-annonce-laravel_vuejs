@@ -43462,7 +43462,7 @@ var render = function() {
                 _c(
                   "option",
                   { attrs: { disabled: "", selected: "", value: "-1" } },
-                  [_vm._v("Category")]
+                  [_vm._v("villes")]
                 ),
                 _vm._v(" "),
                 _vm._l(_vm.categorys, function(category) {
@@ -60645,6 +60645,9 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 
 var routes = [{
+  path: '/admin',
+  component: _components_dashbord_Dashbord_vue__WEBPACK_IMPORTED_MODULE_11__["default"]
+}, {
   path: '/admin/dashbord',
   component: _components_dashbord_Dashbord_vue__WEBPACK_IMPORTED_MODULE_11__["default"]
 }, {
@@ -60724,9 +60727,9 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\project-annonce-laravel_vuejs\resources\js_admin\app.js */"./resources/js_admin/app.js");
-__webpack_require__(/*! C:\wamp64\www\project-annonce-laravel_vuejs\resources\sass_admin\app.scss */"./resources/sass_admin/app.scss");
-module.exports = __webpack_require__(/*! C:\wamp64\www\project-annonce-laravel_vuejs\resources\sass_user\app.scss */"./resources/sass_user/app.scss");
+__webpack_require__(/*! c:\xampp\htdocs\annonce_pro\resources\js_admin\app.js */"./resources/js_admin/app.js");
+__webpack_require__(/*! c:\xampp\htdocs\annonce_pro\resources\sass_admin\app.scss */"./resources/sass_admin/app.scss");
+module.exports = __webpack_require__(/*! c:\xampp\htdocs\annonce_pro\resources\sass_user\app.scss */"./resources/sass_user/app.scss");
 
 
 /***/ })

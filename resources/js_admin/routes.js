@@ -20,6 +20,7 @@ import Notfound from  './components/Notfound.vue';
 import addAnnonce from './components/annonce/Model.vue'
 
 const routes=[
+               {path:'/admin',component:Dashbord},
               {path:'/admin/dashbord',component:Dashbord},
               {path:'/admin/admin',component:Admin},
                {path:"/admin/admin/edit/:id",component:AdminEdit},
