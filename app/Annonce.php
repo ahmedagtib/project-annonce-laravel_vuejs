@@ -14,7 +14,7 @@ class Annonce extends Model
     protected $fillable = [
         'title','description','prix','categorie_id','ville_id'
     ];
-
+   
     public function user(){
         return $this->belongsTo('App\User');
     }

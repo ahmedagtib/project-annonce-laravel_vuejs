@@ -12,13 +12,27 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::group(['prefix'=>'admin','namespace'=>'admin'],function(){
-Route::group(['middleware'=>'admin:admin'],function(){
-       
-        
-  });       
-             
- });
+
+Route::group(['prefix' => 'auth','namespace'=>'api'], function ($router) {
+    Route::post('register','AuthController@register');
+    Route::post('editreg','AuthController@editreg');
+    Route::post('profile','AuthController@profile');
+    Route::post('login', 'AuthController@login');
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');
+
+});
+Route::group(['namespace'=>'api'], function ($router) {
+  Route::get('ville', 'AnnonceController@getville');
+  Route::get('category', 'AnnonceController@getcategory');
+  Route::post('postannonce', 'AnnonceController@deposerannonce');
+  Route::get('getfree', 'AnnonceController@getadsfree');
+  Route::get('getpay', 'AnnonceController@getadspay');
+  Route::get('all/', 'AnnonceController@getannoncejoin');
+   
+
+});
 
 
 

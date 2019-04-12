@@ -18,7 +18,7 @@ class UserController extends Controller
        
          $vildate=Validator::make($request->all(),[
             'name'=>'required|string|max:191',
-            'email'=>'required|email|string|max:191|unique:admins',
+            'email'=>'required|email|string|max:191|unique:users',
             'password'=>'required|string|min:6',     
         ]);
 
