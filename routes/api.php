@@ -29,7 +29,8 @@ Route::group(['namespace'=>'api'], function ($router) {
   Route::post('postannonce', 'AnnonceController@deposerannonce');
   Route::get('getfree', 'AnnonceController@getadsfree');
   Route::get('getpay', 'AnnonceController@getadspay');
-  Route::get('all/', 'AnnonceController@getannoncejoin');
+  //Route::post('all/', 'AnnonceController@getannoncejoin');
+  Route::post('all/', 'AnnonceController@getAll');
    
 
 });

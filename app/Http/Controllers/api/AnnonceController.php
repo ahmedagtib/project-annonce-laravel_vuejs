@@ -98,7 +98,7 @@ class AnnonceController extends Controller
 
     public function getannoncejoin(Request $request){
         
-            $annonces =Annonce::select('annonces.*','categories.name as cat','villes.name as ville')
+            $annonces = Annonce::select('annonces.*','categories.name as cat','villes.name as ville')
             ->join('villes', 'villes.id', '=', 'annonces.ville_id')
             ->join('categories', 'categories.id', '=', 'annonces.categorie_id')
             ->where('stuts','=','published')
@@ -106,6 +106,21 @@ class AnnonceController extends Controller
             ->paginate(1);
             
             return $annonces;
+    }
+
+    public function getAll(Request $r) {
+        $annonces = new Annonce();
+        $annonces = $annonces->newQuery();
+        if($r['categorie_id'] != -1)
+            $annonces->where('categorie_id', '=', $r['categorie_id'])->where('stuts','=','published')->where('type','=','free');
+        
+        if($r['ville_id'] != -1)
+            $annonces->where('ville_id', '=', $r['ville_id'])->where('stuts','=','published')->where('type','=','free');
+
+        return $annonces->with(['images' => function () {
+            
+        }])->paginate(3);
+
     }
    
    
