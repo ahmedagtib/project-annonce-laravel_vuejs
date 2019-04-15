@@ -14,7 +14,7 @@
                  </select>
         </div>      
    </div>
-    <card></card>
+    <card ></card>
 	 <pagination :data="annonces" @pagination-change-page="getResults"></pagination>
 	</div>
 </template>
