@@ -18,7 +18,7 @@ class AnnonceController extends Controller
     }
     public function deposerannonce(Request $request){
 
-         $vildate=Validator::make($request->all(),[
+         $vildate = Validator::make($request->all(),[
             'ville_id'=>'required|',
             'categorie_id'=>'required',
             'title'=>'required|string|min:6',
@@ -57,13 +57,12 @@ class AnnonceController extends Controller
             $AnnoncesImages->name = $name; 
             $AnnoncesImages->isMain = $image["isMain"];
             $AnnoncesImages->save();
-        } 
+        }
 
         return ['message' => 'success'];
 
     
         return Request()->all();
-        
        
     }
     public function getadspay(){
@@ -109,6 +108,7 @@ class AnnonceController extends Controller
     }
 
     public function getAll(Request $r) {
+
         $annonces = new Annonce();
         $annonces = $annonces->newQuery();
         if($r['categorie_id'] != -1)
@@ -117,13 +117,16 @@ class AnnonceController extends Controller
         if($r['ville_id'] != -1)
             $annonces->where('ville_id', '=', $r['ville_id'])->where('stuts','=','published')->where('type','=','free');
 
-        return $annonces->with(['images' => function () {
-            
-        }])->paginate(3);
+        if($r['min_prix'] != 0)
+            $annonces->where('prix', '>', $r['min_prix'])->where('stuts','=','published')->where('type','=','free');
+        
+        if($r['max_prix'] != 0)
+            $annonces->where('prix', '<', $r['max_prix'])->where('stuts','=','published')->where('type','=','free');
+
+        return response()->json($annonces->with(['images' => function ($q) {
+            $q->where('isMain', 1);
+        }])->paginate(10));
 
     }
-   
-   
-        
 
 }

@@ -3,6 +3,8 @@
     	
 	<!-- Start Model -->
 	<div class="container">
+    
+        <vue-progress-bar></vue-progress-bar>
         <div class="row justify-content-end">
             <button class="btn btn-primary" v-on:click="backToAllAnnonce()" role="button">
                 <i class="fa fa-arrow-left" aria-hidden="true"></i>
@@ -210,7 +212,12 @@
             updateAnnonce () {
                 if(this.form.images[0] !== undefined)
                     this.form.images[0].isMain = 1;
-                this.form.post('/admin/Annonce/update').then(({ data }) => console.log(this.form.images[0].isMain,this.form.images[0].name)).catch(({ response }) => console.log(this.form.images[0].isMain))
+                this.form.post('/admin/Annonce/update').then(({ data }) => {
+                    console.log(this.form.images[0].isMain,this.form.images[0].name)
+                    this.delatedImages = []
+                }).catch(({ response }) => {
+                    console.log(this.form.images[0].isMain)
+                })
             }
         },
         mounted() {

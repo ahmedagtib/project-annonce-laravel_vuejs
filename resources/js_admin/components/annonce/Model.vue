@@ -3,6 +3,7 @@
     	
 	<!-- Start Model -->
 	<div class="container">
+        <vue-progress-bar></vue-progress-bar>
         <div class="row justify-content-end">
             <button class="btn btn-primary" v-on:click="backToAllAnnonce()" role="button">
                 <i class="fa fa-arrow-left" aria-hidden="true"></i>
