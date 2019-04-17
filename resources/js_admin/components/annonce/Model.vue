@@ -134,7 +134,7 @@
                this.$router.push('/admin/annonce')
             },
             addAnnonce () {
-                // this.$Progress.start() vue-progress-bar
+                this.$Progress.start()
                 if(this.form.images[0] !== undefined)
                     this.form.images[0].isMain = 1;
                 this.form.post('Annonce/add',{ 
@@ -144,9 +144,9 @@
                 }],
                 }).then(({ data }) => {
                     console.log('DATA : ', data)
-                    // this.$Progress.finish()
+                    this.$Progress.finish()
                 }).catch(() => {
-                    // this.$Progress.fail()
+                    this.$Progress.fail()
                 })
                 console.log(this.form.images)
             },

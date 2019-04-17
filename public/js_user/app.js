@@ -1985,6 +1985,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1994,8 +1995,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       annonces: {},
-      categorie_id: '',
-      ville_id: ''
+      filters: {
+        ville_id: -1,
+        categorie_id: -1,
+        min_prix: 0,
+        max_prix: 0
+      }
     };
   },
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['getville', 'getcategory']), {
@@ -2003,12 +2008,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get('api/all/?page=' + page).then(function (response) {
+      axios({
+        method: 'post',
+        url: 'api/all?page=' + page,
+        data: this.filters
+      }).then(function (response) {
         _this.annonces = response.data;
-        console.log(_this.annonces);
+        console.log('fdsf', response);
       });
     }
   }),
+  watch: {
+    filters: {
+      handler: function handler(val, oldVal) {
+        this.getResults();
+      },
+      deep: true
+    }
+  },
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['allville', 'allcategory']),
   mounted: function mounted() {
     this.getResults();
@@ -44999,11 +45016,11 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.categorie_id,
-                  expression: "categorie_id"
+                  value: _vm.filters.categorie_id,
+                  expression: "filters.categorie_id"
                 }
               ],
-              staticClass: "custom-select mb-2",
+              staticClass: "custom-select",
               on: {
                 change: function($event) {
                   var $$selectedVal = Array.prototype.filter
@@ -45014,20 +45031,19 @@ var render = function() {
                       var val = "_value" in o ? o._value : o.value
                       return val
                     })
-                  _vm.categorie_id = $event.target.multiple
-                    ? $$selectedVal
-                    : $$selectedVal[0]
+                  _vm.$set(
+                    _vm.filters,
+                    "categorie_id",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
                 }
               }
             },
             [
               _c(
                 "option",
-                {
-                  attrs: { disabled: "", selected: "" },
-                  domProps: { value: -1 }
-                },
-                [_vm._v("category")]
+                { attrs: { disabled: "", selected: "", value: "-1" } },
+                [_vm._v("categorie")]
               ),
               _vm._v(" "),
               _vm._l(_vm.allcategory, function(cat) {
@@ -45050,8 +45066,8 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.ville_id,
-                  expression: "ville_id"
+                  value: _vm.filters.ville_id,
+                  expression: "filters.ville_id"
                 }
               ],
               staticClass: "custom-select",
@@ -45065,9 +45081,11 @@ var render = function() {
                       var val = "_value" in o ? o._value : o.value
                       return val
                     })
-                  _vm.ville_id = $event.target.multiple
-                    ? $$selectedVal
-                    : $$selectedVal[0]
+                  _vm.$set(
+                    _vm.filters,
+                    "ville_id",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
                 }
               }
             },
@@ -45094,7 +45112,7 @@ var render = function() {
       _c("card"),
       _vm._v(" "),
       _c("pagination", {
-        attrs: { data: _vm.annonces },
+        attrs: { limit: 3, data: _vm.annonces },
         on: { "pagination-change-page": _vm.getResults }
       })
     ],

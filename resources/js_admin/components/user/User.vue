@@ -20,7 +20,7 @@
                         <th scope="col">created at</th>
                         <th scope="col">action</th>
                     </tr>
-                    <tr v-for="user in users">
+                    <tr v-for="user in users.data">
                       <td scope="row">{{user.id}}</td>
                       <td>{{user.name}}</td>
                       <td>{{user.email}}</td>
@@ -33,7 +33,7 @@
                 </thead>
              </table>
              
-              <pagination :data="admins" @pagination-change-page="getResult">
+              <pagination :data="users" @pagination-change-page="getResult">
               </pagination>
 		 	 		</div>
 		 	 	</div>
@@ -106,7 +106,7 @@
 			},
       getusers:function(){
          axios.get('/admin/user/all').then((response)=>{
-           this.users=response.data.data;
+                 this.users=response.data.data;
          })
       },
       getResult:function(page = 1){
