@@ -44,30 +44,70 @@
                 </div>
              </div>
                <hr>
+              
+            <commentmain/>
                
-               <div>
-                     <span>jack=>></span><span>wow nice prudact!!!</span>
-               </div>
-                <div>
-                  <textarea class="form-control"></textarea>
-                   <div class="mt-2">
-                      <a href="#"class="btn btn-primary">send</a>
-                     <a href="#" class="btn btn-warning">clear</a>
-                   </div>
-               </div>
 
        </div>
 	 </div>
 </template>
 <script type="text/javascript">
-	
+	import commentmain from '../comments/commentmain.vue'
 	export default{
+    components:{
+            commentmain 
+         },
+          data(){
+               return{
+                     annonce:{}, 
+                       slug:'',
+                       idannonce:''
+                    }
+          },
          methods:{
         imgone(imageName){
             return '/image/slider/'+ imageName
-         }
-      
-	     }
+         },
+         
+         getAnnonce(){
+           axios.get('/api/Annoncebyslug/'+this.slug)
+                .then((res)=>{
+                   if(res.data.stuts === 'ok'){
+                      this.$data.annonce=res.data.data;
+                      this.idannonce=res.data.data.id;
+                   }else{
+                    console.log('no')
+                   }
+                })
+                     
+          },
+          
+          
+         
+	     },
+       mounted(){
+        const slugr=this.$route.params.slug;
+        this.slug=slugr;
+        this.getAnnonce()  
+       },
+       /*
+       computed:{
+         currentUser(){
+              this.commentpost.user_id=this.$store.getters.currentUser.id;
+              return this.$store.getters.currentUser;  
+         },
+         
+      getcomment(){
+           axios.get('/api/commentuser/'+this.idannonce).then((res)=>{
+            if(res.data.state==='yes'){
+                   this.comments=res.data.data;
+                   console.log(res.data.data);
+             }  
+           })
+                        
+          }
+       }
+       */
 	}
 </script>
 <style scoped>

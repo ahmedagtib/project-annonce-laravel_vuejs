@@ -22,14 +22,17 @@
                                  </template>
                                  <template v-else>
                                      <li class="list-inline-item">
-                                         <router-link class="nav-link" to="/annonce">create your annonce</router-link>
+                                         <router-link class="nav-link" to="/annonce">create annonce</router-link>
+                                      </li>
+                                       <li class="list-inline-item">
+                                         <router-link class="nav-link" to="/mystore">My store</router-link>
                                       </li>
                                       <li class="list-inline-item dropdown">
                                          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                                             {{currentUser.name}}<span class="sr-only"></span>
                                          </a>
                                          <div class="dropdown-menu">
-                                          <router-link class="dropdown-item" to="/profil">profil</router-link>
+                                          <router-link class="dropdown-item" to="/myprofil">profail</router-link>
                                           <router-link class="dropdown-item" to="/edituser">edit password</router-link>
                                           <div class="dropdown-divider"></div>
                                           <a class="nav-link" href="#" @click.prevent="logout">logout</a>

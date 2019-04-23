@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
      public function annonce(){
-        $this->belongsTo('App\Annonce');
+       return $this->belongsTo('App\Annonce');
     }
 
     public function user(){
-        $this->belongsTo('App\User');
+        return $this->belongsTo('App\User');
     }
 }

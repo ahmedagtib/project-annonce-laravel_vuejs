@@ -21,6 +21,8 @@ Route::group(['prefix' => 'auth','namespace'=>'api'], function ($router) {
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
+    Route::post('userstore/', 'AnnonceController@userstore');
+     Route::post('getprofail', 'AnnonceController@getprofail');
 
 });
 Route::group(['namespace'=>'api'], function ($router) {
@@ -31,6 +33,9 @@ Route::group(['namespace'=>'api'], function ($router) {
   Route::get('getpay', 'AnnonceController@getadspay');
   //Route::post('all/', 'AnnonceController@getannoncejoin');
   Route::post('all/', 'AnnonceController@getAll');
+  Route::get('Annoncebyslug/{slug}','AnnonceController@byslug');
+  Route::post('comment','AnnonceController@postcomment');
+  Route::get('commentuser/{id}','AnnonceController@allcommentaboutpost');
    
 
 });

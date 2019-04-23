@@ -32,6 +32,9 @@ class Annonce extends Model
     public function images() {
         return $this->hasMany('App\ImageAnnonce');
     }
+    public function comments() {
+        return $this->hasMany('App\Comment');
+    }
 
     /**
      * Get the options for generating the slug.
