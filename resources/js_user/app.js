@@ -35,7 +35,7 @@ router.beforeEach((to,from,next)=>{
         next();
     }
 })
-
+export const bus=new Vue();
 const app = new Vue({
     el: '#app',
     components:{

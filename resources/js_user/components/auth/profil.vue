@@ -89,6 +89,9 @@
 import svgprofil from './svgprofil.vue';
 import {updateprofil} from '../../helpers/auth';
  export default{
+  created(){
+   
+  },
  	components:{
       svgprofil
  	},

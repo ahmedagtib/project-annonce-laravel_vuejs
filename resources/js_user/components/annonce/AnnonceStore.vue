@@ -35,19 +35,20 @@
                 </div>
             </div>
         </div>
-        <!-- End Afficher Annonce -->
         <pagination :limit="3" :data="annonces" @pagination-change-page="getResults"></pagination>
     </div>
 </template>
 <script type="text/javascript">
     import card from "./AnnonceCard.vue";
+    import pagination from 'laravel-vue-pagination'
     import {
         mapGetters,
         mapActions
     } from "vuex";
     export default {
         components: {
-            card
+            card,
+            pagination
         },
         data() {
             return {
@@ -62,6 +63,17 @@
         },
         methods: {
 
+            ...mapActions(["getville", "getcategory"]),
+            getResults(page = 1) {
+                axios({
+                    method: "post",
+                    url: "api/all?page=" + page, ///
+                    data: this.filters
+                }).then(response => {
+                    this.annonces = response.data;
+                });
+
+            },
             imageDirectory(name) {
 
                 return '/image/annonce/' + name
@@ -94,15 +106,15 @@
             this.getville();
             this.getcategory();
         }
-    };
+    }
 
 </script>
 <style scoped>
     /**/
 
-
     .col-md-3.annonce {
         height: 350px;
+
     }
 
     .card {
