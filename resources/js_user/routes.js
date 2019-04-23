@@ -7,6 +7,7 @@ import login from './components/auth/login.vue';
 import Register from './components/auth/register.vue';
 import profil from './components/auth/profil.vue';
 import editpassword from './components/auth/editreg.vue';
+import Detaile from './components/annonce/AnnonceDetaile.vue';
 window.Vue = require('vue');
 
 
@@ -18,7 +19,8 @@ const routes=[
                 {path:'/store',component:AnnonceStore},
                 {path:'/detaille',component:adsDetailles},
                 {path:'/profil',component:profil,meta:{requiresAuth:true}},
-                {path:'/edituser',component:editpassword,meta:{requiresAuth:true}}
+                {path:'/edituser',component:editpassword,meta:{requiresAuth:true}},
+                {path:'/annonce/:slug',component:Detaile}
               ];
 
  Vue.use(VueRoute);

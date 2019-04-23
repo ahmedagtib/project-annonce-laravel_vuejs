@@ -1,15 +1,14 @@
-
 <template>
-    	
-	<!-- Start Model -->
-	<div class="container">
-    
+
+    <!-- Start Model -->
+    <div class="container">
+
         <vue-progress-bar></vue-progress-bar>
         <div class="row justify-content-end">
             <button class="btn btn-primary" v-on:click="backToAllAnnonce()" role="button">
                 <i class="fa fa-arrow-left" aria-hidden="true"></i>
             </button>
-    </div>
+        </div>
         <form @submit.prevent="updateAnnonce" @keydown="form.onKeydown($event)">
             <div class="row">
                 <div class="col-md-12 form-group">
@@ -23,7 +22,8 @@
                     <label class="label-control" for="">Coisire la Category</label>
                     <select v-model="form.categorie_id" name="categorie_id" class="form-control">
                         <option disabled selected value="-1">Category</option>
-                        <option v-for="category in categorys" :key="category.id" :value="category.id">{{ category.name }}</option>
+                        <option v-for="category in categorys" :key="category.id" :value="category.id">
+                            {{ category.name }}</option>
                     </select>
                 </div>
                 <div class="col-md-12 form-group">
@@ -63,22 +63,25 @@
                     <label>Prix</label>
                     <input v-model="form.prix" type="text" name="prix" class="form-control" />
                 </div>
-            
+
                 <div class="col-md-12 from-group">
                     <label>AJOUTEZ JUSQU'À 6 PHOTOS ({{ imageRest }} IMAGES RESTANTES)</label>
                     <div class="row">
                         <draggable v-model="form.images" class="row col-md-12 gallery-item">
-                            <div v-for="(image, index) in form.images" :key="index" class="col-md-3 position-relative mb-3 newbtn">
+                            <div v-for="(image, index) in form.images" :key="index"
+                                class="col-md-3 position-relative mb-3 newbtn">
                                 <!-- {{ image.isMain = 0 }} -->
-                                <button @click="remove(image, index)" type="button" class="btn position-absolute"><i class="fa fa-times" aria-hidden="true"></i></button>
-                                <img v-if="image.name" class="image-responsive" :src="imageDirectory(image.name)" alt="" />
+                                <button @click="remove(image, index)" type="button" class="btn position-absolute"><i
+                                        class="fa fa-times" aria-hidden="true"></i></button>
+                                <img v-if="image.name" class="image-responsive" :src="imageDirectory(image.name)"
+                                    alt="" />
                                 <img v-else class="image-responsive" :src="image.img" alt="" />
                             </div>
                         </draggable>
                         <div class="col-md-12 mb-4" v-if="!imageEnd">
                             <label for="images" class='newbtn'>
                                 <!-- <img width="120" height="120" :src="addimg('svg/plus.svg')" > -->
-                                
+
                                 <i class="fa fa-camera fa-3x mr-2"></i>
                                 <input @change="pushFile" id="images" class="pic" type="file" />
 
@@ -90,7 +93,8 @@
                             <i class="fa fa-camera fa-3x mr-2"></i>
                         </div> -->
                         <div class="col-md-10">
-                            <p class="mt-20 text-center text-md-left"> Savez vous que les annonces avec photos sont 10 fois plus consultés que celles qui n'en ont pas !</p>
+                            <p class="mt-20 text-center text-md-left"> Savez vous que les annonces avec photos sont 10
+                                fois plus consultés que celles qui n'en ont pas !</p>
                         </div>
                     </div>
                 </div>
@@ -100,8 +104,8 @@
                 <input type="submit" class="btn btn-primary" value="Update" />
             </div>
         </form>
-	</div>
-	<!-- End Model -->
+    </div>
+    <!-- End Model -->
 </template>
 
 <script>
@@ -112,19 +116,19 @@
         },
         data() {
             return {
-                villes:{},
-                categorys:{},
+                villes: {},
+                categorys: {},
                 form: new Form({
-                    id:null,
-                    user_id:0,
-                    ville_id:-1,
-                    categorie_id:-1,
-                    title:'',
-                    description:'',
-                    detaille:'',
-                    type:'',
-                    stuts:'',
-                    prix:'',
+                    id: null,
+                    user_id: 0,
+                    ville_id: -1,
+                    categorie_id: -1,
+                    title: '',
+                    description: '',
+                    detaille: '',
+                    type: '',
+                    stuts: '',
+                    prix: '',
                     images: [],
                     delatedImages: []
                 }),
@@ -133,22 +137,25 @@
             }
         },
         methods: {
-			imageDirectory(imageName) {
-				return '/image/annonce/' + imageName
+            imageDirectory(imageName) {
+                return '/image/annonce/' + imageName
             },
             addimg(imgPath) {
                 return '/image/' + imgPath
             },
-            pushFile (e) {
+            pushFile(e) {
                 console.log('Image Rest Before', this.imageRest)
 
                 if (e.target.files.length > 0) {
-                    if(this.form.images.length < 6) {
+                    if (this.form.images.length < 6) {
                         let file = e.target.files[0]
                         let reader = new FileReader()
                         reader.onloadend = () => {
 
-                            this.form.images.push({ img:reader.result, isMain: 0 })
+                            this.form.images.push({
+                                img: reader.result,
+                                isMain: 0
+                            })
                             this.imageRest--
                         }
                         console.log('It\'s working...', e.target.value)
@@ -158,9 +165,9 @@
 
                 if (this.imageRest == 1) {
 
-                    console.log('Before ',this.imageEnd)
+                    console.log('Before ', this.imageEnd)
                     this.imageEnd = true
-                    console.log('After ',this.imageEnd)
+                    console.log('After ', this.imageEnd)
 
 
                 }
@@ -168,54 +175,64 @@
                 console.log('Image Rest After', this.imageRest)
 
                 e.target.value = ''
-                console.log('It\'s not working...',e.target.value)
+                console.log('It\'s not working...', e.target.value)
 
             },
-            backToAllAnnonce () {
-               this.$router.push('/admin/annonce')
+            backToAllAnnonce() {
+                this.$router.push('/admin/annonce')
             },
             getAnnonce() {
                 this.form.id = this.$route.params.id
                 const id = this.form.id
                 console.log(id)
                 axios.get('/admin/Annonce/single/' + id)
-                .then(({ data }) => {
-                    data = data[0]
-                    this.form.categorie_id = data.categorie_id 
-                    this.form.ville_id = data.ville_id 
-                    this.form.user_id = data.user_id 
-                    this.form.title = data.title 
-                    this.form.description = data.description 
-                    this.form.detaille = data.detaille 
-                    this.form.type = data.type 
-                    this.form.stuts = data.stuts 
-                    this.form.prix = data.prix 
-                    this.form.images = data.images
-                    this.imageRest -= this.form.images.length
-                    console.log(data)
-                })
+                    .then(({
+                        data
+                    }) => {
+                        data = data[0]
+                        this.form.categorie_id = data.categorie_id
+                        this.form.ville_id = data.ville_id
+                        this.form.user_id = data.user_id
+                        this.form.title = data.title
+                        this.form.description = data.description
+                        this.form.detaille = data.detaille
+                        this.form.type = data.type
+                        this.form.stuts = data.stuts
+                        this.form.prix = data.prix
+                        this.form.images = data.images
+                        this.imageRest -= this.form.images.length
+                        console.log(data)
+                    })
             },
             getVilles() {
-                axios.get('/admin/ville/all').then(({ data }) => this.villes = data.data)
+                axios.get('/admin/ville/all').then(({
+                    data
+                }) => this.villes = data.data)
             },
             getCategories() {
-                axios.get('/admin/Categorie/all').then(({ data }) => this.categorys = data.data)
+                axios.get('/admin/Categorie/all').then(({
+                    data
+                }) => this.categorys = data.data)
             },
-            remove (img, i) {
+            remove(img, i) {
                 this.form.delatedImages.push(this.form.images[i])
                 this.form.images.splice(i, 1)
                 this.imageRest++
-                if(this.imageEnd) {
+                if (this.imageEnd) {
                     this.imageEnd = false
                 }
             },
-            updateAnnonce () {
-                if(this.form.images[0] !== undefined)
+            updateAnnonce() {
+                if (this.form.images[0] !== undefined)
                     this.form.images[0].isMain = 1;
-                this.form.post('/admin/Annonce/update').then(({ data }) => {
-                    console.log(this.form.images[0].isMain,this.form.images[0].name)
+                this.form.post('/admin/Annonce/update').then(({
+                    data
+                }) => {
+                    console.log(this.form.images[0].isMain, this.form.images[0].name)
                     this.delatedImages = []
-                }).catch(({ response }) => {
+                }).catch(({
+                    response
+                }) => {
                     console.log(this.form.images[0].isMain)
                 })
             }
@@ -226,16 +243,16 @@
             this.getAnnonce()
         }
     }
+
 </script>
 
 <style type="text/css">
-    
-/** Start Custom Input File */
+    /** Start Custom Input File */
 
     .pic {
         display: none;
     }
-        
+
     .newbtn {
         cursor: pointer;
         max-height: 130px;
@@ -244,8 +261,8 @@
     }
 
     .newbtn button[type='button'] {
-        right:20px;
-        top:0
+        right: 20px;
+        top: 0
     }
 
     .newbtn img {
@@ -253,5 +270,6 @@
     }
 
 
-/** End Custom Input File */
+    /** End Custom Input File */
+
 </style>

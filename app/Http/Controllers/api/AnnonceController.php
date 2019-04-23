@@ -129,4 +129,12 @@ class AnnonceController extends Controller
 
     }
 
+    public function getAnnonceBySlug(Request $r, $slug) {
+
+        $Annonce = Annonce::where('slug', '=', $slug)->with(['images', 'categorie', 'ville', 'user'])->get();
+
+        return response()->json($Annonce);
+
+    }
+
 }

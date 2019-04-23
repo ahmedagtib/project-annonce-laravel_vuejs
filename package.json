@@ -30,6 +30,7 @@
         "laravel-vue-pagination": "^2.3.0",
         "vform": "^1.0.0",
         "vue-carousel": "^0.18.0",
+        "vue-carousel-3d": "^0.2.0",
         "vue-progressbar": "^0.7.5",
         "vue-router": "^3.0.2",
         "vuedraggable": "^2.20.0",

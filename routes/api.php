@@ -31,8 +31,7 @@ Route::group(['namespace'=>'api'], function ($router) {
   Route::get('getpay', 'AnnonceController@getadspay');
   //Route::post('all/', 'AnnonceController@getannoncejoin');
   Route::post('all/', 'AnnonceController@getAll');
-   
-
+  Route::get('annonce/single/{slug}', 'AnnonceController@getAnnonceBySlug');
 });
 
 

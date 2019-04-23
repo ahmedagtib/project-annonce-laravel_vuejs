@@ -10,6 +10,11 @@ import StoreData from './store';
 import { Form, HasError, AlertError,AlertSuccess } from 'vform'
 Vue.component('pagination', require('laravel-vue-pagination'));
 
+// require('popper.js')
+// require('jquery')
+// require('bootstrap')
+// require('bootstrap/dist/css/bootstrap.css')
+
 
 window.Form=Form;
 Vue.component(HasError.name, HasError)
