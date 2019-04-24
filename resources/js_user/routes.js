@@ -26,7 +26,6 @@ const routes=[
 
                 {path:'/edituser',component:editpassword,meta:{requiresAuth:true}},
                 {path:'/annonce/:slug',component:Detaile},
-
                  {path:'/myprofil',component:myprofail,meta:{requiresAuth:true}},
                 {path:'/edituser',component:editpassword,meta:{requiresAuth:true}},
                 {path:'/mystore',component:mystore,meta:{requiresAuth:true}},

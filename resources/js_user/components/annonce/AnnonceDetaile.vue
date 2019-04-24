@@ -14,9 +14,6 @@
                 </div>
             </div>
             <h1 class="card__title">{{ annonce.title }}</h1>
-            <!-- <img :src="imgone('smart.jpg')" width="100%"> -->
-            <!-- <Slide v-if="annonce.images !== undefined" :images="annonce.images" /> -->
-            <!-- Slide -->
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -24,9 +21,9 @@
                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
-                    <div v-for="(image, index) in annonce.images" :key="index" class="carousel-item" :class="(index === 0) ? 'active':''">
-                        <img class="d-block w-100" :src="imgone(image.name)"
-                            alt="First slide">
+                    <div v-for="(image, index) in annonce.images" :key="index" class="carousel-item"
+                        :class="(index === 0) ? 'active':''">
+                        <img class="d-block w-100" :src="imgone(image.name)" alt="First slide">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -38,18 +35,6 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-<!-- 
-            <div id="carousel3d">
-                <Carousel3d :perspective="0" :space="200" :display="3" :controls-visible="true"
-                    :controls-prev-html="'❬'" :controls-next-html="'❭'" :controls-width="30" :controls-height="60"
-                    :clickable="true" :autoplay="true" :autoplay-timeout="5000">
-                    <Slide v-for="(image, index) in annonce.images" :key="index" :index="index">
-                        <img :src="imgone(image.name)" />
-                    </Slide>
-
-                </Carousel3d>
-            </div> -->
-
             <!-- Slide -->
             <div class="row">
                 <div class="col-md-3">
@@ -80,38 +65,33 @@
                 </div>
             </div>
             <hr>
+            <div>
+                <commentmain />
+            </div>
 
-            <div>
-                <span>jack=>></span><span>wow nice prudact!!!</span>
-            </div>
-            <div>
-                <textarea class="form-control"></textarea>
-                <div class="mt-2">
-                    <a href="#" class="btn btn-primary">send</a>
-                    <a href="#" class="btn btn-warning">clear</a>
-                </div>
-            </div>
+            <hr>
 
         </div>
     </div>
 </template>
 <script type="text/javascript">
-
-
     import {
         Carousel3d,
         Slide
     } from 'vue-carousel-3d';
 
+    import commentmain from '../comments/commentmain.vue'
     export default {
         components: {
+            commentmain,
             Carousel3d,
             Slide
         },
         data() {
             return {
                 annonce: {},
-                Slides: 7
+                slug: '',
+                idannonce: ''
             }
         },
         methods: {
@@ -120,20 +100,44 @@
             },
 
             getAnnonce() {
-                const slug = this.$route.params.slug
-                axios.get('/api/annonce/single/' + slug)
-                    .then(({
-                        data
-                    }) => {
-                        this.annonce = data[0]
-                        console.log(data)
+                axios.get('/api/Annoncebyslug/' + this.slug)
+                    .then((res) => {
+                        if (res.data.stuts === 'ok') {
+                            this.$data.annonce = res.data.data[0];
+                            this.annonce = res.data.data[0];
+                            this.idannonce = res.data.data[0].id;
+                        } else {
+                            console.log('no')
+                        }
                     })
-            }
+            },
+
+
 
         },
         mounted() {
+            const slugr = this.$route.params.slug;
+            this.slug = slugr;
             this.getAnnonce()
-        }
+        },
+        /*
+       computed:{
+         currentUser(){
+              this.commentpost.user_id=this.$store.getters.currentUser.id;
+              return this.$store.getters.currentUser;  
+         },
+         
+      getcomment(){
+           axios.get('/api/commentuser/'+this.idannonce).then((res)=>{
+            if(res.data.state==='yes'){
+                   this.comments=res.data.data;
+                   console.log(res.data.data);
+             }  
+           })
+                        
+          }
+       }
+       */
     }
 
 </script>
@@ -173,4 +177,5 @@
     }
 
     /* Slide */
+
 </style>

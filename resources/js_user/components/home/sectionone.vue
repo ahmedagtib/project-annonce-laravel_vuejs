@@ -9,7 +9,7 @@
                <div class="row">
      	 	         <div class="col-md-3 annonce mb-4" v-for="ads in adspayhome">
                     <div class="card mb-2">
-                           <img :src="imgone(ads.imageAnnonce.name)">
+                           <img v-if="ads.imageAnnonce !== null" :src="imgone(ads.imageAnnonce.name)">
                        <div class="card-link">
                           <a href="#">{{ads.annonce.title}}</a>
                        </div>
@@ -28,7 +28,7 @@
                <div class="row">
                  <div class="col-md-3 annonce mb-4" v-for="ads in adsfreehome">
                     <div class="card mb-2">
-                           <img :src="imgone(ads.imageAnnonce.name)">
+                           <img v-if="ads.imageAnnonce !== null" :src="imgone(ads.imageAnnonce.name)">
                        <div class="card-link">
                           <a href="#">{{ads.annonce.title}}</a>
                        </div>

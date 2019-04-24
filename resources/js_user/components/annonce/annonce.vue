@@ -147,12 +147,17 @@
                         }
                         console.log('It\'s working...', e.target.value)
                         reader.readAsDataURL(file)
-                    } else {
-
-                        this.imageEnd = true
-                        console.log('It\'s not working...',this.annonce.images)
-
                     }
+                }
+
+                
+                if (this.imageRest == 1) {
+
+                    console.log('Before ',this.imageEnd)
+                    this.imageEnd = true
+                    console.log('After ',this.imageEnd)
+
+
                 }
 
                 e.target.value = ''

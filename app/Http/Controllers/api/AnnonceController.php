@@ -2,10 +2,11 @@
 namespace App\Http\Controllers\api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Ville,App\Categorie,App\Annonce,App\ImageAnnonce;
+use App\Ville,App\Categorie,App\Annonce,App\ImageAnnonce,App\Comment,App\Profile,App\User;
 use Intervention\Image\ImageManagerStatic as Image;
 use Validator;
 use DB;
+
 class AnnonceController extends Controller
 {
     public function getville(){
@@ -23,7 +24,7 @@ class AnnonceController extends Controller
             'categorie_id'=>'required',
             'title'=>'required|string|min:6',
             'description'=>'required|string|min:15',
-            'detialle'=>'required|string|min:6|max:20',
+            'detialle'=>'required|string|min:6|max:100',
             'prix'=>'required|numeric', 
            // 'images' => 'mimes:jpeg,jpg,png|required|max:10000' 
         ]);
@@ -67,7 +68,7 @@ class AnnonceController extends Controller
     }
     public function getadspay(){
 
-       $Annonces = Annonce::where('type','=','pay')->where('stuts','=','published')->take(3)->get();
+       $Annonces = Annonce::where('type','=','pay')->where('stuts','=','published')->take(4)->get();
         $AnnoncesImages = array();
         foreach($Annonces as $Annonce) {
             $mainImage = ImageAnnonce::where('annonce_id', $Annonce->id)->where('isMain',1)->first();
@@ -82,7 +83,7 @@ class AnnonceController extends Controller
 
     public function getadsfree(){
 
-       $Annonces = Annonce::where('type','=','free')->where('stuts','=','published')->take(3)->get();
+       $Annonces = Annonce::where('type','=','free')->where('stuts','=','published')->take(12)->get();
         $AnnoncesImages = array();
         foreach($Annonces as $Annonce) {
             $mainImage = ImageAnnonce::where('annonce_id', $Annonce->id)->where('isMain',1)->first();
@@ -97,7 +98,7 @@ class AnnonceController extends Controller
 
     public function getannoncejoin(Request $request){
         
-            $annonces = Annonce::select('annonces.*','categories.name as cat','villes.name as ville')
+        $annonces = Annonce::select('annonces.*','categories.name as cat','villes.name as ville')
             ->join('villes', 'villes.id', '=', 'annonces.ville_id')
             ->join('categories', 'categories.id', '=', 'annonces.categorie_id')
             ->where('stuts','=','published')
@@ -124,17 +125,107 @@ class AnnonceController extends Controller
             $annonces->where('prix', '<', $r['max_prix'])->where('stuts','=','published')->where('type','=','free');
 
         return response()->json($annonces->with(['images' => function ($q) {
-            $q->where('isMain', 1);
+             $q->where('isMain', 1);
         }])->paginate(10));
 
     }
 
-    public function getAnnonceBySlug(Request $r, $slug) {
+    public function byslug (Request $r, $slug) {
 
         $Annonce = Annonce::where('slug', '=', $slug)->with(['images', 'categorie', 'ville', 'user'])->get();
 
-        return response()->json($Annonce);
+        return response()->json(['stuts' => 'ok', 'data' =>$Annonce]);
 
+    }
+
+    
+    //post comment
+    public function postcomment(Request $request){
+     
+        if($request->slug){
+            $id=Annonce::where('slug','=',$request->slug)->first();
+            //validate
+            $vildate = Validator::make($request->all(),[
+              'body'=>'required|string'
+            ]);
+            if ($vildate->fails()){
+              $val=$vildate->errors();
+                 return response()->json(['val'=>$val,'state'=>'error']);
+             }
+             //filter request
+              $body=filter_var($request->body,FILTER_SANITIZE_STRING);
+            //send data
+                  $comment=new Comment();
+                  $comment->body=$body;
+                  $comment->user_id=$request->user_id;
+                  $comment->annonce_id=$id->id;
+             if($comment->save()){
+                   return response()->json(['val'=>$comment,'state'=>'ok']);
+             }else{
+                return response()->json(['state'=>'error']);
+             }
+         }
+         else{
+            return response()->json(["data"=>"slug not found"]);
+         } 
+       
+    }
+    public function allcommentaboutpost($slug){
+        if($slug){
+             $id=Annonce::where('slug','=',$slug)->first(); 
+             $comments = Comment::where('annonce_id',$id->id)->with('user')->orderBy('id','desc')->take(3)->get();
+              $info=array();
+               foreach($comments as $com){
+                   $profile=$com->user->profile;
+                   $info[]=array(
+                          'userprofiale'=>$profile,
+                          'comments'=>$com
+                    );
+                  }
+                    return response()->json(['data'=>$info,'state'=>'yes']);
+            
+               }
+          else{
+                       return response()->json(['data'=>'error','state'=>'no']);
+               }
+         /*
+       if(!empty($id)){
+            $comments = Comment::where('annonce_id',$id)->with('user')->take(3)->get();
+             $info=array();
+               foreach($comments as $com){
+                $profile=$com->user->profile;
+                $info[]=array(
+                  'userprofiale'=>$profile,
+                   'comments'=>$com
+                );
+             }
+             return response()->json(['data'=>$info,'state'=>'yes']);
+       }else{
+       
+              return response()->json(['data'=>'error','state'=>'no']);
+            }
+       */
+      
+     
+     
+    }
+    public function userstore(Request $request){
+         if($request->id){
+            $mystore=Annonce::Where('user_id','=',$request['id'])->where('stuts','=','published');
+             return response()->json($mystore->with(['images' => function ($q) {
+             $q->where('isMain', 1);
+        }])->paginate(8));
+         }else{
+            return response()->json(['data'=>"id not found"]);
+         }
+    }
+    public function getprofail(Request $request){
+        if($request->id){
+        $myprofail=Profile::Where('user_id','=',$request['id'])->first();
+           return response()->json(['data'=>$myprofail]);
+        }else{
+           return response()->json(['data'=>"profail not found"]);
+        }
     }
 
 }
