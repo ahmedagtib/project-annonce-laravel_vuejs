@@ -9,6 +9,7 @@ use App\Annonce;
 use App\ImageAnnonce;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Storage;
+use Validator;
 
 class AnonnceController extends Controller
 {
@@ -16,7 +17,7 @@ class AnonnceController extends Controller
     {
         $annonces = Annonce::with(['images' => function ($q) {
             $q->where('isMain', '=', 1);
-        }])->paginate(5);
+        }])->with(['ville', 'categorie'])->paginate(5);
 
         return response()->json($annonces);
     }
@@ -87,7 +88,6 @@ class AnonnceController extends Controller
         }
 
         $Annonce = Annonce::find($r->id);
-
         foreach ($r->images as $key => $image) {
             if (!isset($image['id'])) {
                 $name = time() . $key . '.' . explode('/', explode(';', $image['img'])[0])[1];
@@ -124,6 +124,6 @@ class AnonnceController extends Controller
 
         $Annonce->prix = $r->prix;
         
-        return $Annonce->update() ? ['message' => 'sucess'] : ['message' => 'error'];
+        return $Annonce->update() ? ['message' => 'success'] : ['message' => 'error'];
     }
 }

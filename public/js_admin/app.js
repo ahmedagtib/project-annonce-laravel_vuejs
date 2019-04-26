@@ -1849,6 +1849,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1967,6 +1971,10 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js");
 /* harmony import */ var laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
 //
 //
 //
@@ -2543,9 +2551,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2676,6 +2681,20 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js");
 /* harmony import */ var laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7695,7 +7714,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n    \r\n/** Start Custom Input File */\n.pic{\r\n        display: none;\n}\n.newbtn{\r\n        cursor: pointer;\r\n        max-height: 130px;\r\n        max-width: 130px;\r\n        overflow: hidden;\n}\n.newbtn button[type='button'] {\r\n        right:20px;\r\n        top:0\n}\n.newbtn img {\r\n        max-width: 100%;\n}\r\n\r\n\r\n/** End Custom Input File */\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n    \r\n/** Start Custom Input File */\n.pic{\r\n        display: none;\n}\n.newbtn{\r\n        cursor: pointer;\r\n        max-height: 130px;\r\n        max-width: 130px;\r\n        overflow: hidden;\n}\n.newbtn button[type='button'] {\r\n        right:20px;\r\n        top:0\n}\n.newbtn img {\r\n        max-width: 100%;\n}\r\n\r\n\r\n/** End Custom Input File */\r\n", ""]);
 
 // exports
 
@@ -43909,7 +43928,7 @@ var render = function() {
                       "div",
                       { staticClass: "form-group" },
                       [
-                        _c("label", [_vm._v("name")]),
+                        _c("label", [_vm._v("Nom")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -43958,7 +43977,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
-      _vm._v("\r\n\t\t \t \t\t\tManage category\r\n\t\t \t \t\t\t"),
+      _vm._v(
+        "\n                        Gérer les catégories\n                        "
+      ),
       _c(
         "button",
         {
@@ -43969,7 +43990,11 @@ var staticRenderFns = [
             "data-target": "#exampleModal"
           }
         },
-        [_vm._v("\r\n                          Add category\r\n            ")]
+        [
+          _vm._v(
+            "\n                            Ajouter une Catégorie\n                        "
+          )
+        ]
       )
     ])
   },
@@ -43980,9 +44005,9 @@ var staticRenderFns = [
     return _c("tr", [
       _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
       _vm._v(" "),
-      _c("th", { attrs: { scope: "col" } }, [_vm._v("name")]),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("Nom")]),
       _vm._v(" "),
-      _c("th", { attrs: { scope: "col" } }, [_vm._v("created at")]),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("Création")]),
       _vm._v(" "),
       _c("th", { attrs: { scope: "col" } }, [_vm._v("action")])
     ])
@@ -43995,7 +44020,7 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
-        [_vm._v("Modal title")]
+        [_vm._v("Ajouter une Catégorie")]
       ),
       _vm._v(" "),
       _c(
@@ -44023,12 +44048,12 @@ var staticRenderFns = [
           staticClass: "btn btn-secondary",
           attrs: { type: "button", "data-dismiss": "modal" }
         },
-        [_vm._v("Close")]
+        [_vm._v("Annuler")]
       ),
       _vm._v(" "),
       _c("input", {
         staticClass: "btn btn-primary",
-        attrs: { type: "submit", value: "add new" }
+        attrs: { type: "submit", value: "Ajouter" }
       })
     ])
   }
@@ -44059,7 +44084,9 @@ var render = function() {
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "card card-primary" }, [
           _c("div", { staticClass: "card-header" }, [
-            _vm._v("\n\t\t \t \t \t \tupdate category\n\t\t \t \t \t ")
+            _vm._v(
+              "\n                    mettre à jour une Catégorie\n                "
+            )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
@@ -44078,7 +44105,7 @@ var render = function() {
                   "div",
                   { staticClass: "form-group" },
                   [
-                    _c("label", [_vm._v("name")]),
+                    _c("label", [_vm._v("Nom")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -44112,7 +44139,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("input", {
                   staticClass: "btn btn-primary",
-                  attrs: { type: "submit", value: "update" }
+                  attrs: { type: "submit", value: "mettre à jour" }
                 })
               ]
             )
@@ -44767,7 +44794,7 @@ var render = function() {
                       "div",
                       { staticClass: "form-group" },
                       [
-                        _c("label", [_vm._v("name")]),
+                        _c("label", [_vm._v("Nom")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -44803,7 +44830,7 @@ var render = function() {
                       "div",
                       { staticClass: "form-group" },
                       [
-                        _c("label", [_vm._v("email")]),
+                        _c("label", [_vm._v("Email")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -44839,7 +44866,7 @@ var render = function() {
                       "div",
                       { staticClass: "form-group" },
                       [
-                        _c("label", [_vm._v("Password")]),
+                        _c("label", [_vm._v("Mot de pass")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -44894,7 +44921,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
-      _vm._v("\r\n            Manage admins\r\n            "),
+      _vm._v(
+        "\n                        Gérer les administrators\n                        "
+      ),
       _c(
         "button",
         {
@@ -44907,7 +44936,7 @@ var staticRenderFns = [
         },
         [
           _vm._v(
-            "\r\n                          Add admin\r\n                       "
+            "\n                            Ajouter un admine\n                        "
           )
         ]
       )
@@ -44920,13 +44949,13 @@ var staticRenderFns = [
     return _c("tr", [
       _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
       _vm._v(" "),
-      _c("th", { attrs: { scope: "col" } }, [_vm._v("name")]),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("Nome")]),
       _vm._v(" "),
-      _c("th", { attrs: { scope: "col" } }, [_vm._v("email")]),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("Email")]),
       _vm._v(" "),
-      _c("th", { attrs: { scope: "col" } }, [_vm._v("created at")]),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("Création")]),
       _vm._v(" "),
-      _c("th", { attrs: { scope: "col" } }, [_vm._v("action")])
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("Action")])
     ])
   },
   function() {
@@ -44965,12 +44994,12 @@ var staticRenderFns = [
           staticClass: "btn btn-secondary",
           attrs: { type: "button", "data-dismiss": "modal" }
         },
-        [_vm._v("Close")]
+        [_vm._v("Annuler")]
       ),
       _vm._v(" "),
       _c("input", {
         staticClass: "btn btn-primary",
-        attrs: { type: "submit", value: "add new" }
+        attrs: { type: "submit", value: "AJouter" }
       })
     ])
   }
@@ -45001,7 +45030,7 @@ var render = function() {
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "card card-primary" }, [
           _c("div", { staticClass: "card-header" }, [
-            _vm._v("\n          update user\n         ")
+            _vm._v("\n          mettre à jour d'un administrator\n         ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
@@ -45020,7 +45049,7 @@ var render = function() {
                   "div",
                   { staticClass: "form-group" },
                   [
-                    _c("label", [_vm._v("name")]),
+                    _c("label", [_vm._v("Nom")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -45056,7 +45085,7 @@ var render = function() {
                   "div",
                   { staticClass: "form-group" },
                   [
-                    _c("label", [_vm._v("email")]),
+                    _c("label", [_vm._v("Email")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -45092,7 +45121,7 @@ var render = function() {
                   "div",
                   { staticClass: "form-group" },
                   [
-                    _c("label", [_vm._v("Password")]),
+                    _c("label", [_vm._v("Mot de pass")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -45201,7 +45230,7 @@ var render = function() {
         [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-md-12 form-group" }, [
-              _c("label", { attrs: { for: "" } }, [_vm._v("Coisire la Ville")]),
+              _c("label", { attrs: { for: "" } }, [_vm._v("Choisir la ville")]),
               _vm._v(" "),
               _c(
                 "select",
@@ -45259,7 +45288,7 @@ var render = function() {
               _c(
                 "label",
                 { staticClass: "label-control", attrs: { for: "" } },
-                [_vm._v("Coisire la Category")]
+                [_vm._v("Choisir la catégorie")]
               ),
               _vm._v(" "),
               _c(
@@ -45299,7 +45328,7 @@ var render = function() {
                   _c(
                     "option",
                     { attrs: { disabled: "", selected: "", value: "-1" } },
-                    [_vm._v("Category")]
+                    [_vm._v("Catégorie")]
                   ),
                   _vm._v(" "),
                   _vm._l(_vm.categorys, function(category) {
@@ -45322,7 +45351,7 @@ var render = function() {
               _c(
                 "label",
                 { staticClass: "label-control", attrs: { for: "" } },
-                [_vm._v("Title")]
+                [_vm._v("Titre")]
               ),
               _vm._v(" "),
               _c("input", {
@@ -45352,7 +45381,7 @@ var render = function() {
               _c(
                 "label",
                 { staticClass: "label-control", attrs: { for: "" } },
-                [_vm._v("Desciption")]
+                [_vm._v("Description")]
               ),
               _vm._v(" "),
               _c("textarea", {
@@ -45382,7 +45411,7 @@ var render = function() {
               _c(
                 "label",
                 { staticClass: "label-control", attrs: { for: "" } },
-                [_vm._v("détaille")]
+                [_vm._v("Détaille")]
               ),
               _vm._v(" "),
               _c("input", {
@@ -45750,7 +45779,7 @@ var render = function() {
         [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-md-12 form-group" }, [
-              _c("label", { attrs: { for: "" } }, [_vm._v("Coisire la Ville")]),
+              _c("label", { attrs: { for: "" } }, [_vm._v("Choisir la ville")]),
               _vm._v(" "),
               _c(
                 "select",
@@ -45808,7 +45837,7 @@ var render = function() {
               _c(
                 "label",
                 { staticClass: "label-control", attrs: { for: "" } },
-                [_vm._v("Coisire la Category")]
+                [_vm._v("Choisir la catégorie")]
               ),
               _vm._v(" "),
               _c(
@@ -45848,7 +45877,7 @@ var render = function() {
                   _c(
                     "option",
                     { attrs: { disabled: "", selected: "", value: "-1" } },
-                    [_vm._v("villes")]
+                    [_vm._v("Catégorie")]
                   ),
                   _vm._v(" "),
                   _vm._l(_vm.categorys, function(category) {
@@ -45867,7 +45896,7 @@ var render = function() {
               _c(
                 "label",
                 { staticClass: "label-control", attrs: { for: "" } },
-                [_vm._v("Title")]
+                [_vm._v("Titre")]
               ),
               _vm._v(" "),
               _c("input", {
@@ -45897,7 +45926,7 @@ var render = function() {
               _c(
                 "label",
                 { staticClass: "label-control", attrs: { for: "" } },
-                [_vm._v("Desciption")]
+                [_vm._v("Description")]
               ),
               _vm._v(" "),
               _c("textarea", {
@@ -45927,7 +45956,7 @@ var render = function() {
               _c(
                 "label",
                 { staticClass: "label-control", attrs: { for: "" } },
-                [_vm._v("détaille")]
+                [_vm._v("Détaille")]
               ),
               _vm._v(" "),
               _c("input", {
@@ -45981,7 +46010,9 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
-                  _c("label", { attrs: { for: "type_free" } }, [_vm._v("Free")])
+                  _c("label", { attrs: { for: "type_free" } }, [
+                    _vm._v("Gratuit")
+                  ])
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-1 form-group" }, [
@@ -46008,7 +46039,9 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
-                  _c("label", { attrs: { for: "type_pay" } }, [_vm._v("Pay")])
+                  _c("label", { attrs: { for: "type_pay" } }, [
+                    _vm._v("Payant")
+                  ])
                 ])
               ])
             ]),
@@ -46053,15 +46086,15 @@ var render = function() {
                   _c(
                     "option",
                     { attrs: { value: "published", selected: "" } },
-                    [_vm._v("published")]
+                    [_vm._v("publié")]
                   ),
                   _vm._v(" "),
                   _c("option", { attrs: { value: "pandding" } }, [
-                    _vm._v("pandding")
+                    _vm._v("En attente d'approbation")
                   ]),
                   _vm._v(" "),
                   _c("option", { attrs: { value: "blocked" } }, [
-                    _vm._v("blocked")
+                    _vm._v("bloqué")
                   ])
                 ]
               )
@@ -46080,7 +46113,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control",
-                attrs: { type: "text", name: "prix" },
+                attrs: { type: "text", name: "prix", placeholder: "DH" },
                 domProps: { value: _vm.form.prix },
                 on: {
                   input: function($event) {
@@ -46161,9 +46194,7 @@ var render = function() {
                           "label",
                           { staticClass: "newbtn", attrs: { for: "images" } },
                           [
-                            _c("img", {
-                              attrs: { src: "http://placehold.it/120x120" }
-                            }),
+                            _c("i", { staticClass: "fa fa-camera fa-3x mr-2" }),
                             _vm._v(" "),
                             _c("input", {
                               staticClass: "pic",
@@ -46195,10 +46226,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-2 d-flex justify-content-center" }, [
-        _c("i", { staticClass: "fa fa-camera fa-3x mr-2" })
-      ]),
-      _vm._v(" "),
       _c("div", { staticClass: "col-md-10" }, [
         _c("p", { staticClass: "mt-20 text-center text-md-left" }, [
           _vm._v(
@@ -46250,112 +46277,128 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
-      _c("div", { staticClass: "row" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-md-6" },
-          [
-            _c(
-              "router-link",
-              {
-                staticClass: "btn btn-primary float-right",
-                attrs: { to: "/admin/addAnnonce" }
-              },
-              [_vm._v("Add Annonce")]
-            )
-          ],
-          1
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row table-responsive" }, [
-        _c(
-          "table",
-          { staticClass: "table" },
-          [
-            _vm._m(1),
-            _vm._v(" "),
-            _vm._l(_vm.annonces.data, function(annonce, index) {
-              return _c("tr", { key: index }, [
-                _c("td", [_vm._v(_vm._s(annonce.id))]),
-                _vm._v(" "),
-                _c("td", [
-                  annonce.images[0]
-                    ? _c("img", {
-                        staticClass: "image-responsive",
-                        attrs: {
-                          width: "40",
-                          src: _vm.imageDirectory(annonce.images[0].name),
-                          alt: ""
-                        }
-                      })
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(annonce.ville_id))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(annonce.categorie_id))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(annonce.slug))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(annonce.title))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(annonce.description.substr(0, 20)))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(annonce.detaille))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(annonce.type))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(annonce.stuts))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(annonce.prix))]),
-                _vm._v(" "),
-                _c(
-                  "td",
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "btn btn-primary",
-                        attrs: { to: "/admin/annonce/edit/" + annonce.id }
-                      },
-                      [_c("i", { staticClass: "fa fa-pen" })]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("td")
-              ])
-            })
-          ],
-          2
-        )
-      ]),
-      _vm._v(" "),
-      _c("pagination", {
-        attrs: { data: _vm.annonces },
-        on: { "pagination-change-page": _vm.getResult }
-      })
-    ],
-    1
-  )
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card card-light" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-md-6" }, [
+                _vm._v(
+                  "\n                            Gérer les Annonces\n                        "
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-md-6" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "btn btn-primary float-right text-white",
+                      attrs: { to: "/admin/addAnnonce" }
+                    },
+                    [
+                      _vm._v(
+                        "Ajouter une\n                                Annonce\n                            "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body pd-0" }, [
+            _c("div", { staticClass: "row table-responsive" }, [
+              _c(
+                "table",
+                { staticClass: "table" },
+                [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _vm._l(_vm.annonces.data, function(annonce, index) {
+                    return _c("tr", { key: index }, [
+                      _c("td", [_vm._v(_vm._s(annonce.id))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        annonce.images[0]
+                          ? _c("img", {
+                              staticClass: "image-responsive",
+                              attrs: {
+                                width: "40",
+                                src: _vm.imageDirectory(annonce.images[0].name),
+                                alt: ""
+                              }
+                            })
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(annonce.ville.name))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(annonce.categorie.name))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(annonce.slug))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(annonce.title))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(_vm._s(annonce.description.substr(0, 20)))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(_vm._s(annonce.detaille.substr(0, 20)))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(annonce.type))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(annonce.stuts))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(annonce.prix))]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        [
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "btn btn-primary",
+                              attrs: { to: "/admin/annonce/edit/" + annonce.id }
+                            },
+                            [_c("i", { staticClass: "fa fa-pen" })]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("td")
+                    ])
+                  })
+                ],
+                2
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "card-footer pd-0" },
+            [
+              _c("pagination", {
+                attrs: { limit: 3, data: _vm.annonces },
+                on: { "pagination-change-page": _vm.getResult }
+              })
+            ],
+            1
+          )
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6" }, [
-      _c("h1", [_vm._v("annonce")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -46365,9 +46408,9 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("th", [_vm._v("Image")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Ville Id")]),
+      _c("th", [_vm._v("Ville")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Categorie id")]),
+      _c("th", [_vm._v("Categorie")]),
       _vm._v(" "),
       _c("th", [_vm._v("Slug")]),
       _vm._v(" "),
@@ -46414,7 +46457,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container" }, [
-      _c("h1", [_vm._v("Comment")])
+      _c("h1", [_vm._v("Commentaires")])
     ])
   }
 ]
@@ -46447,7 +46490,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container" }, [
-      _c("h1", [_vm._v("dashbord")])
+      _c("h1", [_vm._v("Panneau")])
     ])
   }
 ]
@@ -46583,7 +46626,7 @@ var render = function() {
                       "div",
                       { staticClass: "form-group" },
                       [
-                        _c("label", [_vm._v("name")]),
+                        _c("label", [_vm._v("Nom")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -46619,7 +46662,7 @@ var render = function() {
                       "div",
                       { staticClass: "form-group" },
                       [
-                        _c("label", [_vm._v("email")]),
+                        _c("label", [_vm._v("Email")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -46655,7 +46698,7 @@ var render = function() {
                       "div",
                       { staticClass: "form-group" },
                       [
-                        _c("label", [_vm._v("Password")]),
+                        _c("label", [_vm._v("Mot de pass")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -46710,7 +46753,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
-      _vm._v("\n            Manage users\n            "),
+      _vm._v("\n            Gérer les utilisateurs\n            "),
       _c(
         "button",
         {
@@ -46721,7 +46764,7 @@ var staticRenderFns = [
             "data-target": "#exampleModal"
           }
         },
-        [_vm._v("Add user")]
+        [_vm._v("Ajouter un utilisateur")]
       )
     ])
   },
@@ -46732,11 +46775,11 @@ var staticRenderFns = [
     return _c("tr", [
       _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
       _vm._v(" "),
-      _c("th", { attrs: { scope: "col" } }, [_vm._v("name")]),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("Nom")]),
       _vm._v(" "),
-      _c("th", { attrs: { scope: "col" } }, [_vm._v("email")]),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("Email")]),
       _vm._v(" "),
-      _c("th", { attrs: { scope: "col" } }, [_vm._v("created at")]),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("Création")]),
       _vm._v(" "),
       _c("th", { attrs: { scope: "col" } }, [_vm._v("action")])
     ])
@@ -46749,7 +46792,7 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
-        [_vm._v("Modal title")]
+        [_vm._v("Ajouter un utilisateur")]
       ),
       _vm._v(" "),
       _c(
@@ -46813,7 +46856,9 @@ var render = function() {
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "card card-primary" }, [
           _c("div", { staticClass: "card-header" }, [
-            _vm._v("\n\t\t \t \t \t \tupdate user\n\t\t \t \t \t ")
+            _vm._v(
+              "\n\t\t \t \t \t \t mettre à jour d'un utilisateur\n\t\t \t \t \t "
+            )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
@@ -46832,7 +46877,7 @@ var render = function() {
                   "div",
                   { staticClass: "form-group" },
                   [
-                    _c("label", [_vm._v("name")]),
+                    _c("label", [_vm._v("Nom")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -46868,7 +46913,7 @@ var render = function() {
                   "div",
                   { staticClass: "form-group" },
                   [
-                    _c("label", [_vm._v("email")]),
+                    _c("label", [_vm._v("Email")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -46904,7 +46949,7 @@ var render = function() {
                   "div",
                   { staticClass: "form-group" },
                   [
-                    _c("label", [_vm._v("Password")]),
+                    _c("label", [_vm._v("Mot de pass")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -46975,7 +47020,9 @@ var render = function() {
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "card card-primary" }, [
           _c("div", { staticClass: "card-header" }, [
-            _vm._v("\n\t\t \t \t \t \tupdate ville\n\t\t \t \t \t ")
+            _vm._v(
+              "\n                    mettre à jour d'une ville\n                "
+            )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
@@ -46994,7 +47041,7 @@ var render = function() {
                   "div",
                   { staticClass: "form-group" },
                   [
-                    _c("label", [_vm._v("name")]),
+                    _c("label", [_vm._v("Nom")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -47028,7 +47075,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("input", {
                   staticClass: "btn btn-primary",
-                  attrs: { type: "submit", value: "update" }
+                  attrs: { type: "submit", value: "Mettre à jour" }
                 })
               ]
             )
@@ -47168,7 +47215,7 @@ var render = function() {
                       "div",
                       { staticClass: "form-group" },
                       [
-                        _c("label", [_vm._v("name")]),
+                        _c("label", [_vm._v("Nom")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -47217,7 +47264,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
-      _vm._v("\r\n\t\t \t \t\t\tManage villes\r\n\t\t \t \t\t\t"),
+      _vm._v("\r\n\t\t \t \t\t\tGérer les villes\r\n\t\t \t \t\t\t"),
       _c(
         "button",
         {
@@ -47228,7 +47275,11 @@ var staticRenderFns = [
             "data-target": "#exampleModal"
           }
         },
-        [_vm._v("\r\n                          Add ville\r\n            ")]
+        [
+          _vm._v(
+            "\r\n                          Ajouter une ville\r\n            "
+          )
+        ]
       )
     ])
   },
@@ -47239,11 +47290,11 @@ var staticRenderFns = [
     return _c("tr", [
       _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
       _vm._v(" "),
-      _c("th", { attrs: { scope: "col" } }, [_vm._v("name")]),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("Nom")]),
       _vm._v(" "),
-      _c("th", { attrs: { scope: "col" } }, [_vm._v("created at")]),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("Création")]),
       _vm._v(" "),
-      _c("th", { attrs: { scope: "col" } }, [_vm._v("action")])
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("actions")])
     ])
   },
   function() {
@@ -47254,7 +47305,7 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
-        [_vm._v("Modal title")]
+        [_vm._v("Ajouter une ville")]
       ),
       _vm._v(" "),
       _c(
@@ -47282,12 +47333,12 @@ var staticRenderFns = [
           staticClass: "btn btn-secondary",
           attrs: { type: "button", "data-dismiss": "modal" }
         },
-        [_vm._v("Close")]
+        [_vm._v("Annuler")]
       ),
       _vm._v(" "),
       _c("input", {
         staticClass: "btn btn-primary",
-        attrs: { type: "submit", value: "add new" }
+        attrs: { type: "submit", value: "Ajouter" }
       })
     ])
   }

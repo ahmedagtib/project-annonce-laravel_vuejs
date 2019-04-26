@@ -1,6 +1,8 @@
 <template>
     <div class="bg">
         <div class="container card_annonce_ui">
+
+            <vue-progress-bar></vue-progress-bar>
             <div class="row">
                 <div class="col-md">
                     <div class="text-left">
@@ -40,7 +42,8 @@
                 <div class="col-md-3">
                     <div class="mt-2">
                         <span>Annonceur :</span><br>
-                        <span>{{ annonce.user }}</span>
+                        <span v-if="annonce.user !== null">{{ annonce.user.name }}</span>
+                        <span v-else>Admin</span>
                     </div>
                     <table class="table mt-4">
                         <tr>
@@ -100,15 +103,23 @@
             },
 
             getAnnonce() {
+
+                this.$Progress.start()
                 axios.get('/api/Annoncebyslug/' + this.slug)
                     .then((res) => {
                         if (res.data.stuts === 'ok') {
                             this.$data.annonce = res.data.data[0];
                             this.annonce = res.data.data[0];
                             this.idannonce = res.data.data[0].id;
+                            this.$Progress.finish()
                         } else {
                             console.log('no')
+
+                            this.$Progress.fail()
                         }
+                    }).catch(() => {
+                        this.$Progress.fail()
+
                     })
             },
 

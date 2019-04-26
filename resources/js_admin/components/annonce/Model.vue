@@ -12,29 +12,29 @@
         <form @submit.prevent="addAnnonce" @keydown="form.onKeydown($event)">
             <div class="row">
                 <div class="col-md-12 form-group">
-                    <label for="">Coisire la Ville</label>
+                    <label for="">Choisir la ville</label>
                     <select v-model="form.ville_id" name="ville_id" class="form-control">
                         <option disabled selected value="-1">Ville</option>
                         <option v-for="ville in villes" :key="ville.id" :value="ville.id">{{ ville.name }}</option>
                     </select>
                 </div>
                 <div class="col-md-12 form-group">
-                    <label class="label-control" for="">Coisire la Category</label>
+                    <label class="label-control" for="">Choisir la catégorie</label>
                     <select v-model="form.categorie_id" name="categorie_id" class="form-control">
-                        <option disabled selected value="-1">villes</option>
+                        <option disabled selected value="-1">Catégorie</option>
                         <option v-for="category in categorys" :key="category.id" :value="category.id">{{ category.name }}</option>
                     </select>
                 </div>
                 <div class="col-md-12 form-group">
-                    <label class="label-control" for="">Title</label>
+                    <label class="label-control" for="">Titre</label>
                     <input v-model="form.title" type="text" name="title" class="form-control">
                 </div>
                 <div class="col-md-12 form-group">
-                    <label class="label-control" for="">Desciption</label>
+                    <label class="label-control" for="">Description</label>
                     <textarea v-model="form.description" name="desciption" class="form-control"></textarea>
                 </div>
                 <div class="col-md-12 form-group">
-                    <label class="label-control" for="">détaille</label>
+                    <label class="label-control" for="">Détaille</label>
                     <input v-model="form.detaille" type="text" name="detaille" class="form-control">
                 </div>
                 <div class="col-md-12 form-group">
@@ -42,25 +42,25 @@
                     <div class="row">
                         <div class="col-md-1 form-group">
                             <input v-model="form.type" value="free" type="radio" name="type" id="type_free">
-                            <label for="type_free">Free</label>
+                            <label for="type_free">Gratuit</label>
                         </div>
                         <div class="col-md-1 form-group">
                             <input type="radio" v-model="form.type" value="pay" name="type" id="type_pay">
-                            <label for="type_pay">Pay</label>
+                            <label for="type_pay">Payant</label>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-12 form-group">
                     <label>Stuts</label>
                     <select v-model="form.stuts" name="stuts" class="form-control">
-                        <option value="published" selected>published</option>
-                        <option value="pandding">pandding</option>
-                        <option value="blocked">blocked</option>
+                        <option value="published" selected>publié</option>
+                        <option value="pandding">En attente d'approbation</option>
+                        <option value="blocked">bloqué</option>
                     </select>
                 </div>
                 <div class="col-md-12 form-group">
                     <label>Prix</label>
-                    <input v-model="form.prix" type="text" name="prix" class="form-control">
+                    <input v-model="form.prix" type="text" name="prix" class="form-control" placeholder="DH">
                 </div>
             
                 <div class="col-md-12 from-group">
@@ -74,15 +74,12 @@
                         </draggable>
                         <div class="col-md-12 mb-4" v-if="!imageEnd">
                             <label for="images" class='newbtn'>
-                                <img src="http://placehold.it/120x120" >
+                                <i class="fa fa-camera fa-3x mr-2"></i>
                                 <input @change="pushFile" id="images" class="pic" type="file" >
                             </label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-2 d-flex justify-content-center">
-                            <i class="fa fa-camera fa-3x mr-2"></i>
-                        </div>
                         <div class="col-md-10">
                             <p class="mt-20 text-center text-md-left"> Savez vous que les annonces avec photos sont 10 fois plus consultés que celles qui n'en ont pas !</p>
                         </div>

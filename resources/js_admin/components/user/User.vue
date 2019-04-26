@@ -5,22 +5,22 @@
         <div class="col-md-12">
           <div class="card card-light">
             <div class="card-header">
-              Manage users
+              Gérer les utilisateurs
               <button
                 type="button"
                 class="btn btn-primary float-right"
                 data-toggle="modal"
                 data-target="#exampleModal"
-              >Add user</button>
+              >Ajouter un utilisateur</button>
             </div>
             <div class="card-body pd-0">
               <table class="table">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">name</th>
-                    <th scope="col">email</th>
-                    <th scope="col">created at</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Création</th>
                     <th scope="col">action</th>
                   </tr>
                   <tr v-for="user in users.data">
@@ -59,14 +59,14 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Ajouter un utilisateur</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
               <div class="form-group">
-                <label>name</label>
+                <label>Nom</label>
                 <input
                   v-model="form.name"
                   type="text"
@@ -77,7 +77,7 @@
                 <has-error :form="form" field="name"></has-error>
               </div>
               <div class="form-group">
-                <label>email</label>
+                <label>Email</label>
                 <input
                   v-model="form.email"
                   type="email"
@@ -89,7 +89,7 @@
               </div>
 
               <div class="form-group">
-                <label>Password</label>
+                <label>Mot de pass</label>
                 <input
                   v-model="form.password"
                   type="password"

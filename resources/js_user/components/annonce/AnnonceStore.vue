@@ -1,5 +1,7 @@
 <template>
     <div class="container">
+        
+        <vue-progress-bar></vue-progress-bar>
         <div class="row mx-auto mb-4">
             <div class="col-md-3 ">
                 <label for="">Choiser category</label>
@@ -81,12 +83,17 @@
             },
             ...mapActions(["getville", "getcategory"]),
             getResults(page = 1) {
+                
+                this.$Progress.start()
                 axios({
                     method: "post",
                     url: "api/all?page=" + page, ///
                     data: this.filters
                 }).then(response => {
                     this.annonces = response.data;
+                    this.$Progress.finish()
+                }).catch(() => {
+                    this.$Progress.fail()
                 });
             }
         },

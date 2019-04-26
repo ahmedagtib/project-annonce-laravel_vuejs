@@ -12,30 +12,30 @@
         <form @submit.prevent="updateAnnonce" @keydown="form.onKeydown($event)">
             <div class="row">
                 <div class="col-md-12 form-group">
-                    <label for="">Coisire la Ville</label>
+                    <label for="">Choisir la ville</label>
                     <select v-model="form.ville_id" name="ville_id" class="form-control">
                         <option disabled selected value="-1">Ville</option>
                         <option v-for="ville in villes" :key="ville.id" :value="ville.id">{{ ville.name }}</option>
                     </select>
                 </div>
                 <div class="col-md-12 form-group">
-                    <label class="label-control" for="">Coisire la Category</label>
+                    <label class="label-control" for="">Choisir la catégorie</label>
                     <select v-model="form.categorie_id" name="categorie_id" class="form-control">
-                        <option disabled selected value="-1">Category</option>
+                        <option disabled selected value="-1">Catégorie</option>
                         <option v-for="category in categorys" :key="category.id" :value="category.id">
                             {{ category.name }}</option>
                     </select>
                 </div>
                 <div class="col-md-12 form-group">
-                    <label class="label-control" for="">Title</label>
+                    <label class="label-control" for="">Titre</label>
                     <input v-model="form.title" type="text" name="title" class="form-control">
                 </div>
                 <div class="col-md-12 form-group">
-                    <label class="label-control" for="">Desciption</label>
+                    <label class="label-control" for="">Description</label>
                     <textarea v-model="form.description" name="desciption" class="form-control"></textarea>
                 </div>
                 <div class="col-md-12 form-group">
-                    <label class="label-control" for="">détaille</label>
+                    <label class="label-control" for="">Détaille</label>
                     <input v-model="form.detaille" type="text" name="detaille" class="form-control" />
                 </div>
                 <div class="col-md-12 form-group">

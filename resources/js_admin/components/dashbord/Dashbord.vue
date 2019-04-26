@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		 <h1>dashbord</h1>
+		 <h1>Panneau</h1>
 	</div>
 </template>
 <script type="text/javascript">

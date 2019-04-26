@@ -2,7 +2,7 @@
  <div> 
 <div>
 		   <div class="text-center mt-4">
-     	     <span class="header_one ">suggestion</span> 
+     	     <span class="header_one ">Sponsorisé</span> 
         </div>
          <div class="clearfix"></div>
              <div  class="container mt-4">

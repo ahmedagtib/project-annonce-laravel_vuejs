@@ -6,7 +6,7 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">Connectez-vous pour commencer votre session</p>
          @if(Session::has('error'))
          <div class="alert alert-danger">
            {{Session::get('error')}}
@@ -29,16 +29,16 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-8">
+          <div class="col-7">
             <div class="checkbox icheck">
               <label>
-                <input type="checkbox" name="rememberme" value="1"> Remember Me
+                <input type="checkbox" name="rememberme" value="1">Se souvenir moi
               </label>
             </div>
           </div>
           <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <div class="col-5">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Se connecter</button>
           </div>
           <!-- /.col -->
         </div>
@@ -46,10 +46,10 @@
 
      
       <!-- /.social-auth-links -->
-
+<!--  
       <p class="mb-1">
         <a href="#">I forgot my password</a>
-      </p>
+      </p> -->
     </div>
   
   </div>

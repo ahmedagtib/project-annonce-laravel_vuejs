@@ -29,7 +29,7 @@
             <router-link to="/admin/dashbord" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                 Dashbord
+              Panneau
               </p>
             </router-link>
           </li>  
@@ -37,7 +37,7 @@
             <router-link to="/admin/admin" class="nav-link">
               <i class="nav-icon fas fa-users-cog"></i>
               <p>
-                Admins
+                Les admins
               </p>
             </router-link>
           </li>   
@@ -45,7 +45,7 @@
             <router-link to="/admin/user" class="nav-link">
               <i class="nav-icon fa fa-users"></i>
               <p>
-                Users
+              Utilisateurs
               </p>
             </router-link>
           </li> 
@@ -53,7 +53,7 @@
             <router-link to="/admin/annonce" class="nav-link">
               <i class="nav-icon fas fa-ad"></i>
               <p>
-                Ads
+                Annonces
               </p>
             </router-link>
           </li> 
@@ -61,7 +61,7 @@
             <router-link  to="/admin/categorie" class="nav-link">
               <i class="nav-icon fas fa-map-signs"></i>
               <p>
-                category
+                Catégories
               </p>
             </router-link >
           </li> 
@@ -69,7 +69,7 @@
             <router-link to="/admin/ville" class="nav-link">
               <i class="nav-icon fas fa-map-signs"></i>
               <p>
-                ville
+                Villes
               </p>
             </router-link>
           </li> 
@@ -77,7 +77,7 @@
             <router-link to="/admin/comment" class="nav-link">
               <i class="nav-icon fas fa-comments"></i>
               <p>
-                comment
+              Commentaires
               </p>
             </router-link>
           </li> 
@@ -85,7 +85,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tools"></i>
               <p>
-                setting
+              Réglages
               </p>
             </a>
           </li> 
@@ -93,7 +93,7 @@
             <a href="{{url('admin/logout')}}" class="nav-link">
               <i class="nav-icon fa fa-power-off red"></i>
               <p>
-                  logout
+              Déconnexion
               </p>
             </a>
           </li> 

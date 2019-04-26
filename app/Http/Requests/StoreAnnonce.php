@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 class StoreAnnonce extends FormRequest
 {
@@ -24,8 +25,21 @@ class StoreAnnonce extends FormRequest
      */
     public function rules()
     {
+        // Validator::extend('is_annonce_image',function($attribute, $value, $params, $validator) {
 
-        return [
+        //     foreach ($value as $key => $img) {
+        //             # code..
+        //         if(!isset($img['id'])) {
+        //             $image = base64_decode($img['img']);
+        //             $f = finfo_open();
+        //             $result = finfo_buffer($f, $image, FILEINFO_MIME_TYPE);
+        //             return $result == 'mimes:jpeg,jpg,png';
+
+        //         }
+        //     }
+
+        // });
+        $rules = [
             'user_id' => 'numeric',
             'ville_id' => 'numeric',
             'categorie_id' => 'numeric',
@@ -40,7 +54,14 @@ class StoreAnnonce extends FormRequest
                 'required',
                 Rule::in(['published','pandding','blocked'])
             ],
-            'prix' => 'required|numeric'
+            'prix' => 'required|numeric',
+            'images.*.img' => 'base64image|base64mimes:jpeg,jpg,png,PNG'
         ];
+        // $nbr = count($this->input('images')) - 1;
+        // foreach(range(0, $nbr) as $index) {
+        //     $rules['images.' . $index] = 'image|max:4000';
+        // }
+
+        return $rules;
     }
 }

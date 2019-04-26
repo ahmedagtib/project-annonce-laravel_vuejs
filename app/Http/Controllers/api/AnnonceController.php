@@ -113,20 +113,20 @@ class AnnonceController extends Controller
         $annonces = new Annonce();
         $annonces = $annonces->newQuery();
         if($r['categorie_id'] != -1)
-            $annonces->where('categorie_id', '=', $r['categorie_id'])->where('stuts','=','published')->where('type','=','free');
+            $annonces->where('categorie_id', '=', $r['categorie_id']);
         
         if($r['ville_id'] != -1)
-            $annonces->where('ville_id', '=', $r['ville_id'])->where('stuts','=','published')->where('type','=','free');
+            $annonces->where('ville_id', '=', $r['ville_id']);
 
         if($r['min_prix'] != 0)
-            $annonces->where('prix', '>', $r['min_prix'])->where('stuts','=','published')->where('type','=','free');
+            $annonces->where('prix', '>', $r['min_prix']);
         
         if($r['max_prix'] != 0)
-            $annonces->where('prix', '<', $r['max_prix'])->where('stuts','=','published')->where('type','=','free');
+            $annonces->where('prix', '<', $r['max_prix']);
 
         return response()->json($annonces->with(['images' => function ($q) {
              $q->where('isMain', 1);
-        }])->paginate(10));
+        }])->where('stuts','=','published')->where('type','=','free')->paginate(12));
 
     }
 

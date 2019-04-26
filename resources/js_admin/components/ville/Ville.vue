@@ -6,9 +6,9 @@
 		 	 <div class="col-md-12">
 		 	 	<div class="card card-light">
 		 	 		<div class="card-header">
-		 	 			Manage villes
+		 	 			Gérer les villes
 		 	 			<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
-                          Add ville
+                          Ajouter une ville
             </button>
 		 	 		</div>
 		 	 		<div class="card-body pd-0">
@@ -16,9 +16,9 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">name</th>
-                        <th scope="col">created at</th>
-                        <th scope="col">action</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Création</th>
+                        <th scope="col">actions</th>
                     </tr>
                     <tr v-for="ville in villes">
                       <td scope="row">{{ville.id}}</td>
@@ -42,14 +42,14 @@
                <div class="modal-dialog" role="document">
                  <div class="modal-content">
                    <div class="modal-header">
-                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                     <h5 class="modal-title" id="exampleModalLabel">Ajouter une ville</h5>
                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                      </button>
                    </div>
                    <div class="modal-body">
                           <div class="form-group">
-                            <label>name</label>
+                            <label>Nom</label>
                             <input v-model="form.name" type="text" name="name"
                               class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
                             <has-error :form="form" field="name"></has-error>
@@ -57,8 +57,8 @@
                        
                    </div>
                    <div class="modal-footer">
-                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                     <input type="submit" class="btn btn-primary" value="add new"/>
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                     <input type="submit" class="btn btn-primary" value="Ajouter"/>
                    </div>
                  </div>
                </div>

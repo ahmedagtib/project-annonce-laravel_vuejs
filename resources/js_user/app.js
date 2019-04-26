@@ -8,7 +8,22 @@ import cfooter from './components/footer/cfooter.vue';
 import  axios from 'axios';
 import StoreData from './store';
 import { Form, HasError, AlertError,AlertSuccess } from 'vform'
-Vue.component('pagination', require('laravel-vue-pagination'));
+
+import VueProgressBar from 'vue-progressbar'
+
+const options = {
+    color: '#bffaf3',
+    failedColor: '#874b4b',
+    thickness: '5px',
+    transition: {
+      speed: '0.2s',
+      opacity: '0.6s',
+      termination: 300
+    },
+    autoRevert: true,
+    location: 'top',
+    inverse: false
+}
 
 // require('popper.js')
 // require('jquery')
@@ -20,6 +35,8 @@ window.Form=Form;
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
 Vue.component(AlertSuccess.name,AlertSuccess)
+Vue.component('pagination', require('laravel-vue-pagination'));
+Vue.use(VueProgressBar, options)
 
 Vue.use(Vuex);
 
