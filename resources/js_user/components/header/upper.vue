@@ -25,7 +25,7 @@
                                     <router-link class="nav-link" to="/annonce">Créez une annonce</router-link>
                                 </li>
                                 <li class="list-inline-item">
-                                    <router-link class="nav-link" to="/mystore">Mes annonce</router-link>
+                                    <router-link class="nav-link" to="/mystore">Mes annonces</router-link>
                                 </li>
                                 <li class="list-inline-item dropdown">
                                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"

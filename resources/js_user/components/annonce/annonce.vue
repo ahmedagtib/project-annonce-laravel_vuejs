@@ -3,8 +3,8 @@
 
         <vue-progress-bar></vue-progress-bar>
         <div class="card_annonce">
-            <h1 class="card__title">add annonce</h1>
-            <p class="card__description">hi sir make your ads more important by<a href="#">here</a>
+            <h1 class="card__title">Ajouter une annonce</h1>
+            <p class="card__description">salut monsieur rendre vos annonces plus importantes par clicker<a href="#">ici</a>
                 <p>
                     <form @submit="onsubmit">
                         <div class="form-row">

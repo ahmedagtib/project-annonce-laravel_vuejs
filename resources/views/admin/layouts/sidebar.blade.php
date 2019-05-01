@@ -90,7 +90,7 @@
             </a>
           </li> 
             <li class="nav-item">
-            <a href="{{url('admin/logout')}}" class="nav-link">
+            <a href="#" @click.prevent="logout" class="nav-link">
               <i class="nav-icon fa fa-power-off red"></i>
               <p>
               Déconnexion

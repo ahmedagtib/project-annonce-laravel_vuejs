@@ -16,7 +16,7 @@
                 </div>
             </div>
             <h1 class="card__title">{{ annonce.title }}</h1>
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div v-if="annonce.images != ''" id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -30,19 +30,22 @@
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
+                    <span class="sr-only">Prev</span>
                 </a>
                 <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
             </div>
+            <div v-else class="carousel slide">
+                <img :src="imgone('default.png')" class="img-fullwidth" alt="">
+            </div>
             <!-- Slide -->
             <div class="row">
                 <div class="col-md-3">
                     <div class="mt-2">
                         <span>Annonceur :</span><br>
-                        <span v-if="annonce.user !== null">{{ annonce.user.name }}</span>
+                        <span v-if="annonce.user !== undefined && annonce.user !== null">{{ annonce.user.name }}</span>
                         <span v-else>Admin</span>
                     </div>
                     <table class="table mt-4">
@@ -111,6 +114,10 @@
                             this.$data.annonce = res.data.data[0];
                             this.annonce = res.data.data[0];
                             this.idannonce = res.data.data[0].id;
+                            console.log('Images Null ?',this.annonce.images === null)
+                            console.log('Images undefined ?',this.annonce.images === undefined)
+                            console.log('Images Lenght',this.annonce.images.length)
+                            console.log('Images [',this.annonce.images === [])
                             this.$Progress.finish()
                         } else {
                             console.log('no')
@@ -131,6 +138,13 @@
             this.slug = slugr;
             this.getAnnonce()
         },
+        updated() {
+            
+            console.log('Images null ? Updated',this.annonce.images == null)
+            console.log('Images undefined ? Updated',this.annonce.images == undefined)
+            console.log('Images lenght Updated',this.annonce.images.length)
+            console.log('Images [] Updated',this.annonce.images == '')
+        }
         /*
        computed:{
          currentUser(){

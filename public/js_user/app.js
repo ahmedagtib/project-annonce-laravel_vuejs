@@ -1920,6 +1920,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1948,6 +1951,10 @@ __webpack_require__.r(__webpack_exports__);
           _this.$data.annonce = res.data.data[0];
           _this.annonce = res.data.data[0];
           _this.idannonce = res.data.data[0].id;
+          console.log('Images Null ?', _this.annonce.images === null);
+          console.log('Images undefined ?', _this.annonce.images === undefined);
+          console.log('Images Lenght', _this.annonce.images.length);
+          console.log('Images [', _this.annonce.images === []);
 
           _this.$Progress.finish();
         } else {
@@ -1964,7 +1971,32 @@ __webpack_require__.r(__webpack_exports__);
     var slugr = this.$route.params.slug;
     this.slug = slugr;
     this.getAnnonce();
+  },
+  updated: function updated() {
+    console.log('Images null ? Updated', this.annonce.images == null);
+    console.log('Images undefined ? Updated', this.annonce.images == undefined);
+    console.log('Images lenght Updated', this.annonce.images.length);
+    console.log('Images [] Updated', this.annonce.images == '');
   }
+  /*
+  computed:{
+   currentUser(){
+        this.commentpost.user_id=this.$store.getters.currentUser.id;
+        return this.$store.getters.currentUser;  
+   },
+   
+  getcomment(){
+     axios.get('/api/commentuser/'+this.idannonce).then((res)=>{
+      if(res.data.state==='yes'){
+             this.comments=res.data.data;
+             console.log(res.data.data);
+       }  
+     })
+                  
+    }
+  }
+  */
+
 });
 
 /***/ }),
@@ -2763,7 +2795,7 @@ __webpack_require__.r(__webpack_exports__);
         user_id: '',
         pic: ''
       },
-      text: 'choice one pic',
+      text: 'choisire une photo',
       valdation: [],
       username: '',
       email: ''
@@ -45425,42 +45457,55 @@ var render = function() {
           _vm._v(_vm._s(_vm.annonce.title))
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "carousel slide",
-            attrs: { id: "carouselExampleIndicators", "data-ride": "carousel" }
-          },
-          [
-            _vm._m(1),
-            _vm._v(" "),
-            _c(
+        _vm.annonce.images != ""
+          ? _c(
               "div",
-              { staticClass: "carousel-inner" },
-              _vm._l(_vm.annonce.images, function(image, index) {
-                return _c(
+              {
+                staticClass: "carousel slide",
+                attrs: {
+                  id: "carouselExampleIndicators",
+                  "data-ride": "carousel"
+                }
+              },
+              [
+                _vm._m(1),
+                _vm._v(" "),
+                _c(
                   "div",
-                  {
-                    key: index,
-                    staticClass: "carousel-item",
-                    class: index === 0 ? "active" : ""
-                  },
-                  [
-                    _c("img", {
-                      staticClass: "d-block w-100",
-                      attrs: { src: _vm.imgone(image.name), alt: "First slide" }
-                    })
-                  ]
-                )
-              }),
-              0
-            ),
-            _vm._v(" "),
-            _vm._m(2),
-            _vm._v(" "),
-            _vm._m(3)
-          ]
-        ),
+                  { staticClass: "carousel-inner" },
+                  _vm._l(_vm.annonce.images, function(image, index) {
+                    return _c(
+                      "div",
+                      {
+                        key: index,
+                        staticClass: "carousel-item",
+                        class: index === 0 ? "active" : ""
+                      },
+                      [
+                        _c("img", {
+                          staticClass: "d-block w-100",
+                          attrs: {
+                            src: _vm.imgone(image.name),
+                            alt: "First slide"
+                          }
+                        })
+                      ]
+                    )
+                  }),
+                  0
+                ),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _vm._m(3)
+              ]
+            )
+          : _c("div", { staticClass: "carousel slide" }, [
+              _c("img", {
+                staticClass: "img-fullwidth",
+                attrs: { src: _vm.imgone("default.png"), alt: "" }
+              })
+            ]),
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-md-3" }, [
@@ -45468,7 +45513,7 @@ var render = function() {
               _c("span", [_vm._v("Annonceur :")]),
               _c("br"),
               _vm._v(" "),
-              _vm.annonce.user !== null
+              _vm.annonce.user !== undefined && _vm.annonce.user !== null
                 ? _c("span", [_vm._v(_vm._s(_vm.annonce.user.name))])
                 : _c("span", [_vm._v("Admin")])
             ]),
@@ -45596,7 +45641,7 @@ var staticRenderFns = [
           attrs: { "aria-hidden": "true" }
         }),
         _vm._v(" "),
-        _c("span", { staticClass: "sr-only" }, [_vm._v("Previous")])
+        _c("span", { staticClass: "sr-only" }, [_vm._v("Prev")])
       ]
     )
   },
@@ -45894,7 +45939,9 @@ var render = function() {
       _c("vue-progress-bar"),
       _vm._v(" "),
       _c("div", { staticClass: "card_annonce" }, [
-        _c("h1", { staticClass: "card__title" }, [_vm._v("add annonce")]),
+        _c("h1", { staticClass: "card__title" }, [
+          _vm._v("Ajouter une annonce")
+        ]),
         _vm._v(" "),
         _vm._m(0),
         _c("p"),
@@ -46312,8 +46359,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "card__description" }, [
-      _vm._v("hi sir make your ads more important by"),
-      _c("a", { attrs: { href: "#" } }, [_vm._v("here")])
+      _vm._v("salut monsieur rendre vos annonces plus importantes par clicker"),
+      _c("a", { attrs: { href: "#" } }, [_vm._v("ici")])
     ])
   }
 ]
@@ -46743,7 +46790,7 @@ var render = function() {
               ),
               _vm._v(" "),
               _c("h1", { staticClass: "card__title" }, [
-                _vm._v("welcome " + _vm._s(_vm.getuser.name) + " ")
+                _vm._v("Bienvenu " + _vm._s(_vm.getuser.name) + " ")
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "card__description" }, [
@@ -46766,7 +46813,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("div", { staticClass: "col-md-8" }, [
                     _c("h4", [
-                      _vm._v("Name: " + _vm._s(_vm.myprofail.data.last_name))
+                      _vm._v("Nom: " + _vm._s(_vm.myprofail.data.last_name))
                     ]),
                     _vm._v(" "),
                     _c("h4", [
@@ -46774,11 +46821,13 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("h5", [
-                      _vm._v("phone: " + _vm._s(_vm.myprofail.data.telephone))
+                      _vm._v(
+                        "Télephone: " + _vm._s(_vm.myprofail.data.telephone)
+                      )
                     ]),
                     _vm._v(" "),
                     _c("h5", [
-                      _vm._v("adresse: " + _vm._s(_vm.myprofail.data.adresse))
+                      _vm._v("Adresse: " + _vm._s(_vm.myprofail.data.adresse))
                     ])
                   ])
                 ]),
@@ -46802,11 +46851,11 @@ var render = function() {
             "h1",
             { staticClass: "text-center mt-4" },
             [
-              _vm._v("you need to \r\n    \t"),
+              _vm._v("tu dois\r\n    \t"),
               _c(
                 "router-link",
                 { staticClass: "btn btn-primary", attrs: { to: "/profil" } },
-                [_vm._v("create profail")]
+                [_vm._v("Crée votre profil")]
               )
             ],
             1
@@ -46823,7 +46872,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "col-md-3 home_stat" }, [
         _c("div", { staticClass: "stat pb" }, [
           _vm._v(
-            "\r\n            \t \t \t Total annonces pablished\r\n            \t \t \t "
+            "\r\n            \t \t \t Total annonces publié\r\n            \t \t \t "
           ),
           _c("span", [_vm._v("100")])
         ])
@@ -46841,7 +46890,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "col-md-3 home_stat" }, [
         _c("div", { staticClass: "stat bk" }, [
           _vm._v(
-            "\r\n            \t \t \t Total annonces blocked \r\n            \t \t \t "
+            "\r\n            \t \t \t Total annonces bloqué \r\n            \t \t \t "
           ),
           _c("span", [_vm._v("100")])
         ])
@@ -46850,7 +46899,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "col-md-3 home_stat" }, [
         _c("div", { staticClass: "stat com" }, [
           _vm._v(
-            "\r\n            \t \t \t Total  comments \r\n            \t \t \t "
+            "\r\n            \t \t \t Total commentaires \r\n            \t \t \t "
           ),
           _c("span", [_vm._v("100")])
         ])
@@ -46885,7 +46934,9 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "getintouch" }, [
-          _c("h1", { staticClass: "title" }, [_vm._v("update your profil")]),
+          _c("h1", { staticClass: "title" }, [
+            _vm._v("METTRE À JOUR VOTRE PROFIL")
+          ]),
           _vm._v(" "),
           _c(
             "form",
@@ -46973,7 +47024,7 @@ var render = function() {
                 _c(
                   "label",
                   { staticClass: "label", attrs: { for: "firstname" } },
-                  [_vm._v("firstname")]
+                  [_vm._v("Nom")]
                 ),
                 _vm._v(" "),
                 _vm.valdation.firstname != ""
@@ -47020,7 +47071,7 @@ var render = function() {
                 _c(
                   "label",
                   { staticClass: "label", attrs: { for: "lastname" } },
-                  [_vm._v("lastname")]
+                  [_vm._v("Prenom")]
                 ),
                 _vm._v(" "),
                 _vm.valdation.lastname != ""
@@ -47112,7 +47163,7 @@ var render = function() {
                 }),
                 _vm._v(" "),
                 _c("label", { staticClass: "label", attrs: { for: "phone" } }, [
-                  _vm._v("phone")
+                  _vm._v("Télephone")
                 ]),
                 _vm._v(" "),
                 _vm.valdation.phone != ""
@@ -50485,7 +50536,7 @@ var render = function() {
                               staticClass: "nav-link",
                               attrs: { to: "/mystore" }
                             },
-                            [_vm._v("Mes annonce")]
+                            [_vm._v("Mes annonces")]
                           )
                         ],
                         1

@@ -6,7 +6,7 @@
 	     </div>
 	 	 <div class="col-md-8">
 	 	 	     <div class="getintouch">
-                     <h1 class="title">update your profil</h1>
+                     <h1 class="title">METTRE À JOUR VOTRE PROFIL</h1>
                    <form class="form row" @submit.prevent="updateprofil">
                     <div class="form-field col-lg-6">
                        <input id="username" v-model="username" class="input-text js-input" type="text" disabled="disabled">
@@ -19,19 +19,19 @@
 
                     <div class="form-field col-lg-6">
                        <input id="firstname" class="input-text js-input" type="text" v-model="profil.firstname" />
-                       <label class="label" for="firstname">firstname</label>
+                       <label class="label" for="firstname">Nom</label>
                        <span class="text-danger" v-if="valdation.firstname !=''">
                                     <span v-for="val in valdation.firstname">
-                                        {{val}}</br>
+                                        {{val}}<br />
                                     </span>
                         </span>
                     </div>
                     <div class="form-field col-lg-6 ">
                        <input id="lastname" v-model="profil.lastname" class="input-text js-input" type="text" />
-                       <label class="label"  for="lastname">lastname</label>
+                       <label class="label"  for="lastname">Prenom</label>
                         <span class="text-danger" v-if="valdation.lastname !=''">
                                     <span v-for="val in valdation.lastname">
-                                        {{val}}</br>
+                                        {{val}}<br />
                                     </span>
                         </span>
                     </div>
@@ -40,16 +40,16 @@
                        <label class="label" for="adresse">adresse</label>
                         <span class="text-danger" v-if="valdation.adresse !=''">
                                     <span v-for="val in valdation.adresse">
-                                        {{val}}</br>
+                                        {{val}}<br />
                                     </span>
                         </span>
                     </div>
                      <div class="form-field col-lg-6 ">
                        <input id="phone" v-model="profil.phone"  class="input-text js-input" type="text" />
-                       <label class="label" for="phone">phone</label>
+                       <label class="label" for="phone">Télephone</label>
                         <span class="text-danger" v-if="valdation.phone !=''">
                                     <span v-for="val in valdation.phone">
-                                        {{val}}</br>
+                                        {{val}}<br />
                                     </span>
                         </span>
                      </div>
@@ -58,7 +58,7 @@
                            <label class="label" for="description">description</label>
                            <span class="text-danger" v-if="valdation.description !=''">
                                     <span v-for="val in valdation.description">
-                                        {{val}}</br>
+                                        {{val}}<br />
                                     </span>
                         </span>
                     </div>
@@ -106,7 +106,7 @@ import {updateprofil} from '../../helpers/auth';
         user_id:'',
         pic:''
       },
-       text:'choice one pic',
+       text:'choisire une photo',
        valdation:[],
        username:'',
        email:''

@@ -3,7 +3,7 @@
  <div class="addannonce_free" v-if="myprofail.data!=null">
        <div class="card_annonce">
        	 <router-link class="btn btn-warning float-right"  to="/profil"><i class="fa fa-edit"></i></router-link>
-            <h1 class="card__title">welcome {{getuser.name}} </h1>
+            <h1 class="card__title">Bienvenu {{getuser.name}} </h1>
             <p class="card__description">{{getuser.email}}</p>
             <hr>
             <div class="container mt-4" >
@@ -12,10 +12,10 @@
             			<img :src="imageDirectory(myprofail.data.image)" width="200" height="200">
             		</div>
             		<div class="col-md-8">
-            			 <h4>Name: {{myprofail.data.last_name}}</h4>
+            			 <h4>Nom: {{myprofail.data.last_name}}</h4>
             			 <h4>prenom: {{myprofail.data.first_name}}</h4>
-            			 <h5>phone: {{myprofail.data.telephone}}</h5>
-            			 <h5>adresse: {{myprofail.data.adresse}}</h5>
+            			 <h5>Télephone: {{myprofail.data.telephone}}</h5>
+            			 <h5>Adresse: {{myprofail.data.adresse}}</h5>
             		</div>
             	</div>
             	<h6>description: {{myprofail.data.description}}</h6>
@@ -24,7 +24,7 @@
             <div class="row">
             	 <div class="col-md-3 home_stat">
             	 	  <div class="stat pb">
-            	 	 	 Total annonces pablished
+            	 	 	 Total annonces publié
             	 	 	 <span>100</span>
             	 	  </div>
             	 </div>
@@ -36,13 +36,13 @@
             	 </div>
             	  <div class="col-md-3 home_stat">
             	 	  <div class="stat bk">
-            	 	 	 Total annonces blocked 
+            	 	 	 Total annonces bloqué 
             	 	 	 <span>100</span>
             	 	  </div>
             	 </div>
             	 <div class="col-md-3 home_stat">
             	 	  <div class="stat com">
-            	 	 	 Total  comments 
+            	 	 	 Total commentaires 
             	 	 	 <span>100</span>
             	 	  </div>
             	 </div>
@@ -50,8 +50,8 @@
        </div>
  </div>  
  <div class="container" v-else>
-   <h1 class="text-center mt-4">you need to 
-    	<router-link class="btn btn-primary" to="/profil">create profail</router-link>
+   <h1 class="text-center mt-4">tu dois
+    	<router-link class="btn btn-primary" to="/profil">Crée votre profil</router-link>
    </h1> 	
   
  </div>

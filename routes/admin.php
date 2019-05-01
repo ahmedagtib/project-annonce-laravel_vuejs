@@ -2,6 +2,7 @@
 
 
 
+
 Route::group(['prefix'=>'admin','namespace'=>'admin'],function(){
 
 Config::set('auth.defines','admin.admin');
@@ -10,7 +11,7 @@ Route::post('/login','AdminAuthController@dologin');
 Route::group(['middleware'=>'admin:admin'],function(){
   
         Route::get('/','DashbordController@index');
-        Route::any('/logout','AdminAuthController@logout');
+        Route::get('/logout','AdminAuthController@logout');
         //ville
          Route::get('ville/all','VilleController@index');
          Route::post('ville/all','VilleController@store');
@@ -41,6 +42,7 @@ Route::group(['middleware'=>'admin:admin'],function(){
          
          //end annonce
         Route::get('/{any}','DashbordController@index')->where('any','.*');
+
 
 });
 }); 

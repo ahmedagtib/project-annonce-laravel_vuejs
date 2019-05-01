@@ -21,27 +21,27 @@ import addAnnonce from './components/annonce/Model.vue'
 import EditAnnonce from './components/annonce/Edite.vue'
 
 const routes=[
-               {path:'/admin',component:Dashbord},
-              {path:'/admin/dashbord',component:Dashbord},
-              {path:'/admin/admin',component:Admin},
-               {path:"/admin/admin/edit/:id",component:AdminEdit},
-              {path: '/admin/user',component:User},
-              {path:"/admin/user/edit/:id",component:UserEdit},
-              {path:'/admin/ville',component:Ville},
-              {path:"/admin/ville/edit/:id",component:EditVille},
+               {path:'/admin',component:Dashbord,meta:{requiresAuth:true}},
+              {path:'/admin/dashbord',component:Dashbord,meta:{requiresAuth:true}},
+              {path:'/admin/admin',component:Admin,meta:{requiresAuth:true}},
+               {path:"/admin/admin/edit/:id",component:AdminEdit,meta:{requiresAuth:true}},
+              {path: '/admin/user',component:User,meta:{requiresAuth:true}},
+              {path:"/admin/user/edit/:id",component:UserEdit,meta:{requiresAuth:true}},
+              {path:'/admin/ville',component:Ville,meta:{requiresAuth:true}},
+              {path:"/admin/ville/edit/:id",component:EditVille,meta:{requiresAuth:true}},
 
-              {path:'/admin/categorie',component:Category},
-              {path:"/admin/categorie/edit/:id",component:EditCategory},
+              {path:'/admin/categorie',component:Category,meta:{requiresAuth:true}},
+              {path:"/admin/categorie/edit/:id",component:EditCategory,meta:{requiresAuth:true}},
                //start annonce
-              {path:'/admin/annonce',component:Annonce},
-              {path:'/admin/addAnnonce',component:addAnnonce},
-              {path:'/admin/annonce/edit/:id',component:EditAnnonce},
+              {path:'/admin/annonce',component:Annonce,meta:{requiresAuth:true}},
+              {path:'/admin/addAnnonce',component:addAnnonce,meta:{requiresAuth:true}},
+              {path:'/admin/annonce/edit/:id',component:EditAnnonce,meta:{requiresAuth:true}},
                
               //end annonce
 
-              {path:'/admin/comment',component:Comment},
+              {path:'/admin/comment',component:Comment,meta:{requiresAuth:true}},
 
-              {path:"*",component:Notfound},
+              {path:"*",component:Notfound,meta:{requiresAuth:true}},
 
               
               
