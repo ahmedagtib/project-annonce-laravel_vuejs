@@ -16406,7 +16406,7 @@ readers do not read off random characters that represent icons */
 }
 
 .upper_bar {
-  background-color: #2C3E50;
+  background-color: #140028 !important;
   color: #FFF;
   padding: 10px;
 }
@@ -17497,6 +17497,10 @@ footer .section-title {
     padding-bottom: 0px;
     margin-bottom: 10px;
   }
+}
+
+body.dark {
+  background: #222222 !important;
 }
 
 /* end footer*/

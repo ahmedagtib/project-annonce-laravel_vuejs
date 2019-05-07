@@ -37,6 +37,11 @@
                                         <router-link class="dropdown-item" to="/edituser">Modifier</router-link>
                                         <div class="dropdown-divider"></div>
                                         <a class="nav-link" href="#" @click.prevent="logout">Déconnexion</a>
+                                        <a class="nav-link" href="#">
+                                            <label for="mode">Mode de nuit </label>
+                                            <button @click="setDarkMode" class="btn btn-dark">Nuit</button>
+                                            <button @click="setLightMode" class="btn btn-light">Default</button>
+                                        </a>
                                     </div>
                                 </li>
 
@@ -51,17 +56,67 @@
 
 <script>
     export default {
+        data() {
+            return {
+                isDark: false
+            }
+        },
         methods: {
             logout: function () {
                 this.$store.commit('logout');
                 this.$router.push('/login');
-            }
+            },
+            changeMode() {
+                // if(this.isDark) {
+                //     document.body.className = 'dark'
+                //     this.$store.commit('setDarkMode')
+                // }else
+                //     document.body.className = ''
+                 
+                 
 
+                console.log('Store', this.$store.getters.getMode)
+            },
+            darkMode() {
+
+                console.log('if', document.body.className, 'store', this.$store.getters.getMode)
+                if(this.$store.getters.getMode == 'dark') {
+
+                    document.body.className = this.$store.getters.getMode
+                    console.log('if', document.body.className, 'store', this.$store.getters.getMode)
+                    this.$store.commit('setDarkMode')
+
+                } else {
+
+                    document.body.className = ''
+                    this.$store.commit('setWhiteMode')
+                    console.log('Else', document.body.className)
+
+                }
+
+            },
+
+            setMode() {
+                document.body.className = this.$store.getters.getMode
+            },
+            setDarkMode(e) {
+                e.preventDefault()
+                this.$store.commit('setDarkMode')
+                this.setMode()
+            },
+            setLightMode(e) {
+                e.preventDefault()
+                this.$store.commit('setWhiteMode')
+                this.setMode()
+            }
         },
         computed: {
             currentUser() {
                 return this.$store.getters.currentUser;
-            }
+            },
+        },
+        mounted() {
+            this.setMode()
         }
     }
 

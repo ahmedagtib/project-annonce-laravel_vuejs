@@ -1,7 +1,9 @@
 
 import axios from 'axios';
 import {getLocalUser} from "./helpers/auth.js";
+import {getLocalMode} from "./helpers/auth.js";
 const user=getLocalUser();
+const mode=getLocalMode();
 
 
 export default{
@@ -18,7 +20,8 @@ export default{
         villes:[],
         category:[],
         adspayhome:[],
-        adsfreehome:[],
+				adsfreehome:[],
+				mode:mode
        
 
 	},
@@ -47,6 +50,9 @@ export default{
          profil_error(state){
             return state.profil_error; 
         },
+				getMode(state){
+					 return state.mode; 
+			 },
         allville:(state)=>state.villes,
         allcategory:(state)=>state.category,
         adspayhome:(state)=>state.adspayhome,
@@ -87,10 +93,20 @@ export default{
           profilFailed(state,payload){
             state.profil_error = payload.error;
          },
+				 setDarkMode(state) {
+					 state.mode = 'dark'
+					 localStorage.setItem("Mode", state.mode);
+				 },
+				 setWhiteMode(state) {
+					state.mode = ''
+					 localStorage.removeItem("Mode");
+					 
+					 console.log('Click Light', state.mode)
+				 },
          setville:(state,villes)=>(state.villes=villes),
          setcategory:(state,category)=>(state.category=category),
          getadspay:(state,annonce)=>(state.adspayhome=annonce),
-         getadsfree:(state,annonce)=>(state.adsfreehome=annonce),
+				 getadsfree:(state,annonce)=>(state.adsfreehome=annonce),
 
 	},
 	actions:{

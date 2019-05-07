@@ -13,7 +13,7 @@ $fa-font-path:"../webfonts";
 
 //start upper_bar
 .upper_bar{
-           background-color:#2C3E50;
+           background-color:$upperBarColor;
            color: #FFF;
            padding: 10px;
 
@@ -1057,6 +1057,9 @@ footer .section-title {
     margin-bottom: 10px;
 }
 }
+
+
+@import 'dark';
 
 
 /* end footer*/

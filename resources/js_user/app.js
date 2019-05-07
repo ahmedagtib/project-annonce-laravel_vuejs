@@ -7,6 +7,7 @@ import navbar from './components/header/navbar.vue';
 import cfooter from './components/footer/cfooter.vue';
 import  axios from 'axios';
 import StoreData from './store';
+import $ from 'jquery'
 import { Form, HasError, AlertError,AlertSuccess } from 'vform'
 
 import VueProgressBar from 'vue-progressbar'
@@ -52,6 +53,7 @@ router.beforeEach((to,from,next)=>{
         next();
     }
 })
+
 export const bus=new Vue();
 const app = new Vue({
     el: '#app',
