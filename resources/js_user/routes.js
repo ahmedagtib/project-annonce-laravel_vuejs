@@ -2,7 +2,7 @@ import VueRoute from 'vue-router';
 import Homepage from './components/home/homepage';
 import annonce from './components/annonce/annonce.vue';
 import adsDetailles from './components/annonce/AnnonceDetaile.vue';
-import AnnonceStore from './components/annonce/AnnonceStore.vue';
+import AnnonceStore from './components/annonce/Annonces.vue';
 import Detaile from './components/annonce/AnnonceDetaile.vue';
 import login from './components/auth/login.vue';
 import Register from './components/auth/register.vue';

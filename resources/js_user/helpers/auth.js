@@ -18,6 +18,15 @@ export function getLocalUser(){
 	return JSON.parse(userStr);
 }
 
+export function getLocalMode(){
+	const mode =localStorage.getItem("Mode");
+	if(!mode){
+        return null;
+        console.log('Mode in if',mode)
+    }
+    console.log('mode out if',mode)    
+	return mode;
+}
 export function registerUser(credentials){
     return new Promise((res,rej)=>{
         axios.post('/api/auth/register',credentials)

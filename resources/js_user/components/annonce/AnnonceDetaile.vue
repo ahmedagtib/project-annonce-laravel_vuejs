@@ -1,97 +1,161 @@
 <template>
-    <div class="bg">
-        <div class="container card_annonce_ui">
+    <div class="content_wrapper">
+        <div class="container details">
 
-            <vue-progress-bar></vue-progress-bar>
-            <div class="row">
-                <div class="col-md">
-                    <div class="text-left">
-                        <span class="text-danger"><i class="fa fa-heart fa-2x"></i><br>123</span>
-                    </div>
-                </div>
-                <div class="col-md">
-                    <div class="text-right">
-                        <span class="text-primary"><i class="fa fa-comment fa-2x"></i><br>120 Dh</span>
-                    </div>
-                </div>
-            </div>
-            <h1 class="card__title">{{ annonce.title }}</h1>
-            <div v-if="annonce.images != ''" id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div v-for="(image, index) in annonce.images" :key="index" class="carousel-item"
-                        :class="(index === 0) ? 'active':''">
-                        <img class="d-block w-100" :src="imgone(image.name)" alt="First slide">
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Prev</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-            <div v-else class="carousel slide">
-                <img :src="imgone('default.png')" class="img-fullwidth" alt="">
-            </div>
-            <!-- Slide -->
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="mt-2">
-                        <span>Annonceur :</span><br>
-                        <span v-if="annonce.user !== undefined && annonce.user !== null">{{ annonce.user.name }}</span>
-                        <span v-else>Admin</span>
-                    </div>
-                    <table class="table mt-4">
-                        <tr>
-                            <td>ville</td>
-                            <td>category</td>
-                        </tr>
-                        <tr>
-                            <td v-if="annonce.ville !== undefined">{{ annonce.ville.name }}</td>
-                            <td v-if="annonce.categorie !== undefined">{{ annonce.categorie.name }}</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="col-md-9">
-                    <h5 class="mt-2">description</h5>
-                    <p class="load">
-                        {{ annonce.description }}
-                    </p>
-                    <h5 class="mt-2">detaille</h5>
-                    <p class="load">
-                        {{ annonce.detaille }}
-                    </p>
-                </div>
-            </div>
-            <hr>
-            <div>
-                <commentmain />
-            </div>
+            <div id="map" style="height:/* 45*/0px"></div>
 
-            <hr>
 
+            <div class="row pv-50">
+                <div class="col-md-8">
+
+                    <div class="detail-header clearfix">
+
+                        <div class="detail-header-name">
+                            <h3 class="mb-0">{{ annonce.title }}</h3>
+                            <span class="location"><i class="fa fa-map-marker mr-1 text-danger">
+                                </i>{{ annonce.ville.name }}</span>
+                        </div>
+                        <div class="detail-header-price">
+                            <span class="price">{{ annonce.prix }}<span>DH</span></span>
+                        </div>
+                        <!-- <div class="detail-header-review">
+                            <i class="fa fa-bookmark-o"></i>
+                            <span><i class="fa fa-eye"></i>234</span>
+                        </div> -->
+                    </div>
+                    <!-- End details slider
+               
+          -->
+                    <Slider>
+
+                        <!-- Indecator -->
+                        <template v-slot:indecator>
+                            <li v-for="(image, index) in annonce.images" :key="index"
+                                data-target="#carouselExampleIndicators" :class="index == 0 ? 'active' : ''"
+                                :data-slide-to="index">
+                                <img :src="imgone(image.name)" alt="Detailts">
+                            </li>
+                        </template>
+
+                        <!-- Images -->
+                        <template v-slot:inner>
+                            <div v-for="(image, index) in annonce.images" :key="index" class="carousel-item"
+                                :class="index == 0 ? 'active' : ''">
+                                <img class="d-block w-100 active" :src="imgone(image.name)">
+                            </div>
+                        </template>
+                    </Slider>
+                    <!-- End details slider -->
+                    <ul class="nav nav-tabs mt-20" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                aria-controls="home" aria-selected="true">Overview</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="Reviews-tab" data-toggle="tab" href="#Reviews" role="tab"
+                                aria-controls="Reviews" aria-selected="false">Commentaire</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                                aria-controls="contact" aria-selected="false"><i class="fa fa-map-marker"></i> Map</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <p>{{ annonce.detaille }}</p>
+
+                            <p>{{ annonce.description }}</p>
+                        </div>
+                        <div class="tab-pane fade" id="Reviews" role="tabpanel" aria-labelledby="Reviews-tab">
+                            <h3>Commnontaire</h3>
+
+                            <commentmain />
+                        </div>
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                            <div id="demoMap" class="mx-auto" style="height: 450px; width:100%; "></div>
+                        </div>
+                    </div><!-- End tab-content -->
+                </div>
+                <div class="col-md-4 mt-10">
+                    <div class="sidebar">
+                        <!-- <div class="sidebar-item mb-20">
+								<div class="lp-box">
+									<i class="text-info fa fa-quote-left"></i>
+									<p class="no-mb">Excited him now natural saw passage offices you minuter. At by asked being court hopes. Farther so friends am to detract. Forbade concern do private be.</p>
+									<cite class="text-info"><strong>Robert Johnson</strong> from Canada</cite>
+								</div>
+							</div> -->
+
+                        <div class="sidebar-item mb-20">
+                            <div class="lp-box">
+                                <i class="text-info fa fa-phone-square"></i>
+                                <h4>Need Assistance?</h4>
+                                <p>Our team is 24/7 at your service to help you with your booking issues or answer any
+                                    related questions
+                                </p>
+                                <span class="text-info font24">+1900 12 213 21</span>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-item listing mb-20">
+                            <div class="row">
+                                <div class="col-12 ph-5">
+                                    <div class="list-group mb-10">
+                                        <a href="" class="list-group-item list-group-item-action ">
+                                            <div class="list-img">
+                                                <img src="/assets/images/sliders/list.jpg" alt="Card image cap">
+                                                <div class="image-overlay">
+                                                    <div class="overlay-content">
+                                                        <div class="overlay-icon"><i class="fa fa-camera"></i></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="list-content">
+                                                <h4 class="list-item-title">Tite</h4>
+                                                <span class="list-item-date text-muted">Titre </span>
+                                                <span class="list-item-price">200<span>DH</span></span>
+                                                <span class="list-item-view"><i class="fa fa-eye"></i>267</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-12 ph-5">
+                                    <div class="list-group mb-10">
+                                        <a href="" class="list-group-item list-group-item-action ">
+                                            <div class="list-img">
+                                                <img src="/assets/images/sliders/list1.jpg" alt="Card image cap">
+                                                <div class="image-overlay">
+                                                    <div class="overlay-content">
+                                                        <div class="overlay-icon"><i class="fa fa-camera"></i></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="list-content">
+                                                <h4 class="list-item-title">Titre 2</h4>
+                                                <span class="list-item-date text-muted">Titre </span>
+                                                <span class="list-item-price">200<span>DH</span></span>
+                                                <span class="list-item-view"><i class="fa fa-eye"></i>267</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
+    </div><!-- end content_wrapper -->
 </template>
 <script type="text/javascript">
-    import {
-        Carousel3d,
-        Slide
-    } from 'vue-carousel-3d';
-
     import commentmain from '../comments/commentmain.vue'
+    import Slider from '../Slider'
     export default {
         components: {
             commentmain,
-            Carousel3d,
-            Slide
+            Slider
         },
         data() {
             return {
@@ -114,10 +178,10 @@
                             this.$data.annonce = res.data.data[0];
                             this.annonce = res.data.data[0];
                             this.idannonce = res.data.data[0].id;
-                            console.log('Images Null ?',this.annonce.images === null)
-                            console.log('Images undefined ?',this.annonce.images === undefined)
-                            console.log('Images Lenght',this.annonce.images.length)
-                            console.log('Images [',this.annonce.images === [])
+                            console.log('Images Null ?', this.annonce.images === null)
+                            console.log('Images undefined ?', this.annonce.images === undefined)
+                            console.log('Images Lenght', this.annonce.images.length)
+                            console.log('Images [', this.annonce.images === [])
                             this.$Progress.finish()
                         } else {
                             console.log('no')
@@ -139,11 +203,6 @@
             this.getAnnonce()
         },
         updated() {
-            
-            console.log('Images null ? Updated',this.annonce.images == null)
-            console.log('Images undefined ? Updated',this.annonce.images == undefined)
-            console.log('Images lenght Updated',this.annonce.images.length)
-            console.log('Images [] Updated',this.annonce.images == '')
         }
         /*
        computed:{
@@ -166,41 +225,9 @@
     }
 
 </script>
-<style scoped>
-    .bg {
-
-        background: linear-gradient(to top right, #2C3E50, rgba(222, 185, 224, 0), rgba(44, 62, 80, 0));
-        height: 100%;
-        width: 100%;
-        padding-bottom: 2%;
-
+<style lang="scss" scoped>
+    @import 'annoncesStore';
+    .carousel-control-next {
+        height: 100% !important;
     }
-
-    .text-primary {
-        color: #2c3e50 !important;
-    }
-
-    .btn-primary {
-        color: #fff;
-        background-color: #2c3e50;
-        border-color: #2c3e50;
-    }
-
-
-
-    .card_annonce_ui {
-        width: 60%;
-        margin: 2% auto;
-        margin-bottom: 0;
-        padding: 2% 5%;
-        border-radius: 10px;
-        box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
-        background-color: #ffffff;
-        font-family: sans-serif;
-        opacity: 0.8;
-
-    }
-
-    /* Slide */
-
 </style>
