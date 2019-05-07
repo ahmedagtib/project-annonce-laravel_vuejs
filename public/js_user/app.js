@@ -2644,13 +2644,15 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     this.user.id = this.$store.getters.currentUser.id;
     this.getprofail();
+    this.getcountinfo();
   },
   data: function data() {
     return {
       user: {
         id: ''
       },
-      myprofail: {}
+      myprofail: {},
+      count: {}
     };
   },
   methods: {
@@ -2667,6 +2669,13 @@ __webpack_require__.r(__webpack_exports__);
         data: this.user
       }).then(function (response) {
         _this.myprofail = response.data;
+      });
+    },
+    getcountinfo: function getcountinfo() {
+      var _this2 = this;
+
+      axios.get('/api/auth/getinfo/' + this.$store.getters.currentUser.id).then(function (res) {
+        _this2.count = res.data;
       });
     }
   },
@@ -46841,7 +46850,43 @@ var render = function() {
               _vm._v(" "),
               _c("hr"),
               _vm._v(" "),
-              _vm._m(0)
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-3 home_stat" }, [
+                  _c("div", { staticClass: "stat pb" }, [
+                    _vm._v(
+                      "\r\n            \t \t \t Total annonces publié\r\n            \t \t \t "
+                    ),
+                    _c("span", [_vm._v(_vm._s(_vm.count.annoncepublished))])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-3 home_stat" }, [
+                  _c("div", { staticClass: "stat pd" }, [
+                    _vm._v(
+                      "\r\n            \t \t \t Total annonces panddeing\r\n            \t \t \t "
+                    ),
+                    _c("span", [_vm._v(_vm._s(_vm.count.annoncepandding))])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-3 home_stat" }, [
+                  _c("div", { staticClass: "stat bk" }, [
+                    _vm._v(
+                      "\r\n            \t \t \t Total annonces bloqué \r\n            \t \t \t "
+                    ),
+                    _c("span", [_vm._v(_vm._s(_vm.count.annonceblocked))])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-3 home_stat" }, [
+                  _c("div", { staticClass: "stat com" }, [
+                    _vm._v(
+                      "\r\n            \t \t \t Total commentaires \r\n            \t \t \t "
+                    ),
+                    _c("span", [_vm._v(_vm._s(_vm.count.comment))])
+                  ])
+                ])
+              ])
             ],
             1
           )
@@ -46863,50 +46908,7 @@ var render = function() {
         ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-3 home_stat" }, [
-        _c("div", { staticClass: "stat pb" }, [
-          _vm._v(
-            "\r\n            \t \t \t Total annonces publié\r\n            \t \t \t "
-          ),
-          _c("span", [_vm._v("100")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3 home_stat" }, [
-        _c("div", { staticClass: "stat pd" }, [
-          _vm._v(
-            "\r\n            \t \t \t Total annonces panddeing\r\n            \t \t \t "
-          ),
-          _c("span", [_vm._v("100")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3 home_stat" }, [
-        _c("div", { staticClass: "stat bk" }, [
-          _vm._v(
-            "\r\n            \t \t \t Total annonces bloqué \r\n            \t \t \t "
-          ),
-          _c("span", [_vm._v("100")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3 home_stat" }, [
-        _c("div", { staticClass: "stat com" }, [
-          _vm._v(
-            "\r\n            \t \t \t Total commentaires \r\n            \t \t \t "
-          ),
-          _c("span", [_vm._v("100")])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -69986,7 +69988,7 @@ var user = Object(_helpers_auth_js__WEBPACK_IMPORTED_MODULE_2__["getLocalUser"])
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\wamp64\www\project-annonce-laravel_vuejs - test\resources\js_user\app.js */"./resources/js_user/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\anonnce_smartove\resources\js_user\app.js */"./resources/js_user/app.js");
 
 
 /***/ })

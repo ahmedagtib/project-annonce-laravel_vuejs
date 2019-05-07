@@ -25,25 +25,25 @@
             	 <div class="col-md-3 home_stat">
             	 	  <div class="stat pb">
             	 	 	 Total annonces publié
-            	 	 	 <span>100</span>
+            	 	 	 <span>{{count.annoncepublished}}</span>
             	 	  </div>
             	 </div>
             	 <div class="col-md-3 home_stat">
             	 	  <div class="stat pd">
             	 	 	 Total annonces panddeing
-            	 	 	 <span>100</span> 
+            	 	 	 <span>{{count.annoncepandding}}</span> 
             	 	  </div>
             	 </div>
             	  <div class="col-md-3 home_stat">
             	 	  <div class="stat bk">
             	 	 	 Total annonces bloqué 
-            	 	 	 <span>100</span>
+            	 	 	 <span>{{count.annonceblocked}}</span>
             	 	  </div>
             	 </div>
             	 <div class="col-md-3 home_stat">
             	 	  <div class="stat com">
             	 	 	 Total commentaires 
-            	 	 	 <span>100</span>
+            	 	 	 <span>{{count.comment}}</span>
             	 	  </div>
             	 </div>
             </div>  
@@ -63,11 +63,14 @@
 	 created(){
        this.user.id=this.$store.getters.currentUser.id;
        this.getprofail();
+       this.getcountinfo();
+
       },
        data(){
        	return{
        		   user:{id:''},
-               myprofail:{}
+               myprofail:{},
+               count:{}
        	     }
        },
        methods:{
@@ -83,6 +86,12 @@
                         this.myprofail = response.data;
                        
                    });
+            },
+            getcountinfo(){
+              axios.get('/api/auth/getinfo/'+this.$store.getters.currentUser.id).
+              then((res)=>{
+                this.count=res.data;
+              })
             }
         },
         computed:{

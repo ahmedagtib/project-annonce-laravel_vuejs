@@ -9,7 +9,9 @@ Config::set('auth.defines','admin.admin');
 Route::get('/login','AdminAuthController@login');
 Route::post('/login','AdminAuthController@dologin');
 Route::group(['middleware'=>'admin:admin'],function(){
-  
+        //dashbord
+        Route::get('/getnumberannonce','DashbordController@getnumberannonce');
+        Route::get('/getnumberads','DashbordController@getnumberads');
         Route::get('/','DashbordController@index');
         Route::get('/logout','AdminAuthController@logout');
         //ville

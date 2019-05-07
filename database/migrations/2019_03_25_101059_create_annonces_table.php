@@ -21,9 +21,9 @@ class CreateAnnoncesTable extends Migration
             $table->string('slug')->unique()->nullable();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->string('detaille');
+            $table->string('detaille'); //
             $table->enum('type',['free','pay'])->default('free');
-            $table->enum('stuts',['published','pandding','blocked'])->default('pandding');
+            $table->enum('stuts',['published','pandding','blocked'])->default('pandding');//
             $table->float('prix');
             $table->timestamps();
         });

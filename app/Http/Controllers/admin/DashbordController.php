@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Ville,App\Categorie,App\Annonce,App\ImageAnnonce,App\Comment,App\Profile,App\User;
 class DashbordController extends Controller
 {
     /**
@@ -15,6 +15,31 @@ class DashbordController extends Controller
     public function index()
     {
         return View('admin.dashbord');
+    }
+    public function getnumberannonce(){
+       
+             $annoncepublished=Annonce::Where('stuts','=','published')->count();
+             $annoncepandding=Annonce::Where('stuts','=','pandding')->count();
+             $annonceblocked=Annonce::Where('stuts','=','blocked')->count();
+             $comment=Comment::count();
+             return response()->json(['annoncepublished'=>$annoncepublished,
+                                      'annoncepandding'=>$annoncepandding,
+                                       'annonceblocked'=>$annonceblocked,
+                                       'comment'=>$comment
+                                     ]);  
+          
+    }
+     public function getnumberads(){
+       
+             $annoncepublished=Annonce::Where('stuts','=','published')->count();
+             $annoncepandding=Annonce::Where('stuts','=','pandding')->count();
+             $annonceblocked=Annonce::Where('stuts','=','blocked')->count();
+             return response()->json(['annoncepublished'=>$annoncepublished,
+                                      'annoncepandding'=>$annoncepandding,
+                                       'annonceblocked'=>$annonceblocked,
+                                       
+                                     ]);  
+          
     }
     /**
      * Show the form for creating a new resource.

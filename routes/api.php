@@ -23,6 +23,7 @@ Route::group(['prefix' => 'auth','namespace'=>'api'], function ($router) {
     Route::post('me', 'AuthController@me');
     Route::post('userstore/', 'AnnonceController@userstore');
      Route::post('getprofail', 'AnnonceController@getprofail');
+     Route::get('getinfo/{id}','dashbordController@info');
 
 });
 Route::group(['namespace'=>'api'], function ($router) {

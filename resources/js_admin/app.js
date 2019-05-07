@@ -11,7 +11,11 @@ import StoreData from './store'
 
 const location = window.location.href
 const r = location.split('/')
-
+// vue-charts package
+import 'chart.js';
+import 'hchs-vue-charts';
+Vue.use(window.VueCharts);
+ 
 const options = {
   color: '#bffaf3',
   failedColor: '#874b4b',

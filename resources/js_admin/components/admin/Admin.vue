@@ -138,6 +138,8 @@
     }
 
 </script>
-<style type="text/css">
-
+<style scoped>
+i{
+    color:#FFF;
+}
 </style>
