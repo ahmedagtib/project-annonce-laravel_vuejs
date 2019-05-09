@@ -5,7 +5,7 @@
     <div class="col-12 ph-5">
         <div class="list-group shadow mb-10">
             <div class="list-group-item list-group-item-action ">
-                <router-link :to="'/annonce/' + data.slug">
+                <router-link @click.native="force" :to="'/annonce/' + data.slug" :key="$route.fullPath">
                     <div class="list-img">
                         <img v-if="data.images[0] !== undefined" :src="imageDirectory(data.images[0].name)"
                             alt="Card image cap">
@@ -57,9 +57,11 @@
                 return '/image/annonce/' + name
 
             },
+            force() {
+                this.$emit('routerlinkClick');
+            },
         },
         mounted() {
-            console.log('Data', this.data)
         }
     }
 

@@ -32,6 +32,7 @@ Route::group(['middleware'=>'admin:admin'],function(){
          Route::post('Annonce/add', 'AnonnceController@saveAnnonce');
          Route::get('Annonce/single/{id}', 'AnonnceController@getAnnonce');
          Route::post('Annonce/update', 'AnonnceController@update');
+         Route::post('Annonce/Test', 'AnonnceController@Test');
 
          //admin
          Route::get('admin/all','AdminController@index');

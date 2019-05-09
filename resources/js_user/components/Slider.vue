@@ -1,9 +1,9 @@
 <template>
 
-    <div class="detail-slider">
+    <div class="detail-slider" ref="detail">
 
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
+            <ol class="carousel-indicators" ref="indecator">
 
               <slot name="indecator"></slot>
 
@@ -27,16 +27,39 @@
 </template>
 
 <script>
-    import $ from 'jquery'
     export default {
+        data() {
+          return {
+            slider: {
+              padding: 0
+            },
+            indecator: {
+              height: 0
+            }
+          }
+        },
         props: {
           
+        },
+        methods: {
+            matchLayout() {
+
+              // this.slider.padding = window.getComputedStyle(this.$refs.detail).paddingBottom getPropertyValue
+              this.slider.padding = this.$refs.indecator.getBoundingClientRect()
+              this.$refs.indecator.style.height = this.slider.padding
+              this.$refs.indecator.style.bottom = this.slider.padding
+              console.log(this.slider)
+            }
+        },
+        mounted() {
+
+            this.matchLayout()
+
+        },
+        updated() {
+
         }
     }
-
-    $(function () {
-        console.log('I\'m Jquery I\'m')
-    })
 
 </script>
 
@@ -52,6 +75,8 @@
     padding-bottom: 70px !important;
   }
   .carousel-indicators {
-      bottom: -72px !important;
+    bottom: -60px !important
+  }
+  .carousel-indicators {
   }
 </style>

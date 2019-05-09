@@ -2642,6 +2642,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
+var rest = function rest() {
+  return {
+    villes: {},
+    categorys: {},
+    form: new Form({
+      user_id: 0,
+      ville_id: -1,
+      categorie_id: -1,
+      title: '',
+      description: '',
+      detaille: '',
+      type: '',
+      stuts: '',
+      prix: '',
+      images: []
+    }),
+    imageEnd: false,
+    imageRest: 6
+  };
+};
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     draggable: vuedraggable__WEBPACK_IMPORTED_MODULE_0___default.a
@@ -2698,19 +2720,19 @@ __webpack_require__.r(__webpack_exports__);
         }]
       }).then(function (_ref3) {
         var data = _ref3.data;
-        console.log('DATA : ', data);
 
+        // console.log('DATA : ', data)
         _this3.$Progress.finish();
+
+        Object.assign(_this3.$data, rest()); // console.log(this.data)
       }).catch(function () {
         _this3.$Progress.fail();
-      });
-      console.log(this.form.images);
+      }); // console.log(this.form.images)
     },
     pushFile: function pushFile(e) {
       var _this4 = this;
 
-      console.log('Image Rest Before', this.imageRest);
-
+      // console.log('Image Rest Before', this.imageRest)
       if (e.target.files.length > 0) {
         if (this.form.images.length < 6) {
           var file = e.target.files[0];
@@ -2723,22 +2745,20 @@ __webpack_require__.r(__webpack_exports__);
             });
 
             _this4.imageRest--;
-          };
+          }; // console.log('It\'s working...', e.target.value)
 
-          console.log('It\'s working...', e.target.value);
+
           reader.readAsDataURL(file);
         }
       }
 
       if (this.imageRest == 1) {
-        console.log('Before ', this.imageEnd);
-        this.imageEnd = true;
-        console.log('After ', this.imageEnd);
-      }
+        // console.log('Before ',this.imageEnd)
+        this.imageEnd = true; // console.log('After ',this.imageEnd)
+      } // console.log('Image Rest After', this.imageRest)
 
-      console.log('Image Rest After', this.imageRest);
-      e.target.value = '';
-      console.log('It\'s not working...', e.target.value);
+
+      e.target.value = ''; // console.log('It\'s not working...',e.target.value)
     },
     remove: function remove(img, i) {
       this.form.images.splice(i, 1);
@@ -2749,8 +2769,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
-  updated: function updated() {
-    console.log(this.form.images);
+  updated: function updated() {// console.log(this.form.images)
   },
   created: function created() {
     this.getVilles();
@@ -7804,7 +7823,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n    \r\n/** Start Custom Input File */\n.pic{\r\n        display: none;\n}\n.newbtn{\r\n        cursor: pointer;\r\n        max-height: 130px;\r\n        max-width: 130px;\r\n        overflow: hidden;\n}\n.newbtn button[type='button'] {\r\n        right:20px;\r\n        top:0\n}\n.newbtn img {\r\n        max-width: 100%;\n}\r\n\r\n\r\n/** End Custom Input File */\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n    \r\n/** Start Custom Input File */\n.pic{\r\n        display: none;\n}\n.newbtn{\r\n        cursor: pointer;\r\n        max-height: 130px;\r\n        max-width: 130px;\r\n        overflow: hidden;\n}\n.newbtn button[type='button'] {\r\n        right:20px;\r\n        top:0\n}\n.newbtn img {\r\n        max-width: 100%;\n}\r\n\r\n\r\n/** End Custom Input File */\r\n", ""]);
 
 // exports
 

@@ -37,6 +37,7 @@ Route::group(['namespace'=>'api'], function ($router) {
   Route::get('annonce/single/{slug}', 'AnnonceController@getAnnonceBySlug');
 
   Route::get('Annoncebyslug/{slug}','AnnonceController@byslug');
+  Route::get('annonce/{category_id}/{ignore}','AnnonceController@getSiller');
   Route::post('comment','AnnonceController@postcomment');
   Route::get('commentuser/{id}','AnnonceController@allcommentaboutpost');
    

@@ -1,5 +1,6 @@
 <template>
     <div class="content_wrapper">
+        <vue-progress-bar></vue-progress-bar>
         <div class="container details">
 
             <div id="map" style="height:/* 45*/0px"></div>
@@ -12,8 +13,9 @@
 
                         <div class="detail-header-name">
                             <h3 class="mb-0">{{ annonce.title }}</h3>
-                            <span class="location"><i class="fa fa-map-marker mr-1 text-danger">
-                                </i>{{ annonce.ville.name }}</span>
+                            <span class="location" v-if="annonce.ville != undefined"><i
+                                    class="fa fa-map-marker mr-1 text-danger">
+                                </i>{{ annonce.ville.id }}</span>
                         </div>
                         <div class="detail-header-price">
                             <span class="price">{{ annonce.prix }}<span>DH</span></span>
@@ -33,7 +35,7 @@
                             <li v-for="(image, index) in annonce.images" :key="index"
                                 data-target="#carouselExampleIndicators" :class="index == 0 ? 'active' : ''"
                                 :data-slide-to="index">
-                                <img :src="imgone(image.name)" alt="Detailts">
+                                <img :src="imgone(image.name)" alt="Detailts" width="60" height="60">
                             </li>
                         </template>
 
@@ -76,7 +78,7 @@
                         </div>
                     </div><!-- End tab-content -->
                 </div>
-                <div class="col-md-4 mt-10">
+                <div class="col-md-4">
                     <div class="sidebar">
                         <!-- <div class="sidebar-item mb-20">
 								<div class="lp-box">
@@ -99,46 +101,9 @@
 
                         <div class="sidebar-item listing mb-20">
                             <div class="row">
-                                <div class="col-12 ph-5">
-                                    <div class="list-group mb-10">
-                                        <a href="" class="list-group-item list-group-item-action ">
-                                            <div class="list-img">
-                                                <img src="/assets/images/sliders/list.jpg" alt="Card image cap">
-                                                <div class="image-overlay">
-                                                    <div class="overlay-content">
-                                                        <div class="overlay-icon"><i class="fa fa-camera"></i></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-content">
-                                                <h4 class="list-item-title">Tite</h4>
-                                                <span class="list-item-date text-muted">Titre </span>
-                                                <span class="list-item-price">200<span>DH</span></span>
-                                                <span class="list-item-view"><i class="fa fa-eye"></i>267</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-12 ph-5">
-                                    <div class="list-group mb-10">
-                                        <a href="" class="list-group-item list-group-item-action ">
-                                            <div class="list-img">
-                                                <img src="/assets/images/sliders/list1.jpg" alt="Card image cap">
-                                                <div class="image-overlay">
-                                                    <div class="overlay-content">
-                                                        <div class="overlay-icon"><i class="fa fa-camera"></i></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="list-content">
-                                                <h4 class="list-item-title">Titre 2</h4>
-                                                <span class="list-item-date text-muted">Titre </span>
-                                                <span class="list-item-price">200<span>DH</span></span>
-                                                <span class="list-item-view"><i class="fa fa-eye"></i>267</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
+
+                                <Annonce @routerlinkClick="routerlinkClick" v-for="annonce in similarAnnonce"
+                                    :key="annonce.id" :data="annonce"></Annonce>
 
                             </div>
                         </div>
@@ -152,40 +117,53 @@
 <script type="text/javascript">
     import commentmain from '../comments/commentmain.vue'
     import Slider from '../Slider'
+    import Annonce from '../Annonce'
+    import Vue from 'Vue'
+    import $ from 'jquery'
+
+    let resrtData = () => {
+        return {
+            annonce: {},
+            slug: '',
+            idannonce: '',
+            similarAnnonce: []
+        }
+    }
     export default {
         components: {
             commentmain,
-            Slider
+            Slider,
+            Annonce
         },
         data() {
             return {
                 annonce: {},
                 slug: '',
-                idannonce: ''
+                idannonce: '',
+                similarAnnonce: []
             }
         },
         methods: {
             imgone(imageName) {
                 return '/image/annonce/' + imageName
             },
-
             getAnnonce() {
-
+                
+                const slugr = this.$route.params.slug;
+                this.slug = slugr;                
                 this.$Progress.start()
                 axios.get('/api/Annoncebyslug/' + this.slug)
                     .then((res) => {
                         if (res.data.stuts === 'ok') {
-                            this.$data.annonce = res.data.data[0];
+                            // this.$data.annonce = res.data.data[0];
                             this.annonce = res.data.data[0];
                             this.idannonce = res.data.data[0].id;
-                            console.log('Images Null ?', this.annonce.images === null)
-                            console.log('Images undefined ?', this.annonce.images === undefined)
-                            console.log('Images Lenght', this.annonce.images.length)
-                            console.log('Images [', this.annonce.images === [])
+                            // console.log('Images Null ?', this.annonce.images === null)
+                            // console.log('Images undefined ?', this.annonce.images === undefined)
+                            // console.log('Images Lenght', this.annonce.images.length)
+                            // console.log('Images [', this.annonce.images === [])
                             this.$Progress.finish()
                         } else {
-                            console.log('no')
-
                             this.$Progress.fail()
                         }
                     }).catch(() => {
@@ -193,41 +171,44 @@
 
                     })
             },
+            routerlinkClick() {
+                // this.renderComponent = true;
+                this.getAnnonce()
+                // console.log('click Parent')
+            },
+            getRandomOnTheSameCat() {
+                let category_id = this.annonce.categorie_id
+                let ignore = this.annonce.id
+                // console.log('annonce',this.annonce)
+                axios.get('/api/annonce/' + category_id + '/' + ignore).then((res) => {
+                    // console.log('similler',res)
+                    this.similarAnnonce = res.data
+                })
 
+            },
 
 
         },
         mounted() {
-            const slugr = this.$route.params.slug;
-            this.slug = slugr;
             this.getAnnonce()
         },
-        updated() {
-        }
-        /*
-       computed:{
-         currentUser(){
-              this.commentpost.user_id=this.$store.getters.currentUser.id;
-              return this.$store.getters.currentUser;  
-         },
-         
-      getcomment(){
-           axios.get('/api/commentuser/'+this.idannonce).then((res)=>{
-            if(res.data.state==='yes'){
-                   this.comments=res.data.data;
-                   console.log(res.data.data);
-             }  
-           })
-                        
-          }
-       }
-       */
-    }
+        created() {
+            // this.jquery()
+        },
+        watch: {
 
+            annonce() {
+                this.getRandomOnTheSameCat()
+            }
+            
+        }
+    }
 </script>
 <style lang="scss" scoped>
     @import 'annoncesStore';
+
     .carousel-control-next {
         height: 100% !important;
     }
+
 </style>
