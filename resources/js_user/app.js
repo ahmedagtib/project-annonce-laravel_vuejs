@@ -41,6 +41,8 @@ Vue.use(VueProgressBar, options)
 
 Vue.use(Vuex);
 
+
+
 const store = new Vuex.Store(StoreData);
 router.beforeEach((to,from,next)=>{
     const requiresAuth=to.matched.some(record=>record.meta.requiresAuth);

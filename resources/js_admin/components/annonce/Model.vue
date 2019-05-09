@@ -97,6 +97,28 @@
 
 <script>
     import draggable from 'vuedraggable'
+
+    const rest = () => {
+        return {
+            villes:{},
+            categorys:{},
+            form: new Form({
+                user_id:0,
+                ville_id:-1,
+                categorie_id:-1,
+                title:'',
+                description:'',
+                detaille:'',
+                type:'',
+                stuts:'',
+                prix:'',
+                images: []
+            }),
+            imageEnd: false,
+            imageRest: 6
+        }
+    }
+
     export default {
         components: {
             draggable
@@ -141,15 +163,17 @@
                     return objectToFormData(data)
                 }],
                 }).then(({ data }) => {
-                    console.log('DATA : ', data)
+                    // console.log('DATA : ', data)
                     this.$Progress.finish()
+                     Object.assign(this.$data, rest())
+                    // console.log(this.data)
                 }).catch(() => {
                     this.$Progress.fail()
                 })
-                console.log(this.form.images)
+                // console.log(this.form.images)
             },
             pushFile (e) {
-                console.log('Image Rest Before', this.imageRest)
+                // console.log('Image Rest Before', this.imageRest)
 
                 if (e.target.files.length > 0) {
                     if(this.form.images.length < 6) {
@@ -160,24 +184,24 @@
                             this.form.images.push({ img:reader.result, isMain: 0 })
                             this.imageRest--
                         }
-                        console.log('It\'s working...', e.target.value)
+                        // console.log('It\'s working...', e.target.value)
                         reader.readAsDataURL(file)
                     }
                 }
 
                 if (this.imageRest == 1) {
 
-                    console.log('Before ',this.imageEnd)
+                    // console.log('Before ',this.imageEnd)
                     this.imageEnd = true
-                    console.log('After ',this.imageEnd)
+                    // console.log('After ',this.imageEnd)
 
 
                 }
 
-                console.log('Image Rest After', this.imageRest)
+                // console.log('Image Rest After', this.imageRest)
 
                 e.target.value = ''
-                console.log('It\'s not working...',e.target.value)
+                // console.log('It\'s not working...',e.target.value)
 
 
             },
@@ -190,7 +214,7 @@
             }
         },
         updated() {
-            console.log(this.form.images)
+            // console.log(this.form.images)
         },
         created() {
             this.getVilles();

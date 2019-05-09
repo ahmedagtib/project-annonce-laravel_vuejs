@@ -53,7 +53,8 @@ class AnonnceController extends Controller
         foreach ($r->images as $key => $image) {
             //Upload image to the server
             $name = time() . $key . '.' . explode('/', explode(';', $image['img'])[0])[1];
-            image::make($image['img'])->save(public_path('image/annonce/') . $name);
+            image::make($image['img'])->resize(300, 200)->save(public_path('image/annonce/') . $name);
+            // $img->resize(300, 200);
             $r->merge(['images[]' => $name]);
             // Save Image to database
             $Annonce->images()->save(new ImageAnnonce(['name' => $name, 'isMain' => $image['isMain']]));
@@ -71,7 +72,9 @@ class AnonnceController extends Controller
             return ['message' => 'error'];
         }
     }
-
+    public function Test(Request $r) {
+        return Request()->all();
+    }
     public function getAnnonce($id)
     {
         $annonce = Annonce::where('id', $id)->with(['images' => function ($q) {

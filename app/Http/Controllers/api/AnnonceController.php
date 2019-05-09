@@ -134,7 +134,7 @@ class AnnonceController extends Controller
 
         $Annonce = Annonce::where('slug', '=', $slug)->with(['images', 'categorie', 'ville', 'user'])->get();
 
-        return response()->json(['stuts' => 'ok', 'data' =>$Annonce]);
+        return response()->json(['stuts' => 'ok', 'data' => $Annonce]);
 
     }
 
@@ -228,6 +228,18 @@ class AnnonceController extends Controller
         }
     }
 
-   
+
+    public function getSiller(Request $request, $category_id, $ignore) {
+
+        $similler = Annonce::where('categorie_id', $category_id)->inRandomOrder()->whereNotIn('id', [$ignore])->with(['images' => function ($q) {
+
+            $q->where('isMain', 1);
+
+        }])->take(5)->get();
+
+        return response()->json($similler);
+
+    }
+
 
 }
