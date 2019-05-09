@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbarr navbar-expand-lg navbar-light" id="#navbar">
         <div class="container">
             <router-link class="navbar-brand" to="/">vap</router-link>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -31,4 +31,8 @@ export default {
     
 }
 </script>
+
+<style scoped>
+
+</style>
 

@@ -3010,12 +3010,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      name: 'my-line-chart',
       labels: ["blocked", "published", "pandding"],
       datasets: [{
-        data: [0, 12, 50],
+        data: [0, 12, 23],
         backgroundColor: ["red", "purple", "yellow"]
       }],
       option: {
@@ -3034,14 +3036,30 @@ __webpack_require__.r(__webpack_exports__);
 
       var self = this;
       axios.get('/admin/getnumberads').then(function (res) {
-        _this.count = res.data; //this.datasets[0].data[0]=res.data.annonceblocked;
-        //this.datasets[0].data[1]=res.data.annoncepublished;
-        // this.datasets[0].data[2]=res.data.annoncepandding;
+        _this.count = res.data;
+        _this.datasets[0].data[0] = res.data.annonceblocked;
+        _this.datasets[0].data[1] = res.data.annoncepublished;
+        _this.datasets[0].data[2] = res.data.annoncepandding;
+        _this.my - line - chart.update();
       });
     }
   },
   mounted: function mounted() {
-    this.getnumberannonce(); //console.log(this.datasets[0].data)
+    this.getnumberannonce();
+
+    this._chart.destroy();
+
+    this.renderChart(this.data, this.options); //console.log(this.datasets[0].data)
+  },
+  watch: {
+    datasets: {
+      handler: function handler(newData, oldData) {
+        this._chart.destroy();
+
+        this.renderChart(this.data, this.options);
+      },
+      deep: true
+    }
   }
 });
 
@@ -79543,6 +79561,7 @@ var render = function() {
       _c("chartjs-doughnut", {
         attrs: {
           labels: _vm.labels,
+          name: _vm.name,
           datasets: _vm.datasets,
           option: _vm.option
         }

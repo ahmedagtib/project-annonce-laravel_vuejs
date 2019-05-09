@@ -1,5 +1,6 @@
 <template>
-    <div class="content_wrapper">
+    <div class="content_wrapper ">
+        <div class=" overlay">
         <div class="container details">
 
             <div id="map" style="height:/* 45*/0px"></div>
@@ -147,6 +148,8 @@
 
             </div>
         </div>
+    </div>
+    
     </div><!-- end content_wrapper -->
 </template>
 <script type="text/javascript">
@@ -230,4 +233,13 @@
     .carousel-control-next {
         height: 100% !important;
     }
-</style>
+
+    .content_wrapper{
+        background-image:url('./imagedoodle.jpg');
+    }
+    .overlay {
+     position: relative;
+     background-color:rgba(14, 160, 159, 0.5) !important;
+    
+    }
+</style> <!-- rgba(22, 51, 51, 0.5) !important; -->

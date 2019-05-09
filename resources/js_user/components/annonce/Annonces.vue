@@ -1,5 +1,6 @@
 <template>
     <div class="content_wrapper">
+      <div class=" overlay">
         <div class="container">
 
             <vue-progress-bar></vue-progress-bar>
@@ -111,6 +112,7 @@
             </div>
         </div>
     </div>
+ </div>
 </template>
 
 <script>
@@ -204,4 +206,12 @@
 </script>
 <style lang="scss" scoped>
     @import 'annoncesStore';
+    .content_wrapper{
+        background-image:url('./imagedoodle.jpg');
+    }
+     .overlay {
+     position: relative;
+     background-color:rgba(14, 160, 159, 0.5) !important;
+    
+    }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div class="addannonce_free">
-
+      <div class=" overlay">
         <vue-progress-bar></vue-progress-bar>
         <div class="card_annonce">
             <h1 class="card__title">Ajouter une annonce</h1>
@@ -97,6 +97,8 @@
                     </form>
         </div>
     </div>
+</div>
+   
 
 
 </template>
@@ -207,7 +209,6 @@
         width: 100%;
         height: 100%;
         background: linear-gradient(to top right, #2C3E50, rgba(222, 185, 224, 0), rgba(44, 62, 80, 0));
-        padding-bottom: 2%;
     }
 
 
@@ -216,12 +217,13 @@
         width: 60%;
         margin: 2% auto;
         margin-bottom: 0px;
+        margin-top: 0px;
         padding: 2% 5%;
         border-radius: 10px;
         box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
         background-color: #ffffff;
         font-family: sans-serif;
-        opacity: 0.8;
+        opacity: 0.9;
 
     }
 
@@ -236,6 +238,16 @@
     .addannonce_free .btn-primary {
         background-color: #324455;
         border-color: #2c3e50;
+    }
+     .addannonce_free{
+        background-image:url('./imagedoodle.jpg');
+
+
+    }
+     .overlay {
+       position: relative;
+      background-color:rgba(14, 160, 159, 0.5) !important;
+      padding:2% 0;
     }
 
 </style>
