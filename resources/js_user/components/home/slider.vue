@@ -65,6 +65,9 @@
     methods:{
         imgone(imageName){
             return '/image/slider/'+ imageName
+         },
+         imeges(imgName) {
+           return 'images/' + imgName
          }
       
 	     }

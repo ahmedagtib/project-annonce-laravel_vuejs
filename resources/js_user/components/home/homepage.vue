@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="bg-image">
 		 <slider></slider>
 		 <sectionone></sectionone>
 	</div>
@@ -13,3 +13,14 @@ import sectionone from './sectionone.vue';
        }
 	}
 </script>
+
+<style>
+
+	.bg-image {
+		background-image: url('../annonce/imagedoodle.jpg')
+	}
+
+</style>
+
+
+
