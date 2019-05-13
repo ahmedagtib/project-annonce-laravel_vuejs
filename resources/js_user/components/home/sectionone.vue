@@ -1,13 +1,13 @@
 <template>
  <div> 
 <div>
-		   <div class="text-center mt-4">
-     	     <span class="header_one ">Sponsorisé</span> 
+		   <div class="text-center mt-4 z-index-1">
+     	     <h2 class="text-dark bg-white p-1 mx-auto w-md-25">Sponsorisé</h2> 
         </div>
          <div class="clearfix"></div>
              <div  class="container mt-4">
                <div class="row">
-     	 	         <div class="col-md-3 annonce mb-4" v-for="ads in adspayhome">
+     	 	         <div class="col-lg-3 col-md-6 annonce mb-4" v-for="ads in adspayhome">
                     <div class="card mb-2">
                            <img v-if="ads.imageAnnonce !== null" :src="imgone(ads.imageAnnonce.name)">
                        <div class="card-link">
@@ -20,13 +20,13 @@
 </div>
 <!-- ============== -->
 <div>
-        <div class="text-center mt-4">
-           <span class="header_one ">suggestion</span> 
+        <div class="text-center mt-4 z-index-1">
+           <h2 class="text-dark bg-white p-1 mx-auto w-md-25">Suggestion</h2> 
         </div>
          <div class="clearfix"></div>
              <div  class="container mt-4">
                <div class="row">
-                 <div class="col-md-3 annonce mb-4" v-for="ads in adsfreehome">
+                 <div class="col-lg-3 col-md-6 annonce mb-4" v-for="ads in adsfreehome">
                     <div class="card mb-2">
                            <img v-if="ads.imageAnnonce !== null" :src="imgone(ads.imageAnnonce.name)">
                        <div class="card-link">
@@ -59,8 +59,8 @@
 
 	}
 </script>
-<style scoped>
-.col-md-3.annonce {
+<style lang="scss" scoped>
+.annonce {
   height: 350px;
 }
 .card {
@@ -98,5 +98,20 @@
 }
 .card:hover img {
   transform: scale(1.2);
+}
+
+.z-index-1 {
+  position: relative;
+  z-index: 1;
+}
+.w-md-50 {
+  @media (min-width: 768px) {
+    width:50%;
+  }
+}
+.w-md-25 {
+  @media (min-width: 768px) {
+    width:25%;
+  }
 }
 </style>
