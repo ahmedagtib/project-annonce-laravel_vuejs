@@ -9,20 +9,20 @@
                         <div id="formContent">
                             <div class="fadeIn first">
                                 <img src="" id="icon" alt="vap logo" />
-                                <h1>welcome</h1>
+                                <h1>Bienvenu</h1>
                                 <div class="text-danger text-center" v-if="authError">
                                     {{authError}}
                                 </div>
                             </div>
                             <form @submit.prevent="auth">
                                 <input type="text" id="login" class="fadeIn second" v-model="form.email"
-                                    placeholder="username">
+                                    placeholder="Nom d'utilisateur">
                                 <input type="password" id="password" class="fadeIn third" v-model="form.password"
-                                    placeholder="password">
+                                    placeholder="Mot de passe">
                                 <input type="submit" class="fadeIn fourth" value="Log In">
                             </form>
                             <div id="formFooter">
-                                <a class="underlineHover" href="#">Go to the Site</a>
+                                <a class="underlineHover" href="#">Accueil</a>
                             </div>
                         </div>
                     </div>

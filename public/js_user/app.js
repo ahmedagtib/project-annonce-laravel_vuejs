@@ -11625,39 +11625,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -11691,21 +11658,28 @@ __webpack_require__.r(__webpack_exports__);
       if (pass1 != pass2) {
         this.confirmation = "le champe des password invalid";
       } else {
+        this.$Progress.start();
         Object(_helpers_auth__WEBPACK_IMPORTED_MODULE_0__["registerUser"])(this.$data.formRegister).then(function (res) {
           //console.log(res.val);
           if (res.state == "error") {
             _this.valdation = res.val;
+
+            _this.$Progress.fail();
           } else {
             _this.$store.commit("registerSuccess", res);
 
             _this.$router.push({
               path: '/login'
             });
+
+            _this.$Progress.finish();
           }
         }).catch(function (error) {
           _this.$store.commit("registerFailed", {
             error: error
           });
+
+          _this.$Progress.fail();
         });
       }
     }
@@ -11945,9 +11919,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
 //
 //
 //
@@ -17120,7 +17091,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.error[data-v-6b871377]{\r\n    text-align: center;\r\n    color: red;\n}\r\n", ""]);
+exports.push([module.i, "\n.error[data-v-6b871377] {\n    text-align: center;\n    color: red;\n}\n\n", ""]);
 
 // exports
 
@@ -55907,7 +55878,7 @@ var render = function() {
                     attrs: { src: "", id: "icon", alt: "vap logo" }
                   }),
                   _vm._v(" "),
-                  _c("h1", [_vm._v("welcome")]),
+                  _c("h1", [_vm._v("Bienvenu")]),
                   _vm._v(" "),
                   _vm.authError
                     ? _c("div", { staticClass: "text-danger text-center" }, [
@@ -55944,7 +55915,7 @@ var render = function() {
                       attrs: {
                         type: "text",
                         id: "login",
-                        placeholder: "username"
+                        placeholder: "Nom d'utilisateur"
                       },
                       domProps: { value: _vm.form.email },
                       on: {
@@ -55970,7 +55941,7 @@ var render = function() {
                       attrs: {
                         type: "password",
                         id: "password",
-                        placeholder: "password"
+                        placeholder: "Mot de passe"
                       },
                       domProps: { value: _vm.form.password },
                       on: {
@@ -56009,7 +55980,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { attrs: { id: "formFooter" } }, [
       _c("a", { staticClass: "underlineHover", attrs: { href: "#" } }, [
-        _vm._v("Go to the Site")
+        _vm._v("Accueil")
       ])
     ])
   }
@@ -56555,204 +56526,219 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-6" }, [_c("svgreg")], 1),
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("vue-progress-bar"),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("div", { staticClass: "row justify-content-center mb-4" }, [
-          _c("div", { staticClass: "reg fadeInDown" }, [
-            _c("div", { attrs: { id: "formContent" } }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c(
-                "form",
-                {
-                  on: {
-                    submit: function($event) {
-                      $event.preventDefault()
-                      return _vm.register($event)
-                    }
-                  }
-                },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.formRegister.name,
-                        expression: "formRegister.name"
-                      }
-                    ],
-                    staticClass: "fadeIn second",
-                    attrs: { type: "text", placeholder: "name" },
-                    domProps: { value: _vm.formRegister.name },
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-6" }, [_c("svgreg")], 1),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("div", { staticClass: "row justify-content-center mb-4" }, [
+            _c("div", { staticClass: "reg fadeInDown" }, [
+              _c("div", { attrs: { id: "formContent" } }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "form",
+                  {
                     on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.formRegister, "name", $event.target.value)
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.register($event)
                       }
                     }
-                  }),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _vm.valdation.name != ""
-                    ? _c(
-                        "span",
-                        { staticClass: "text-danger" },
-                        _vm._l(_vm.valdation.name, function(val) {
-                          return _c("span", [
-                            _vm._v(
-                              "\n                                        " +
-                                _vm._s(val)
-                            ),
-                            _c("br")
-                          ])
-                        }),
-                        0
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.formRegister.email,
-                        expression: "formRegister.email"
-                      }
-                    ],
-                    staticClass: "fadeIn second",
-                    attrs: { type: "text", placeholder: "email" },
-                    domProps: { value: _vm.formRegister.email },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formRegister.name,
+                          expression: "formRegister.name"
                         }
-                        _vm.$set(_vm.formRegister, "email", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _vm.valdation.email != ""
-                    ? _c(
-                        "span",
-                        { staticClass: "text-danger" },
-                        _vm._l(_vm.valdation.email, function(val) {
-                          return _c("span", [
-                            _vm._v(
-                              "\n                                        " +
-                                _vm._s(val)
-                            ),
-                            _c("br")
-                          ])
-                        }),
-                        0
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.formRegister.password,
-                        expression: "formRegister.password"
-                      }
-                    ],
-                    staticClass: "fadeIn second",
-                    attrs: { type: "password", placeholder: "password" },
-                    domProps: { value: _vm.formRegister.password },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                      ],
+                      staticClass: "fadeIn second",
+                      attrs: { type: "text", placeholder: "Nom" },
+                      domProps: { value: _vm.formRegister.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.formRegister,
+                            "name",
+                            $event.target.value
+                          )
                         }
-                        _vm.$set(
-                          _vm.formRegister,
-                          "password",
-                          $event.target.value
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _vm.valdation.name != ""
+                      ? _c(
+                          "span",
+                          { staticClass: "text-danger" },
+                          _vm._l(_vm.valdation.name, function(val) {
+                            return _c("span", [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(val)
+                              ),
+                              _c("br")
+                            ])
+                          }),
+                          0
                         )
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.passwordc,
-                        expression: "passwordc"
-                      }
-                    ],
-                    staticClass: "fadeIn third",
-                    attrs: {
-                      type: "password",
-                      placeholder: "confirm password"
-                    },
-                    domProps: { value: _vm.passwordc },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formRegister.email,
+                          expression: "formRegister.email"
                         }
-                        _vm.passwordc = $event.target.value
+                      ],
+                      staticClass: "fadeIn second",
+                      attrs: { type: "text", placeholder: "email" },
+                      domProps: { value: _vm.formRegister.email },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.formRegister,
+                            "email",
+                            $event.target.value
+                          )
+                        }
                       }
-                    }
-                  }),
-                  _c("br"),
-                  _vm._v(" "),
-                  _vm.confirmation != ""
-                    ? _c("span", { staticClass: "text-danger" }, [
-                        _vm._v(
-                          "\n                                      " +
-                            _vm._s(_vm.confirmation) +
-                            "\n                                  "
+                    }),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _vm.valdation.email != ""
+                      ? _c(
+                          "span",
+                          { staticClass: "text-danger" },
+                          _vm._l(_vm.valdation.email, function(val) {
+                            return _c("span", [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(val)
+                              ),
+                              _c("br")
+                            ])
+                          }),
+                          0
                         )
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _vm.valdation.password != ""
-                    ? _c(
-                        "span",
-                        { staticClass: "text-danger" },
-                        _vm._l(_vm.valdation.password, function(val) {
-                          return _c("span", [
-                            _vm._v(
-                              "\n                                        " +
-                                _vm._s(val)
-                            ),
-                            _c("br")
-                          ])
-                        }),
-                        0
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "fadeIn fourth",
-                    attrs: { type: "submit", value: "sgin in" }
-                  })
-                ]
-              ),
-              _vm._v(" "),
-              _vm._m(1)
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formRegister.password,
+                          expression: "formRegister.password"
+                        }
+                      ],
+                      staticClass: "fadeIn second",
+                      attrs: { type: "password", placeholder: "Mot de passe" },
+                      domProps: { value: _vm.formRegister.password },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.formRegister,
+                            "password",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.passwordc,
+                          expression: "passwordc"
+                        }
+                      ],
+                      staticClass: "fadeIn third",
+                      attrs: {
+                        type: "password",
+                        placeholder: "confirmer le mot de passe"
+                      },
+                      domProps: { value: _vm.passwordc },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.passwordc = $event.target.value
+                        }
+                      }
+                    }),
+                    _c("br"),
+                    _vm._v(" "),
+                    _vm.confirmation != ""
+                      ? _c("span", { staticClass: "text-danger" }, [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(_vm.confirmation) +
+                              "\n                            "
+                          )
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _vm.valdation.password != ""
+                      ? _c(
+                          "span",
+                          { staticClass: "text-danger" },
+                          _vm._l(_vm.valdation.password, function(val) {
+                            return _c("span", [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(val)
+                              ),
+                              _c("br")
+                            ])
+                          }),
+                          0
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "fadeIn fourth",
+                      attrs: { type: "submit", value: "S'inscrire" }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._m(1)
+              ])
             ])
           ])
         ])
       ])
-    ])
-  ])
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -56762,7 +56748,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "fadeIn first" }, [
       _c("img", { attrs: { src: "", id: "icon", alt: "vap logo" } }),
       _vm._v(" "),
-      _c("h1", [_vm._v("sgin in")])
+      _c("h1", [_vm._v("Registre")])
     ])
   },
   function() {
@@ -56771,7 +56757,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { attrs: { id: "formFooter" } }, [
       _c("a", { staticClass: "underlineHover", attrs: { href: "#" } }, [
-        _vm._v("Go to the Site")
+        _vm._v("Accueil")
       ])
     ])
   }
@@ -59359,9 +59345,136 @@ var render = function() {
   return _c("div", [
     _c("footer", { staticClass: "footer", attrs: { id: "footer" } }, [
       _c("div", { staticClass: "container" }, [
-        _vm._m(0),
+        _c(
+          "div",
+          {
+            staticClass:
+              "row text-center text-xs-center text-sm-left text-md-left"
+          },
+          [
+            _c("div", { staticClass: "col-xs-12 col-sm-4 col-md-4" }, [
+              _c("h5", [_vm._v("Lien relatif")]),
+              _vm._v(" "),
+              _c("ul", { staticClass: "list-unstyled quick-links" }, [
+                _c(
+                  "li",
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "nav-link", attrs: { to: "/" } },
+                      [
+                        _c("i", { staticClass: "fa fa-angle-double-right" }),
+                        _vm._v("Accueil")
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "nav-link", attrs: { to: "/store" } },
+                      [
+                        _c("i", { staticClass: "fa fa-angle-double-right" }),
+                        _vm._v("Annonces")
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._m(1)
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-xs-12 col-sm-4 col-md-4" }, [
+              _c("h5", [_vm._v("Lien relatif")]),
+              _vm._v(" "),
+              _c("ul", { staticClass: "list-unstyled quick-links" }, [
+                _c(
+                  "li",
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "nav-link", attrs: { to: "/" } },
+                      [
+                        _c("i", { staticClass: "fa fa-angle-double-right" }),
+                        _vm._v("Accueil")
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "nav-link", attrs: { to: "/store" } },
+                      [
+                        _c("i", { staticClass: "fa fa-angle-double-right" }),
+                        _vm._v("Annonces")
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._m(3)
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-xs-12 col-sm-4 col-md-4" }, [
+              _c("h5", [_vm._v("Lien relatif")]),
+              _vm._v(" "),
+              _c("ul", { staticClass: "list-unstyled quick-links" }, [
+                _c(
+                  "li",
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "nav-link", attrs: { to: "/" } },
+                      [
+                        _c("i", { staticClass: "fa fa-angle-double-right" }),
+                        _vm._v("Accueil")
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._m(4),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "nav-link", attrs: { to: "/store" } },
+                      [
+                        _c("i", { staticClass: "fa fa-angle-double-right" }),
+                        _vm._v("Annonces")
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._m(5)
+              ])
+            ])
+          ]
+        ),
         _vm._v(" "),
-        _vm._m(1),
+        _vm._m(6),
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
           _c(
@@ -59395,145 +59508,91 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "row text-center text-xs-center text-sm-left text-md-left"
-      },
-      [
-        _c("div", { staticClass: "col-xs-12 col-sm-4 col-md-4" }, [
-          _c("h5", [_vm._v("Quick links")]),
-          _vm._v(" "),
-          _c("ul", { staticClass: "list-unstyled quick-links" }, [
-            _c("li", [
-              _c("a", { attrs: { href: "javascript:void();" } }, [
-                _c("i", { staticClass: "fa fa-angle-double-right" }),
-                _vm._v("Home")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", { attrs: { href: "javascript:void();" } }, [
-                _c("i", { staticClass: "fa fa-angle-double-right" }),
-                _vm._v("About")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", { attrs: { href: "javascript:void();" } }, [
-                _c("i", { staticClass: "fa fa-angle-double-right" }),
-                _vm._v("FAQ")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", { attrs: { href: "javascript:void();" } }, [
-                _c("i", { staticClass: "fa fa-angle-double-right" }),
-                _vm._v("Get Started")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", { attrs: { href: "javascript:void();" } }, [
-                _c("i", { staticClass: "fa fa-angle-double-right" }),
-                _vm._v("Videos")
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xs-12 col-sm-4 col-md-4" }, [
-          _c("h5", [_vm._v("Quick links")]),
-          _vm._v(" "),
-          _c("ul", { staticClass: "list-unstyled quick-links" }, [
-            _c("li", [
-              _c("a", { attrs: { href: "javascript:void();" } }, [
-                _c("i", { staticClass: "fa fa-angle-double-right" }),
-                _vm._v("Home")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", { attrs: { href: "javascript:void();" } }, [
-                _c("i", { staticClass: "fa fa-angle-double-right" }),
-                _vm._v("About")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", { attrs: { href: "javascript:void();" } }, [
-                _c("i", { staticClass: "fa fa-angle-double-right" }),
-                _vm._v("FAQ")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", { attrs: { href: "javascript:void();" } }, [
-                _c("i", { staticClass: "fa fa-angle-double-right" }),
-                _vm._v("Get Started")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", { attrs: { href: "javascript:void();" } }, [
-                _c("i", { staticClass: "fa fa-angle-double-right" }),
-                _vm._v("Videos")
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xs-12 col-sm-4 col-md-4" }, [
-          _c("h5", [_vm._v("Quick links")]),
-          _vm._v(" "),
-          _c("ul", { staticClass: "list-unstyled quick-links" }, [
-            _c("li", [
-              _c("a", { attrs: { href: "javascript:void();" } }, [
-                _c("i", { staticClass: "fa fa-angle-double-right" }),
-                _vm._v("Home")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", { attrs: { href: "javascript:void();" } }, [
-                _c("i", { staticClass: "fa fa-angle-double-right" }),
-                _vm._v("About")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", { attrs: { href: "javascript:void();" } }, [
-                _c("i", { staticClass: "fa fa-angle-double-right" }),
-                _vm._v("FAQ")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", { attrs: { href: "javascript:void();" } }, [
-                _c("i", { staticClass: "fa fa-angle-double-right" }),
-                _vm._v("Get Started")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _c(
-                "a",
-                {
-                  attrs: {
-                    href: "https://wwwe.sunlimetech.com",
-                    title: "Design and developed by"
-                  }
-                },
-                [
-                  _c("i", { staticClass: "fa fa-angle-double-right" }),
-                  _vm._v("Imprint")
-                ]
-              )
-            ])
-          ])
-        ])
-      ]
-    )
+    return _c("li", [
+      _c(
+        "a",
+        { staticClass: "nav-link", attrs: { href: "javascript:void();" } },
+        [
+          _c("i", { staticClass: "fa fa-angle-double-right" }),
+          _vm._v("A propos")
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c(
+        "a",
+        { staticClass: "nav-link", attrs: { href: "javascript:void();" } },
+        [
+          _c("i", { staticClass: "fa fa-angle-double-right" }),
+          _vm._v("contactez nous")
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c(
+        "a",
+        { staticClass: "nav-link", attrs: { href: "javascript:void();" } },
+        [
+          _c("i", { staticClass: "fa fa-angle-double-right" }),
+          _vm._v("A propos")
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c(
+        "a",
+        { staticClass: "nav-link", attrs: { href: "javascript:void();" } },
+        [
+          _c("i", { staticClass: "fa fa-angle-double-right" }),
+          _vm._v("contactez nous")
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c(
+        "a",
+        { staticClass: "nav-link", attrs: { href: "javascript:void();" } },
+        [
+          _c("i", { staticClass: "fa fa-angle-double-right" }),
+          _vm._v("A propos")
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c(
+        "a",
+        { staticClass: "nav-link", attrs: { href: "javascript:void();" } },
+        [
+          _c("i", { staticClass: "fa fa-angle-double-right" }),
+          _vm._v("contactez nous")
+        ]
+      )
+    ])
   },
   function() {
     var _vm = this

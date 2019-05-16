@@ -5,33 +5,30 @@
     <div class="container">
       <div class="row text-center text-xs-center text-sm-left text-md-left">
         <div class="col-xs-12 col-sm-4 col-md-4">
-          <h5>Quick links</h5>
+          <h5>Lien relatif</h5>
           <ul class="list-unstyled quick-links">
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Home</a></li>
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>About</a></li>
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Videos</a></li>
+            <li><router-link class="nav-link" to="/"><i class="fa fa-angle-double-right"></i>Accueil</router-link></li>
+            <li><a class="nav-link" href="javascript:void();"><i class="fa fa-angle-double-right"></i>A propos</a></li>
+            <li><router-link  class="nav-link" to="/store"><i class="fa fa-angle-double-right"></i>Annonces</router-link></li>
+            <li><a class="nav-link" href="javascript:void();"><i class="fa fa-angle-double-right"></i>contactez nous</a></li>
           </ul>
         </div>
         <div class="col-xs-12 col-sm-4 col-md-4">
-          <h5>Quick links</h5>
+          <h5>Lien relatif</h5>
           <ul class="list-unstyled quick-links">
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Home</a></li>
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>About</a></li>
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Videos</a></li>
+            <li><router-link class="nav-link" to="/"><i class="fa fa-angle-double-right"></i>Accueil</router-link></li>
+            <li><a class="nav-link" href="javascript:void();"><i class="fa fa-angle-double-right"></i>A propos</a></li>
+            <li><router-link  class="nav-link" to="/store"><i class="fa fa-angle-double-right"></i>Annonces</router-link></li>
+            <li><a class="nav-link" href="javascript:void();"><i class="fa fa-angle-double-right"></i>contactez nous</a></li>
           </ul>
         </div>
         <div class="col-xs-12 col-sm-4 col-md-4">
-          <h5>Quick links</h5>
+          <h5>Lien relatif</h5>
           <ul class="list-unstyled quick-links">
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Home</a></li>
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>About</a></li>
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-            <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
-            <li><a href="https://wwwe.sunlimetech.com" title="Design and developed by"><i class="fa fa-angle-double-right"></i>Imprint</a></li>
+            <li><router-link class="nav-link" to="/"><i class="fa fa-angle-double-right"></i>Accueil</router-link></li>
+            <li><a class="nav-link" href="javascript:void();"><i class="fa fa-angle-double-right"></i>A propos</a></li>
+            <li><router-link  class="nav-link" to="/store"><i class="fa fa-angle-double-right"></i>Annonces</router-link></li>
+            <li><a class="nav-link" href="javascript:void();"><i class="fa fa-angle-double-right"></i>contactez nous</a></li>
           </ul>
         </div>
       </div>
