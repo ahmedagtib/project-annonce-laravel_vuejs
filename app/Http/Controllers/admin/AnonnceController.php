@@ -54,7 +54,7 @@ class AnonnceController extends Controller
             //Upload image to the server
             $name = time() . $key . '.' . explode('/', explode(';', $image['img'])[0])[1];
             image::make($image['img'])->resize(300, 200)->save(public_path('image/annonce/') . $name);
-            // $img->resize(300, 200);
+            $img->resize(300, 200);
             $r->merge(['images[]' => $name]);
             // Save Image to database
             $Annonce->images()->save(new ImageAnnonce(['name' => $name, 'isMain' => $image['isMain']]));

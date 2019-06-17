@@ -2,9 +2,9 @@
     <div class="upper_bar">
         <div class="container">
             <div class="row">
-                <div class="col-sm mt-1">
-                    <span><i class="fas fa-envelope"></i> smartove@gmail.com,</span>
-                    <span><i class="fa fa-phone"></i> 0600000000</span>
+                <div class="col-sm mt-1 email-a-num">
+                    <span><i class="fas fa-envelope"></i> {{ email }}</span>
+                    <span><i class="fa fa-phone"></i> {{ numero }}</span>
                 </div>
                 <ul class="nav">
                     <div class="col-sm text-right">
@@ -58,7 +58,9 @@
     export default {
         data() {
             return {
-                isDark: false
+                isDark: false,
+                email: 'contact@vap.ma',
+                numero: '06xxxxxxxx'
             }
         },
         methods: {
@@ -122,4 +124,11 @@
 
 </script>
 <style type="text/css">
+
+    .email-a-num {
+
+        line-height: 30px;
+
+    }
+
 </style>
