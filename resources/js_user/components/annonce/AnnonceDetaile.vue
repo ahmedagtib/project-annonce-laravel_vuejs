@@ -24,14 +24,8 @@
                         <div class="detail-header-price">
                             <span class="price">{{ annonce.prix }}<span>DH</span></span>
                         </div>
-                        <!-- <div class="detail-header-review">
-                            <i class="fa fa-bookmark-o"></i>
-                            <span><i class="fa fa-eye"></i>234</span>
-                        </div> -->
                     </div>
-                    <!-- End details slider
-               
-          -->
+                    <!-- End details slider -->
                     <Slider>
 
                         <!-- Indecator -->

@@ -1,8 +1,8 @@
 <template>
     <div class="upper_bar">
         <div class="container">
-            <div class="row">
-                <div class="col-sm mt-1 email-a-num">
+            <div class="row justify-content-center justify-content-md-left">
+                <div class="mt-1 email-a-num">
                     <span><i class="fas fa-envelope"></i> {{ email }}</span>
                     <span><i class="fa fa-phone"></i> {{ numero }}</span>
                 </div>

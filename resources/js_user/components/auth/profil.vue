@@ -21,7 +21,7 @@
                        <input id="firstname" class="input-text js-input" type="text" v-model="profil.firstname" />
                        <label class="label" for="firstname">Nom</label>
                        <span class="text-danger" v-if="valdation.firstname !=''">
-                                    <span v-for="val in valdation.firstname">
+                                    <span v-for="(val, i) in valdation.firstname" :key="i">
                                         {{val}}<br />
                                     </span>
                         </span>
@@ -30,7 +30,7 @@
                        <input id="lastname" v-model="profil.lastname" class="input-text js-input" type="text" />
                        <label class="label"  for="lastname">Prenom</label>
                         <span class="text-danger" v-if="valdation.lastname !=''">
-                                    <span v-for="val in valdation.lastname">
+                                    <span v-for="(val, i) in valdation.lastname" :key="i">
                                         {{val}}<br />
                                     </span>
                         </span>
@@ -39,7 +39,7 @@
                        <input id="adresse"  v-model="profil.adresse"  class="input-text js-input" type="text" />
                        <label class="label" for="adresse">adresse</label>
                         <span class="text-danger" v-if="valdation.adresse !=''">
-                                    <span v-for="val in valdation.adresse">
+                                    <span v-for="(val, i) in valdation.adresse" :key="i">
                                         {{val}}<br />
                                     </span>
                         </span>
@@ -48,7 +48,7 @@
                        <input id="phone" v-model="profil.phone"  class="input-text js-input" type="text" />
                        <label class="label" for="phone">Télephone</label>
                         <span class="text-danger" v-if="valdation.phone !=''">
-                                    <span v-for="val in valdation.phone">
+                                    <span v-for="(val, i) in valdation.phone" :key="i">
                                         {{val}}<br />
                                     </span>
                         </span>
@@ -57,7 +57,7 @@
                        <input id="description"  v-model="profil.description"  class="input-text js-input" type="text" />
                            <label class="label" for="description">description</label>
                            <span class="text-danger" v-if="valdation.description !=''">
-                                    <span v-for="val in valdation.description">
+                                    <span v-for="(val, i) in valdation.description" :key="i">
                                         {{val}}<br />
                                     </span>
                         </span>

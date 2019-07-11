@@ -1,14 +1,14 @@
 <template>
-    <div>
+    <div class="container">
         <div>
             <div class="text-center mt-4 z-index-1">
                 <h2 class="text-dark heading mx-auto w-md-25">Sponsorisé</h2>
                 <div class="line-hr"></div>
             </div>
             <div class="clearfix"></div>
-            <div class="container mt-4">
+            <div class="container annonces mt-4">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6 annonce mb-4" v-for="ads in adspayhome">
+                    <div class="col-lg-3 col-md-6 annonce mb-4" v-for="(ads, i) in adspayhome" :key="i">
                         <div class="card mb-2 fadeInDown">
                             <img v-if="ads.imageAnnonce !== null" :src="imgone(ads.imageAnnonce.name)">
                             <div class="card-link">
@@ -26,9 +26,9 @@
                 <div class="line-hr"></div>
             </div>
             <div class="clearfix"></div>
-            <div class="container mt-4">
+            <div class="container annonces mt-4">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6 annonce mb-4" v-for="ads in adsfreehome">
+                    <div class="col-lg-3 col-md-6 annonce mb-4" v-for="(ads, i) in adsfreehome" :key="i">
                         <div class="card mb-2 fadeInDown">
                             <img v-if="ads.imageAnnonce !== null" :src="imgone(ads.imageAnnonce.name)">
                             <div class="card-link">
@@ -67,8 +67,31 @@
 </script>
 <style lang="scss" scoped>
     $margin: 40px;
-    .annonce {
-        height: 350px;
+
+    .annonces {
+
+        @media (min-width: 768px) {
+            max-width: 75%;
+            align-self: center;
+        }
+        @media (min-width: 992px) {
+            max-width: 100%;
+        }
+        .annonce {
+            height: 350px;
+            display: block;
+            width: 100%;
+            @media (max-width: 768px) {
+                
+                display: flex;
+                justify-content: center;
+                & > .card {
+        
+                    width: 60%;
+        
+                }
+            }
+        }
     }
 
     .card {

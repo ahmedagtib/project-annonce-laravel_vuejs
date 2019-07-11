@@ -41,6 +41,7 @@ Route::group(['namespace'=>'api'], function ($router) {
   Route::get('annonce/{category_id}/{ignore}','AnnonceController@getSiller');
   Route::post('comment','AnnonceController@postcomment');
   Route::get('commentuser/{id}','AnnonceController@allcommentaboutpost');
+  Route::post('search','AnnonceController@search');
    
 });
 

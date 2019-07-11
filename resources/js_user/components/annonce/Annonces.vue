@@ -18,7 +18,7 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="searchHotelWhere">Que recherchez-vous ?</label>
-                                                <input type="text" class="form-control" id="searchHotelWhere"
+                                                <input v-model="filters.query" type="text" class="form-control" id="searchHotelWhere"
                                                     placeholder="Que recherchez-vous ?">
                                             </div>
                                             <div class="form-group">
@@ -100,13 +100,11 @@
                                 </ul>
                             </div>
                         </div>
-
-
                     </div>
                     <div class="row listing">
-                        <Annonce v-for="annonce in annonces.data" :key="annonce.id" :data="annonce"></Annonce>
+                        <Annonce v-for="(annonce, i) in annonces.data" :key="i" :data="annonce"></Annonce>
                     </div>
-                    <pagination :limit="3" :data="annonces" @pagination-change-page="getResults"></pagination>
+                    <pagination :limit="2" :data="annonces" @pagination-change-page="getResults"></pagination>
 
                 </div>
             </div>
@@ -118,58 +116,51 @@
 <script>
     import Annonce from '../Annonce'
     import pagination from 'laravel-vue-pagination'
-    import $ from 'jquery'
     import {
         mapGetters,
         mapActions
     } from "vuex";
+
+    import Search from '../../Models/Search';
+
+    import { bus } from "../../app";
+
     export default {
         components: {
             Annonce
         },
         data() {
             return {
-                annonces: {},
+                annonces: {},  
                 filters: {
+                    query: '',
                     ville_id: -1,
                     categorie_id: -1,
                     min_prix: 0,
                     max_prix: 0
                 },
-                countResult: 4134
+                countResult: 0
             }
         },
         methods: {
             ...mapActions(["getville", "getcategory"]),
-            getResults(page = 1) {
-                axios({
-                    method: "post",
-                    url: "api/all?page=" + page, ///
-                    data: this.filters
-                }).then(response => {
-                    this.annonces = response.data;
-                });
-
-            },
             imageDirectory(name) {
 
                 return '/image/annonce/' + name
 
             },
             ...mapActions(["getville", "getcategory"]),
-            getResults(page = 1) {
+            async getResults(page = 1) {
 
-                this.$Progress.start()
-                axios({
-                    method: "post",
-                    url: "api/all?page=" + page, ///
-                    data: this.filters
-                }).then(response => {
-                    this.annonces = response.data;
-                    this.$Progress.finish()
-                }).catch(() => {
-                    this.$Progress.fail()
-                });
+                if(!bus.search) {
+                    bus.search = new Search(this.filters);
+                }
+                console.log('????????');
+                await bus.search.search(this.$Progress, page);
+                this.countResult = bus.search.state.result.data.total;
+                this.annonces = bus.search.state.result.data;
+                this.filters = bus.search.state.filters;
+
             },
             Search() {
                 this.getResults()
@@ -184,24 +175,6 @@
             this.getcategory();
         }
     }
-    $(function () {
-        'use strict';
-        var upperH = $('.top-header').innerHeight();
-
-        $('.collapse').on('hidden.bs.collapse', function () {
-
-            $(this).parent().find('.fa-minus').addClass('fa-plus').removeClass('fa-minus');
-
-        });
-
-        $('.collapse').on('shown.bs.collapse', function () {
-
-            $(this).parent().find('.fa-plus').addClass('fa-minus').removeClass('fa-plus');
-
-        });
-
-
-    });
 
 </script>
 <style lang="scss" scoped>

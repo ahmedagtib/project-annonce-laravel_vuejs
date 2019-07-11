@@ -7,7 +7,7 @@
             <div class="list-group-item list-group-item-action ">
                 <router-link @click.native="force" :to="'/annonce/' + data.slug" :key="$route.fullPath">
                     <div class="list-img">
-                        <img v-if="data.images[0] !== undefined" :src="imageDirectory(data.images[0].name)"
+                        <img v-if="data.image_annonce !== undefined" :src="imageDirectory(data.image_annonce)"
                             alt="Card image cap">
                         <i class="fa fa-clone cp-i"></i>
                         <span class="cp-img">2</span>

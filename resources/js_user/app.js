@@ -9,7 +9,7 @@ import  axios from 'axios';
 import StoreData from './store';
 import $ from 'jquery'
 import { Form, HasError, AlertError,AlertSuccess } from 'vform'
-
+import Search from './Models/Search';
 import VueProgressBar from 'vue-progressbar'
 
 const options = {
@@ -55,8 +55,10 @@ router.beforeEach((to,from,next)=>{
         next();
     }
 })
+let search = new Search();
 
-export const bus=new Vue();
+Vue.use(search);
+export const bus = new Vue();
 const app = new Vue({
     el: '#app',
     components:{

@@ -242,5 +242,75 @@ class AnnonceController extends Controller
 
     }
 
+    /** 
+     * 
+     * SEARCH Function
+     * 
+     *  */
+
+    public function search (Request $request) {
+
+        // $annoncesModel = new Annonce();
+        // $annonces = $annoncesModel->newQuery();
+
+
+        /**
+         * 
+         *  Problem solved: 
+         *  1. images not able to show in with the select function (use leftJoin insted of with)
+         *  2. query not show the same result with or without filter (use advanced where)
+         *  3. you can't show images the main image only (use the advanced leftJoin)
+         *                  
+         * 
+         */
+
+        $annonces = Annonce::where('stuts', '=', 'published')->where('type','=','free')
+                    ->leftJoin('image_annonces', function ($join) {
+                        $join->on('annonces.id', '=', 'image_annonces.annonce_id')
+                        ->where('image_annonces.isMain', '=', 1);
+                    })
+                    ->select(['slug', 'title', 'description', 'detaille', 'prix', 'image_annonces.name as image_annonce']);
+        
+        if (!empty($request['query'])) {
+            // $annonces->orWhere('title', 'like', "%".$request['query']."%")
+            // $annonces->where('description', 'like', "%".$request['query']."%");
+            // ->orWhere('detaille', 'like', "%".$request['query']."%");
+
+            $annonces->where(function ($query) use ($request) {
+
+                $query->orWhere('title', 'like', "%".$request['query']."%")
+                    ->orWhere('description', 'like', "%".$request['query']."%")
+                    ->orWhere('detaille', 'like', "%".$request['query']."%");
+
+            });
+
+            // ['slug', 'title', 'description', 'detaille', 'prix']
+        }
+
+        if($request['categorie_id'] != -1) {
+            $annonces->where('categorie_id', '=', $request['categorie_id']);
+        }
+        if($request['ville_id'] != -1) {
+            $annonces->where('ville_id', '=', $request['ville_id']);
+        }
+        if($request['min_prix'] > 0) {
+            $annonces->where('prix', '>=', $request['min_prix']);
+        }
+        
+        if($request['max_prix'] > 0) {
+            $annonces->where('prix', '<=', $request['max_prix']);
+        }
+        // return response()->json($annonces->where('stuts', '=', 'published')->where('type','=','free')
+        //                 ->leftJoin('image_annonces', 'annonces.id', '=', 'image_annonces.annonce_id')
+        //                 ->where('image_annonces.isMain', '=', 1)
+        //                 ->select(['slug', 'title', 'description', 'detaille', 'prix', 'image_annonces.name as image_annonce'])->paginate(12));
+        
+        // return response()->json($annonces->get());
+
+        return response()->json($annonces->paginate(10));
+
+    }
+
+    // Select * from Annonce where title like '%$query%' or desciption like '%$query%' or detaille like '%$query%'
 
 }

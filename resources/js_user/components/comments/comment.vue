@@ -2,7 +2,7 @@
 
     <div class="row media">
         <div class="col-md-2">
-            <img :src="imgPath(comment.userprofiale.image)" class="mr-3 img-fluid" alt="">
+            <img v-if="comment.comments.user.profile" :src="imgPath(comment.userprofiale.image)" class="mr-3 img-fluid" alt="">
         </div>
         <div class="media-body">
             <h5 class="mt-0">{{comment.comments.user.name}}</h5>

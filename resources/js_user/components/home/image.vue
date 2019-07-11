@@ -2,13 +2,15 @@
 
     <div class="container-fluid bg-image">
         <div class="container">
+            <div class="overlay"></div>
             <div class="body wrapper fadeInDown">
                 <h1 class="heading text-center">VAP</h1>
                 <h2 class="heading text-center">Bla bla bla</h2>
-                <router-link to="/annonce" class="btn btn-primary p-3 btn-custom"
+                <!-- <router-link to="/annonce" class="btn btn-primary p-3 btn-custom"
                     href="#" role="button">
                     Crée votre annonce gratuit.
-                </router-link>
+                </router-link> -->
+                <Search></Search>
             </div>
         </div>
     </div>
@@ -17,8 +19,12 @@
 
 <script>
     import $ from 'jquery';
+    import Search from '../Search';
 
     export default {
+        components: {
+            Search
+        },
         methods: {
 
             imgone(imageName) {
@@ -74,7 +80,7 @@
 
         .overlay {
             left: 0;
-            background-color: rgba(127, 127, 127, 0.53) !important;           
+            background-color: rgba(127, 127, 127, 0.4) !important;           
             z-index: -1;
         }
 
@@ -84,6 +90,12 @@
 
         .heading {
             font-size: 80px;
+        }
+        
+        h2.heading {
+            font: {
+                size: 40px;
+            }
         }
     }
 
